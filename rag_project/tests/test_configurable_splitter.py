@@ -30,8 +30,8 @@ def test_splitter_uses_correct_config():
 
     # Test news config
     news_config = get_chunking_config('news')
-    assert splitter.splitters['news'].chunk_size == news_config['chunk_size']
-    assert splitter.splitters['news'].chunk_overlap == news_config['chunk_overlap']
+    assert splitter.splitters['news']._chunk_size == news_config['chunk_size']
+    assert splitter.splitters['news']._chunk_overlap == news_config['chunk_overlap']
 
 def test_splitter_adds_doc_type_metadata():
     """Test that splitter adds doc_type to metadata"""
@@ -46,10 +46,10 @@ def test_splitter_adds_doc_type_metadata():
 def test_reload_config():
     """Test reloading configuration"""
     splitter = ConfigurableChunker()
-    old_chunk_size = splitter.splitters['news'].chunk_size
+    old_chunk_size = splitter.splitters['news']._chunk_size
 
     # Reload config (should work even with same file)
     splitter.reload_config()
 
     # Splitter should be re-created with same config
-    assert splitter.splitters['news'].chunk_size == old_chunk_size
+    assert splitter.splitters['news']._chunk_size == old_chunk_size
