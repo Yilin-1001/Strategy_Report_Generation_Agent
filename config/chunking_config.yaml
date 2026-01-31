@@ -1,0 +1,35 @@
+# Chunking configuration for different document types
+chunking:
+  # News articles (TXT files)
+  news:
+    chunk_size: 512
+    chunk_overlap: 50
+    separators: ["\n\n", "\n", "。", "！", "？", "；", "，", " ", ""]
+    length_function: "len"
+
+  # PDF documents (policies, reports, academic papers)
+  pdf:
+    chunk_size: 1000
+    chunk_overlap: 200
+    separators: ["\n\n", "\n", "。", "！", "？", "；", ".", " ", ""]
+    length_function: "len"
+
+  # Regulations (DOCX files)
+  regulation:
+    chunk_size: 1000
+    chunk_overlap: 150
+    separators: ["\n\n", "\n", "。", "！", "？", "；", "、", "，", " ", ""]
+    length_function: "len"
+
+  # Default configuration
+  default:
+    chunk_size: 800
+    chunk_overlap: 100
+    separators: ["\n\n", "\n", "。", "！", "？", "；", ".", " ", ""]
+    length_function: "len"
+
+  # Advanced options
+  advanced:
+    use_semantic_chunking: false
+    preserve_tables: true
+    table_as_separate_chunk: true
