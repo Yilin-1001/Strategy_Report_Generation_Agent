@@ -166,7 +166,7 @@ class MilvusManager:
         }
 
         # Insert
-        insert_result = self.collection.insert([insert_data[field] for field in self.collection.schema.fields])
+        insert_result = self.collection.insert([insert_data[field.name] for field in self.collection.schema.fields])
 
         # Flush
         self.collection.flush()

@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git worktree add:*)",
+      "Bash(git worktree remove:*)",
+      "WebSearch",
+      "Bash(pytest:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(conda activate:*)",
+      "Bash(conda list:*)",
+      "Bash(E:\\\\Miniconda3\\\\envs\\\\RAG\\\\python.exe:*)",
+      "Bash(conda info:*)",
+      "Bash(conda env list:*)",
+      "Bash(docker:*)"
+    ]
+  }
+}
