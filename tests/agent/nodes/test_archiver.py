@@ -8,17 +8,17 @@ from rag_project.agent.nodes.archiver import archiver_node
 def test_archiver_node():
     """Test that archiver node merges all chapters with cover and footer."""
     # Setup test data
-    context_pool = {
-        "chapters": [
+    state = {
+        "context_pool": [
             "# 第一章\n\n第一章内容",
             "# 第二章\n\n第二章内容",
             "# 第三章\n\n第三章内容"
-        ]
+        ],
+        "user_input": "测试主题"
     }
-    user_input = "测试主题"
 
     # Execute archiver node
-    result = archiver_node(context_pool, user_input)
+    result = archiver_node(state)
 
     # Verify structure
     assert "final_report" in result

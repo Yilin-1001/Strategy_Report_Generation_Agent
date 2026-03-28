@@ -16,6 +16,8 @@ from rag_project.agent.nodes.prep_chapter import prepare_chapter_node
 from rag_project.agent.nodes.researcher import researcher_node
 from rag_project.agent.nodes.analyst import analyst_node
 from rag_project.agent.nodes.writer import writer_node
+from rag_project.agent.nodes.human_review import human_review_node, should_continue
+from rag_project.agent.nodes.archiver import archiver_node
 
 __all__ = [
     "coordinator_node",
@@ -23,4 +25,7 @@ __all__ = [
     "researcher_node",
     "analyst_node",
     "writer_node",
+    "human_review_node",
+    "archiver_node",
+    "should_continue",
 ]
