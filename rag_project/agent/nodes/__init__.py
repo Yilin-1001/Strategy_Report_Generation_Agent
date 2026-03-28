@@ -1,0 +1,18 @@
+"""
+Agent nodes for the RAG system workflow
+
+This package contains individual node implementations for the LangGraph workflow:
+- coordinator: Generates structured chapter outline
+- researcher: Retrieves relevant information from knowledge base
+- analyst: Analyzes and synthesizes information
+- writer: Generates draft content
+- prepare_chapter: Prepares context for current chapter
+- human_review: Handles human feedback
+- archiver: Archives completed chapters
+"""
+
+from rag_project.agent.nodes.coordinator import coordinator_node
+
+__all__ = [
+    "coordinator_node",
+]
