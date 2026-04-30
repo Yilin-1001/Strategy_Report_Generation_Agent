@@ -1,0 +1,22 @@
+reranker:
+  enabled: true
+  provider: "siliconflow"
+
+  # Model: "BAAI/bge-reranker-v2-m3" or "Qwen/Qwen3-Reranker-0.6B" etc.
+  model: "BAAI/bge-reranker-v2-m3"
+
+  # SiliconFlow API (reuse same key as embedding)
+  api_base_url: "https://api.siliconflow.cn/v1"
+  api_key: "sk-galtgnlesfoydjzetapqerkapxzqbtdnlnyulgibiqymvqik"
+
+  # Retrieval expansion: Milvus retrieves top_k * expansion_factor, then rerank down to top_k
+  expansion_factor: 3
+
+  # Request timeout in seconds
+  api_timeout: 30
+
+  # BGE-specific: max chunks per long document
+  max_chunks_per_doc: 1
+
+  # BGE-specific: overlap tokens between chunks
+  overlap_tokens: 40

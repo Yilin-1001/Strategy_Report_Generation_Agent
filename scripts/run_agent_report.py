@@ -67,7 +67,7 @@ Examples:
 
     # Print header
     print("\n" + "=" * 70)
-    print("  🤖 Multi-Agent Report Generation System")
+    print("  [Agent] Multi-Agent Report Generation System")
     print("=" * 70)
     print(f"  Request: {args.request}")
     print(f"  Output:  {args.output}")
@@ -80,7 +80,7 @@ Examples:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         logger.info(f"Output directory ready: {output_path.parent}")
     except Exception as e:
-        print(f"❌ Error creating output directory: {e}")
+        print(f"[X] Error creating output directory: {e}")
         logger.error(f"Failed to create output directory: {e}")
         sys.exit(1)
 
@@ -88,7 +88,7 @@ Examples:
     try:
         cli = ReportGeneratorCLI()
     except Exception as e:
-        print(f"❌ Error initializing CLI: {e}")
+        print(f"[X] Error initializing CLI: {e}")
         logger.error(f"Failed to initialize CLI: {e}")
         sys.exit(1)
 
@@ -100,24 +100,24 @@ Examples:
         cli.save_report(final_report, args.output)
 
         print("\n" + "=" * 70)
-        print("  ✅ Report Generation Complete!")
+        print("  [OK] Report Generation Complete!")
         print("=" * 70)
-        print(f"  📄 Saved to: {args.output}")
-        print(f"  📊 Length:   {len(final_report)} characters")
+        print(f"  [File] Saved to: {args.output}")
+        print(f"  [Info] Length:   {len(final_report)} characters")
         print("=" * 70 + "\n")
 
         return 0
 
     except KeyboardInterrupt:
         print("\n\n" + "=" * 70)
-        print("  ⚠️  Generation Interrupted by User")
+        print("  [WARN] Generation Interrupted by User")
         print("=" * 70 + "\n")
         logger.info("Report generation interrupted by user")
         return 130  # Standard exit code for SIGINT
 
     except Exception as e:
         print("\n" + "=" * 70)
-        print(f"  ❌ Error: {e}")
+        print(f"  [X] Error: {e}")
         print("=" * 70 + "\n")
         logger.error(f"Error during report generation: {e}", exc_info=True)
         return 1

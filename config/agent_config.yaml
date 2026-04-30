@@ -5,7 +5,18 @@ llm:
   api_key_env: "DEEPSEEK_API_KEY"
   base_url: "https://api.deepseek.com"
   max_tokens: 4096
-  timeout: 30
+  timeout: 180
+
+# Reviewer Configuration (Independent Model for Quality Evaluation)
+# Uses a different model to avoid self-evaluation hallucination
+reviewer:
+  provider: "siliconflow"
+  model: "Qwen/Qwen3.5-122B-A10B"  # Qwen3.5 122B大模型，评审更精准
+  api_key_env: "SILICONFLOW_API_KEY"
+  base_url: "https://api.siliconflow.cn/v1"
+  max_tokens: 2048  # thinking模式需要更大token空间
+  timeout: 120
+  max_retries: 1
 
 # Agent-specific configurations
 agents:
@@ -63,3 +74,10 @@ agents:
 
 # Default configuration
 default_agent: "coordinator"
+
+# Retrieval strategy configuration
+retrieval:
+  strategy: "hybrid"     # "dense" (pure vector) | "hybrid" (Dense + BM25)
+  hybrid_ranker: "rrf"   # "rrf" | "weighted"
+  dense_weight: 0.7      # Only effective when hybrid_ranker is "weighted"
+  sparse_weight: 0.3     # Only effective when hybrid_ranker is "weighted"

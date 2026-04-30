@@ -26,9 +26,31 @@ milvus:
 
 # Embedding model configuration
 embedding:
+  # Choose mode: "local" or "api"
+  mode: "api"  # Use API server (recommended for faster startup)
+
+  # Local model settings (only used when mode: "local")
   model_name: "BAAI/bge-m3"
-  device: "cpu"  # or "cuda" if available
+  device: "cuda"  # Force GPU acceleration
   batch_size: 32
   max_length: 8192
   normalize_embeddings: true
   cache_dir: "./data/models"
+
+  # API client settings (only used when mode: "api")
+
+  # API provider: "siliconflow", "openai", or "local"
+  api_provider: "siliconflow"  # 使用硅基流动
+
+  # API base URL (optional - will use provider default if not specified)
+  # api_base_url: "https://api.siliconflow.cn/v1"
+
+  # API model name
+  api_model: "BAAI/bge-m3"  # 硅基流动支持的模型
+
+  # API key (or set SILICONFLOW_API_KEY environment variable)
+  # 在这里设置你的API密钥，或者通过环境变量 SILICONFLOW_API_KEY 设置
+  api_key: "sk-galtgnlesfoydjzetapqerkapxzqbtdnlnyulgibiqymvqik"  # ← 在这里填入你的硅基流动API密钥
+
+  # Request timeout in seconds
+  api_timeout: 30

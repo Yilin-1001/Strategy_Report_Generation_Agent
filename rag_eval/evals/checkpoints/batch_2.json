@@ -1,0 +1,1847 @@
+{
+  "batch_index": 2,
+  "timestamp": "2026-03-04T15:36:53.678990",
+  "questions": [
+    {
+      "question": "根据艾瑞咨询的2024年中国智慧交通发展趋势报告：自动驾驶篇，自动驾驶技术在中国的发展趋势如何描述？",
+      "ground_truth": "艾瑞咨询的2024年中国智慧交通发展趋势报告：自动驾驶篇中指出，自动驾驶技术在中国的发展趋势是持续增长，预计未来几年将迎来快速发展阶段，尤其是在城市交通、物流和公共交通领域。",
+      "source_document": "艾瑞咨询：2024年中国智慧交通发展趋势报告：自动驾驶篇_merged.txt",
+      "source_file": "知识库\\知识库\\相关研报\\艾瑞咨询：2024年中国智慧交通发展趋势报告：自动驾驶篇_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "在艾瑞咨询的2024年中国智慧交通发展趋势报告中，自动驾驶技术的主要应用领域包括哪些？",
+      "ground_truth": "艾瑞咨询的2024年中国智慧交通发展趋势报告显示，自动驾驶技术的主要应用领域包括城市交通、物流和公共交通。这些领域预计将在未来几年内实现显著的增长和应用扩展。",
+      "source_document": "艾瑞咨询：2024年中国智慧交通发展趋势报告：自动驾驶篇_merged.txt",
+      "source_file": "知识库\\知识库\\相关研报\\艾瑞咨询：2024年中国智慧交通发展趋势报告：自动驾驶篇_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "根据文档内容，中国自动驾驶技术目前处于哪个发展阶段？",
+      "ground_truth": "根据文档内容，中国自动驾驶技术目前正处于快速发展阶段，技术进步和应用场景的不断拓展，推动自动驾驶市场规模持续增长。",
+      "source_document": "艾瑞咨询：2024年中国智慧交通发展趋势报告：自动驾驶篇_merged.txt",
+      "source_file": "知识库\\知识库\\相关研报\\艾瑞咨询：2024年中国智慧交通发展趋势报告：自动驾驶篇_merged.txt",
+      "segment_index": 2,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "在自动驾驶产业链中，哪些类型的公司正在共同塑造行业新生态？",
+      "ground_truth": "在自动驾驶产业链中，传统车企、造车新势力、科技公司等共同塑造行业新生态。科技巨头凭借先进的技术研发能力、海量数据资源及强大品牌影响力，在算法、人工智能等核心技术上抢占高地，引领行业技术走向。传统车企则依托深厚的汽车制造底蕴、广泛的销售网络与成熟供应链，致力于将自动驾驶技术融入现有产品线，确保车辆的安全性与稳定性。造车新势力以创新的用户体验设计、灵活的运营模式和快速的市场响应，在自动驾驶功能的差异化打造上发力。",
+      "source_document": "艾瑞咨询：2024年中国智慧交通发展趋势报告：自动驾驶篇_merged.txt",
+      "source_file": "知识库\\知识库\\相关研报\\艾瑞咨询：2024年中国智慧交通发展趋势报告：自动驾驶篇_merged.txt",
+      "segment_index": 2,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》中，该综述涵盖了多少页？",
+      "ground_truth": "该综述共涵盖了161页。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 1,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "《中国交通工程学术研究综述·2016》的文档名称是什么？",
+      "ground_truth": "文档名称是《中国交通工程学术研究综述·2016》。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 1,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国公路学报》2016年6月的文章《中国交通工程学术研究综述·2016》中，作者从哪11个方面系统梳理了国内外交通工程领域的学术研究进展？",
+      "ground_truth": "作者从交通流理论、交通规划、道路交通安全、交通控制与智能交通系统、交通管理、交通设计、交通服务设施与机电设施、地面公共交通、城市停车交通、交通大数据、交通评价这11个方面系统梳理了国内外交通工程领域的学术研究进展。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 2,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在交通流理论方面，《中国公路学报》2016年6月的文章综述了哪些内容？",
+      "ground_truth": "在交通流理论方面，《中国公路学报》2016年6月的文章综述了交通流基本图模型、微观交通流理论及仿真、中观交通流理论及仿真、宏观交通流理论、网络交通流理论等内容。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 2,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》中，哪一年被综述作为研究的起始年份？",
+      "ground_truth": "2016年",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 3,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据文档，综述的主要目的是什么？",
+      "ground_truth": "综述的主要目的是总结和评述中国交通工程领域在2016年的学术研究成果，分析其发展趋势和特点。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 3,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "What are the main topics reviewed in the section on traffic control and intelligent transportation systems?",
+      "ground_truth": "The main topics reviewed include traffic signal control, corridor control, traffic control and traffic assignment, cooperative vehicle-infrastructure systems, intelligent vehicle systems, and traffic management systems.",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 4,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "What is the focus of the research on traffic big data as described in the document?",
+      "ground_truth": "The research on traffic big data focuses on the application of mobile phone data, transit IC cards, GPS tracking and license plate recognition, and social media data for traffic system analysis, particularly the investigation of individual traveling behavior.",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 4,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》的第5段中，提到了哪些关键的研究方向或领域？",
+      "ground_truth": "该段提到了包括交通安全、交通规划、交通管理与控制、交通基础设施等方面的研究方向或领域。具体包括交通安全评价、交通流理论、交通需求预测、交通规划方法、交通信号控制、交通基础设施设计等关键内容。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 5,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据《中国交通工程学术研究综述·2016》第5段，交通安全研究在交通工程领域中的重要性如何体现？",
+      "ground_truth": "交通安全研究在交通工程领域中的重要性体现在对交通事故原因的分析、预防措施的研究、交通安全评价方法的发展等方面。例如，文中提到交通安全评价方法的研究有助于识别和减少交通事故风险，提高道路使用者安全。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 5,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "何为交通流基本图模型？",
+      "ground_truth": "交通流基本图模型是针对宏观交通运行特性指出的基本图模型，用于描述道路上车辆（或非机动车/行人）与道路设施和环境交互运行规律的基础科学。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 6,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "自何时起，交通流理论开始发展？",
+      "ground_truth": "交通流理论自1935年Greenshields等提出流量-速度关系模型以来，已经有80余年的发展历史。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 6,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "交通工程学科的核心本质是什么？",
+      "ground_truth": "交通工程学科的核心本质是使道路交通变得安全、畅通、舒适、环保、经济、便捷和可靠。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 6,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "为什么说现在似乎是交通工程发展的最好时代？",
+      "ground_truth": "现在似乎是交通工程发展的最好时代，因为宽带无线接入技术和移动终端技术的发展成熟，使得新技术不断涌现并与交通工程有机融合，服务于各种出行方式，用户体验至上的理念得到充分体现。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 6,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "为什么说现在似乎又是最坏的时代？",
+      "ground_truth": "现在似乎又是最坏的时代，因为智能移动电话无法渗透的领域和群体，如老年人、文化层次不高的人群，他们的出行变得更加困难。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 6,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》的第7段中，提到了哪一项关于交通工程研究的具体内容？",
+      "ground_truth": "在《中国交通工程学术研究综述·2016》的第7段中，提到了关于交通工程领域的研究现状、发展趋势和存在的问题等内容。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 7,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据《中国交通工程学术研究综述·2016》第7段的描述，交通工程学术研究在2016年面临的主要挑战是什么？",
+      "ground_truth": "根据《中国交通工程学术研究综述·2016》第7段的描述，交通工程学术研究在2016年面临的主要挑战包括：交通拥堵问题、交通安全问题、交通效率问题以及交通可持续发展问题等。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 7,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "自1935年Greenshields在其开创性论文《通行能力研究》中首次提出Greenshields模型以来，交通流三参数模型经历了多少年的发展？",
+      "ground_truth": "80多年的发展。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 8,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "May提出用行程速度变异系数来表征一定密度条件下的速度离散性，实测数据表明速度变异系数的分布在什么范围内？",
+      "ground_truth": "8％～17％之间。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 8,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "三相交通流理论认为交通流有哪三个独立的交通相？",
+      "ground_truth": "自由流、同步流和堵塞。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 8,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "交通流宏观基本图（MFD）关注的是什么层面上的交通流三参数之间的关系和性质？",
+      "ground_truth": "道路网络层面上。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 8,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "Gerolimini等认为MFD具备哪三个基本性质？",
+      "ground_truth": "① 道路网内平均交通流量和交通密度（占有率）之间存在与交通流基本图类似的抛物线关系；②网络平均流率与网络总输出流量之间存在稳定的线性关系；③MFD是网络交通流的固有性质，由网络基本设施形态及交通控制决定，与交通需求无关。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 8,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》中，第9段提到了哪一项关于交通工程研究的发现？",
+      "ground_truth": "第9段中提到了关于交通工程研究的一个具体发现，例如：‘研究发现，近年来，我国交通工程研究在智能交通系统、交通安全、交通规划等方面取得了显著成果。’",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 9,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据《中国交通工程学术研究综述·2016》第9段，智能交通系统在交通工程研究中的地位如何？",
+      "ground_truth": "第9段中指出，智能交通系统是交通工程研究中的一个重要领域，‘智能交通系统在交通工程研究中的地位日益凸显，已成为我国交通工程领域的研究热点之一。’",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 9,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据文档内容，交通流失效（Traffic Breakdown）现象通常发生在什么情况下？",
+      "ground_truth": "交通流失效现象通常发生在交通需求达到或接近路段通行能力时，车流速度出现急速下降的情况。多数学者认为路段瓶颈失效不会发生在稳定的流率，而是具有随机性。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 10,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在交通流失效的建模计算中，哪位学者首先采用了离散时间马尔科夫链的方法对快速路汇入区的失效概率进行了研究？",
+      "ground_truth": "Evans等学者首先采用离散时间马尔科夫链的方法对快速路汇入区的失效概率进行了研究。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 10,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "交通流失效的内在产生机理至今是否明确？",
+      "ground_truth": "交通流失效的内在产生机理至今仍不明朗，但多数学者认为路段瓶颈失效不会发生在稳定的流率，而是具有随机性。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 10,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "交通流失效现象的存在对路段通行能力的定义有何影响？",
+      "ground_truth": "由于交通流失效现象的存在，路段通行能力不应被定义为一个固定值，而应被定义为一个与失效概率有关的概率函数。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 10,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据文档，哪位学者认为磁滞现象的产生与车辆加减速过程的不对称性有关？",
+      "ground_truth": "Newell学者推测磁滞的产生与车辆加减速过程的不对称性有关。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 10,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》的第11段中，提到了哪些关于交通工程学术研究的具体领域？",
+      "ground_truth": "在《中国交通工程学术研究综述·2016》的第11段中，提到了交通工程学术研究在道路设计、交通安全、交通管理与控制、交通规划、交通基础设施、交通环境影响、交通经济与政策等方面的具体领域。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 11,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据文档，2016年中国的交通工程学术研究有哪些主要特点？",
+      "ground_truth": "根据文档，2016年中国的交通工程学术研究的主要特点包括：研究内容广泛，涵盖了交通工程的多个领域；研究方法多样，包括理论研究和实证研究；研究热点集中在交通安全、交通拥堵和交通可持续发展等方面；研究与实践紧密结合，注重解决实际问题。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 11,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "哪位学者提出了广义交通流密速的定义，并使用车辆轨迹数据来测量区域稳定态？",
+      "ground_truth": "Edie 提出了广义交通流密速的定义，并使用车辆轨迹数据将区域稳定态作为测量指标。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 12,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "交通流震荡现象通常会导致哪些不利影响？",
+      "ground_truth": "交通流震荡会导致道路通行能力减小、交通事故增加，以及频繁的加减速导致的车辆油耗和排放增加。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 12,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "谁首次在纽约林肯隧道观察到交通流震荡现象？",
+      "ground_truth": "Edie 首次在纽约林肯隧道观察到交通流震荡现象。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 12,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "Newell 对于纽约林肯隧道内的交通流震荡现象提出了什么猜想？",
+      "ground_truth": "Newell 猜想纽约林肯隧道内的交通流震荡现象中，交通流量-密度基本图右半侧应该有上下两个分支，上方的分支是车流减速状态，下方的分支是车流加速状态，但并没有指出这两个分支之间的变化路径，也没有从驾驶人行为角度进行深层次解析。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 12,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在交通流基本图模型的研究中，中国目前面临的首要问题是什么？",
+      "ground_truth": "在交通流基本图模型的研究中，中国目前面临的首要问题是建立中国标准的流密速曲线簇。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 12,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》的第13段中，提到了哪些关键信息关于中国交通工程的研究成果？",
+      "ground_truth": "在第13段中，提到了中国交通工程学术研究的主要成果，包括高速公路、城市交通、公共交通等方面的发展状况，以及交通规划、交通管理等领域的最新研究成果。此外，还提到了交通工程领域的研究趋势和存在的问题，以及未来研究方向。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 13,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "《中国交通工程学术研究综述·2016》第13段中，哪位作者的研究成果被特别提及？",
+      "ground_truth": "《中国交通工程学术研究综述·2016》第13段中，特别提到了马建的研究成果，他是中国交通工程领域的重要学者之一。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 13,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "什么是刺激-反应模型在跟驰模型中的应用？",
+      "ground_truth": "刺激-反应模型是最基本的跟驰行为建模框架，它将前导车对驾驶人的作用表示为一种刺激（Stimulus），将驾驶人的感知能力作为其对刺激的一种敏感系数（Sensitivity），将驾驶人的反应（Response）表示为跟驰车的运动行为。GM（General Motors）模型是刺激-反应框架中最著名的跟驰模型，它将前后车的相对速度作为刺激项，将跟驰车速度与车头间距作为敏感系数的影响因素。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 14,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "安全距离模型在跟驰模型中的主要作用是什么？",
+      "ground_truth": "安全距离模型主要基于驾驶人期望与前导车保持安全车头间距的假设。它通过前导车和跟驰车的速度来计算安全跟驰距离，考虑车辆加速度约束和安全距离约束，并考虑了驾驶行为中诸多因素对安全距离的影响。许多著名的交通仿真软件都采用类似的安全距离模型作为其核心模型。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 14,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》中，第15段提到了哪些关于交通工程学术研究的趋势或特点？",
+      "ground_truth": "第15段提到了交通工程学术研究在2016年的几个趋势或特点，包括：对交通基础设施建设和管理的重视、对交通可持续发展研究的加强、对交通规划与设计方法的研究深入、对交通安全与应急管理的研究进展等。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 15,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据《中国交通工程学术研究综述·2016》第15段，2016年中国交通工程学术研究在哪些方面取得了显著进展？",
+      "ground_truth": "根据第15段，2016年中国交通工程学术研究在以下方面取得了显著进展：交通基础设施的智能化、交通管理与控制技术的创新、交通规划与设计方法的优化、交通安全与应急管理的研究等。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 15,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "基于模糊逻辑的跟驰模型是由谁提出的？",
+      "ground_truth": "基于模糊逻辑的跟驰模型是由Kikuchi等提出的。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 16,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "Bando等人在1995年提出了什么模型来解决Newell模型在停车-启动过程中加速度过大的问题？",
+      "ground_truth": "Bando等人在1995年提出了优化速度模型（Optimal Velocity Model，OVM）来解决Newell模型在停车-启动过程中加速度过大的问题。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 16,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "智能驾驶人模型（Intelligent Driver Model，IDM）由哪些因素构成？",
+      "ground_truth": "智能驾驶人模型（Intelligent Driver Model，IDM）由自由状态下的加速趋势和考虑与前导车碰撞的减速趋势两项构成。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 16,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "Gipps类模型最早由谁提出？该模型考虑了哪些影响因素？",
+      "ground_truth": "Gipps类模型最早由Gipps提出。该模型考虑了包括换道风险、距障碍物距离、转向需求等影响因素。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 16,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "效用选择类模型假设驾驶人的换道动机源于什么？",
+      "ground_truth": "效用选择类模型假设驾驶人的换道动机源于对不同车道效用值的比较。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 16,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据《中国交通工程学术研究综述·2016》第17段，哪一年版的综述文章被提及，该文章对交通工程学术研究有何贡献？",
+      "ground_truth": "2016年版的《中国交通工程学术研究综述》被提及。该综述文章对交通工程学术研究进行了全面总结，涵盖了众多领域的研究成果，为交通工程领域的研究者和从业者提供了宝贵的参考信息。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 17,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》第17段中，提到了哪些主要的研究成果或趋势？",
+      "ground_truth": "在《中国交通工程学术研究综述·2016》第17段中，提到了智能交通系统、交通安全、交通规划、交通管理与控制等多个领域的研究成果和趋势，如自动驾驶技术的发展、交通拥堵治理新方法、绿色交通建设等。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 17,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在微观交通流模型中，行人模型主要分为哪两类？请列举其中一种模型的代表。",
+      "ground_truth": "在微观交通流模型中，行人模型主要分为连续型模型和离散型模型两类。其中，连续型行人模型的代表包括引力模型、气体动力学模型和社会力模型等。以社会力模型为例，它假设行人流的动态特征是在个体相互之间的作用力下产生的，行人动态特征受到愿望力、社会力和粒力三者的影响。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 18,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在车路协同环境下的微观交通流模型研究中，智能车辆与普通车辆的仿真模型有何区别？",
+      "ground_truth": "在车路协同环境下的微观交通流模型研究中，智能车辆与普通车辆的仿真模型无本质差异，大多是在传统交通流模型的基础上，结合对智能车辆运行特性的预想而建立的模型。这些模型较难真实反映实际环境中智能车辆的行为特征。另一方面，智能车辆的驾驶行为模型不再是独立的跟驰模型或换道模型，而是逐渐成为传统模型与控制模型的结合。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 18,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》的第19段中，提到了哪位学者对交通工程学术研究进行了综述？",
+      "ground_truth": "马建",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 19,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "《中国交通工程学术研究综述·2016》的第19段中，综述涵盖了多少页的内容？",
+      "ground_truth": "161页",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 19,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "请简述跟驰模型参数标定的两种主要方法及其区别。",
+      "ground_truth": "跟驰模型参数标定的两种主要方法分别是：第一类关注大量个体跟驰行为产生的宏观效果，通常采用路段流量、通行时间等宏观交通流数据进行参数标定；第二类强调模型对个体驾驶人微观跟驰行为描述的准确性，通常采用高分辨率时空轨迹数据进行标定。两者的区别在于标定数据和参数标定的侧重点不同，第一类侧重于宏观效果，第二类侧重于微观行为的准确性。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 20,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据文档，目前微观交通仿真系统在国外的发展经历了哪几个阶段？",
+      "ground_truth": "根据文档，微观交通仿真系统在国外的发展经历了四个阶段：起始阶段（1950～1960年代）、政府资助探索阶段（1970～1980年代）、商业化成熟阶段以及免费开源时代（2000年以后）。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 20,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "中国自何时开始研究道路交通仿真？并简要介绍中国在这一领域的现状。",
+      "ground_truth": "中国自1980年代起开始研究道路交通仿真，并陆续开发了一些演示系统。然而，大部分系统沿用国外模型，难以模拟中国城市道路混合交通流特征，实际应用非常有限。进入21世纪后，中国开始研发具有自主知识产权的仿真系统（如TESS）和消化吸收再创新已有仿真系统（如Vissim）的并举之路。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 20,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》的第21段中，提到了哪位作者的研究成果？",
+      "ground_truth": "该段提到了马建的研究成果。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 21,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "马建的研究成果涉及哪些具体内容？",
+      "ground_truth": "马建的研究成果主要涉及中国交通工程学术研究的综述，具体内容包括对已有研究的总结、分析以及未来发展趋势的预测。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 21,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在微观交通流建模研究中，重点研究方向包括哪些方面？",
+      "ground_truth": "重点研究方向包括：①应用认知心理学、视觉、知觉理论深入研究驾驶过程中驾驶人的行为及其心理、生理特性，在微观交通流模型中更多地考虑人的因素；②构建宏微观一体化的微观交通流模型，实现微观模型与宏观现象的统一；③研究VACS环境下的混入自动网联车辆的驾驶行为及交通流建模；④构建适合中国的微观驾驶行为数据库，基于大样本实测数据的建模与模型参数标定；⑤研发适合中国国情的微观交通仿真系统，即仿真系统中的驾驶人行为等模型适用于中国，特别是研发对交叉口共享空间、快速路瓶颈点、机非混行车道等网络对象的高精度仿真模型。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 22,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "为什么开展微观驾驶行为基础数据研究对于中国交通流特性的微观交通流模型研究尤为迫切？",
+      "ground_truth": "由于中国交通状况、驾驶行为特性等都与国外有着较大的差异，因此，开展微观驾驶行为基础数据研究就显得尤为迫切。通过建立较为先进、完善的微观驾驶行为轨迹数据库，可为建立适合中国交通流特性的微观交通流模型研究奠定基础。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 22,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》的第23段中，提到了哪项具体的研究成果？",
+      "ground_truth": "该段提到了关于中国交通工程领域的研究成果，具体成果未详细描述，但表明了研究成果的多样性和对交通工程领域的重要贡献。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 23,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "该段中，提到了哪些关于交通工程研究的核心概念？",
+      "ground_truth": "该段中提到的核心概念包括交通工程研究的方法论、交通工程的发展趋势、交通工程领域的技术创新等。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 23,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "哪些学者通过案例研究证明了中观网络建模和交通分配工具DYNSMART-P的有效性？",
+      "ground_truth": "Hu等[117]通过案例研究证明了中观网络建模和交通分配工具DYNSMART-P的有效性。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 24,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "Reynolds等[118]针对信号交叉口使用中观建模平台DYNSMART提出了什么计算方法？",
+      "ground_truth": "Reynolds等[118]针对信号交叉口使用中观建模平台DYNSMART提出了整合左转短车道对服务流率影响的计算方法。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 24,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在分析机动车流、非机动车流和行人流在中观层面的运行特性及规律的异同时，可以采用哪些方法改进已有的中观交通流模型？",
+      "ground_truth": "在分析机动车流、非机动车流和行人流在中观层面的运行特性及规律的异同时，可以利用传统的流体力学、气体动力学等方法改进已有的中观交通流模型。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 24,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "混合仿真在交通仿真领域的研究中扮演了什么角色？",
+      "ground_truth": "混合仿真在交通仿真领域的研究中扮演了研究热点角色，尤其是宏微观一体化交通流建模与仿真以及中微观一体化建模与仿真。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 24,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》中，第25段提到了哪些交通工程学术研究的主要方向？",
+      "ground_truth": "第25段提到了交通工程学术研究的主要方向，包括但不限于道路设计、交通安全、交通规划、交通管理与控制、交通信息与通信、交通环境影响等。这些研究方向涵盖了交通工程领域的多个方面，旨在提高交通系统的效率、安全性和可持续性。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 25,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "《中国交通工程学术研究综述·2016》中，第25段对于交通安全研究的重点是什么？",
+      "ground_truth": "在第25段中，交通安全研究的重点包括交通事故分析、安全评价方法、交通安全设施设计、交通参与者行为研究以及交通安全教育与宣传等方面。这些研究旨在通过科学的方法来减少交通事故的发生，提高道路使用者的安全水平。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 25,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "什么是道路流量q？",
+      "ground_truth": "道路流量q定义为道路流量ρu，其中ρ是车辆密度，u是平均速度。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 26,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在LWＲ模型中，车流处于什么状态？",
+      "ground_truth": "在LWＲ模型中，车流被认为总是处于平衡态。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 26,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "LWＲ模型也被称为什么？",
+      "ground_truth": "LWＲ模型也被称为一阶模型，因为它只涉及交通流参数的一阶导数。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 26,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "平衡速度密度函数u=ue(ρ)中的ue代表什么？",
+      "ground_truth": "平衡速度密度函数u=ue(ρ)中的ue代表平衡速度。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 26,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在LWR模型的基础上，Daganzo在什么年份首次提出了元胞传输模型（Cell Transmission Model，CTM）？",
+      "ground_truth": "1994年Daganzo首次提出了元胞传输模型（Cell Transmission Model，CTM）。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 27,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "CTM采用什么格式对LWR模型的偏微分方程进行离散化近似处理？",
+      "ground_truth": "CTM采用Godunov格式对LWR模型的偏微分方程进行离散化近似处理。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 27,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "什么是CTM模型中元胞划分的基本策略？",
+      "ground_truth": "CTM模型将道路划分为若干个较长的元胞，直接通过每个元胞的车辆数和流入、流出车辆数在不同时刻的变化来描述整个道路上的交通流变化。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 28,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在无匝道路段的CTM模型中，如何表示t时刻第i元胞内的车辆数n_i(t)？",
+      "ground_truth": "在无匝道路段的CTM模型中，t时刻第i元胞内的车辆数n_i(t)可以用以下公式表示：n_i(t+Δt) = n_i(t) + q_i(t) - q_i+1(t)。其中，q_i(t)是第i元胞在Δt时间内的流入车辆数，q_i+1(t)是第i元胞在Δt时间内的流出车辆数，也即第i+1元胞的流入车辆数。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 28,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "什么是LWRS模型中的发送函数和接收函数？",
+      "ground_truth": "发送函数（Sending Function）S_i-1(t)表示上游元胞在Δt时间内所能供给的车辆数。接收函数（Receiving Function）R_i(t)表示下游元胞在Δt时间内所能接收的车辆数。在公式q_i(t) = min{S_i-1(t), R_i(t)}中，q_i(t)表示第i元胞Δt时间内的流入车辆数。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 28,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "Payne提出的第一个高阶模型是如何描述车辆速度的？",
+      "ground_truth": "Payne提出的第一个高阶模型认为，车辆速度v_n(t+τ)可以表示为关于速度的动力学方程，即v_n(t+τ) = V(Δx)。这里V为优化速度函数，v_n为第n辆车的速度，Δx为第n辆车和第n-1辆车之间的距离，τ为车辆速度调整的延迟时间。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 28,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "Daganzo对Payne模型提出了什么批判？",
+      "ground_truth": "Daganzo在1995年对Payne模型提出了批判，认为它违反了车流各向异性的根本原则。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 28,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》中，第14页提到的关于交通工程学术研究的哪个方面被认为对行业发展具有重要影响？",
+      "ground_truth": "在第14页中提到的关于交通工程学术研究的方面，被认为是行业发展具有重要影响的是对交通基础设施建设的优化和交通管理技术的创新。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 29,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据《中国交通工程学术研究综述·2016》第14页的内容，交通基础设施建设的优化主要涉及哪些方面？",
+      "ground_truth": "根据《中国交通工程学术研究综述·2016》第14页的内容，交通基础设施建设的优化主要涉及道路网络布局、交通流量预测、交通信号控制等方面。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 29,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "哪些学者独立提出了速度梯度模型？",
+      "ground_truth": "A-w、Zhang、Jiang等学者独立提出了速度梯度模型。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 30,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "速度梯度模型是用什么取代了Payne模型中的密度梯度项？",
+      "ground_truth": "速度梯度模型用速度梯度项取代了Payne模型中的密度梯度项。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 30,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "宏观交通流模型存在哪些问题？",
+      "ground_truth": "宏观交通流模型存在过度简化、难以精确描述实际观测到的交通流动态现象等问题。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 30,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "Muñoz等学者对CTM模型进行了何种改进？",
+      "ground_truth": "Muñoz等学者考虑相邻元胞间不同的状态组合，将CTM分段线性化，得到了状态切换模型（SSM）。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 30,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "近年来宏观交通流模型研究主要考虑了哪四个方面的问题？",
+      "ground_truth": "近年来宏观交通流模型研究主要考虑了以下四个方面的问题：如何考虑多车道多车种构成的混合交通流；宏观交通流模型如何推广到网络上，处理好汇流的建模；理论上，交通波方程如何处理不连续的初始条件或者边界条件；如何将微观交通流模型常见的随机性引入宏观交通流模型。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 30,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据文档，2016年中国交通工程学术研究综述中提到了哪些主要的研究领域？",
+      "ground_truth": "文档中提到了多个研究领域，包括但不限于道路工程、交通规划、交通安全、交通管理与控制、交通经济与政策等。这些领域涵盖了交通工程学术研究的各个方面，反映了当时中国交通工程领域的研究热点和趋势。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 31,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在2016年的中国交通工程学术研究中，哪些关键概念被广泛讨论？",
+      "ground_truth": "2016年的中国交通工程学术研究中，广泛讨论的关键概念包括智能交通系统（ITS）、绿色交通、交通可持续发展、交通拥堵缓解策略等。这些概念反映了当时交通工程领域的研究重点和未来发展方向。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 31,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "基于路段的算法中，哪一种算法被Mitrajiva等人在2013年提出，并已被植入Cubе软件？",
+      "ground_truth": "Conjugate Frank-Wolfe算法和Bi-conjugate Frank-Wolfe算法",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 32,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "随机用户均衡（SUＥ）模型中，哪两种常用的路径选择模型分别假设感知误差服从独立同分布的Gumbel分布和多变量的正态分布？",
+      "ground_truth": "Logit模型和Probit模型",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 32,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》中，第16页提到的是关于哪方面的交通工程学术研究综述？",
+      "ground_truth": "第16页提到的是关于中国交通工程学术研究综述的2016年版本，具体涵盖了交通工程领域的各个方面，包括理论研究、技术应用、政策法规等。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 33,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据《中国交通工程学术研究综述·2016》第33段，该综述的目的是什么？",
+      "ground_truth": "根据第33段的内容，该综述的目的是为了总结和梳理中国交通工程领域近年来的学术研究成果，为相关领域的研究者和从业者提供参考和借鉴，同时促进交通工程学科的发展。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 33,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "弹性需求下的交通网络均衡分配问题最初由哪位学者提出？",
+      "ground_truth": "弹性需求下的交通网络均衡分配问题最初由Beckmann等提出。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 34,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在求解弹性需求网络均衡问题时，通过什么方法将问题转化为固定需求问题予以求解？",
+      "ground_truth": "在求解弹性需求网络均衡问题时，通过网络重构，增加虚拟节点和路段的方法将弹性需求问题转化为固定需求问题予以求解。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 34,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "传统交通需求预测四阶段法中，各个阶段之间对行程时间和拥挤效应的考虑是否一致？",
+      "ground_truth": "传统交通需求预测四阶段法中，各个阶段之间对行程时间和拥挤效应的考虑不一致。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 34,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "Zhou等在随机效用理论框架下为集成四阶段的组合问题建立了什么样的模型？",
+      "ground_truth": "Zhou等在随机效用理论框架下为集成四阶段的组合问题建立了一种新的数学规划和变分不等式模型。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 34,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "非对称、非可加性问题中，路段费用结构可以分为哪两种类型？",
+      "ground_truth": "非对称、非可加性问题中，路段费用结构可以分为对称型和非对称型。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 34,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在不确定性环境下，出行者面对行程时间不确定性，有哪些不同的风险态度？",
+      "ground_truth": "在不确定性环境下，出行者面对行程时间不确定性，有风险倾向、风险中立和风险规避三种不同的风险态度。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 34,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "基于期望效用的模型主要包括哪些类型？",
+      "ground_truth": "基于期望效用的模型主要包括描述风险规避和倾向行为的二次函数模型、指数函数模型和迟到惩罚用户均衡（LAPE）模型。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 34,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》中，第17页提到了哪方面的交通工程学术研究内容？",
+      "ground_truth": "第17页提到了关于中国交通工程学术研究的综述内容，涉及多个方面的研究和进展。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 35,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据文档，中国交通工程学术研究综述·2016的主要目的是什么？",
+      "ground_truth": "《中国交通工程学术研究综述·2016》的主要目的是总结和回顾中国交通工程领域的研究成果和进展，为该领域的学者和从业者提供参考和指导。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 35,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "TTB模型是什么，其主要考虑哪些因素？",
+      "ground_truth": "TTB模型（Travel Time Budget）是一种基于可靠度的模型，它主要考虑平均行程时间与缓冲时间之和。其中，缓冲时间是指行程时间标准差与反应预算时间可靠度的风险偏好参数的乘积。TTB模型描述的是出行者可以接受的风险，即满足可靠性的按时到达，但缺乏显性考虑出行者所面对的不可接受风险，即可能出现的超过可靠性要求的迟到情形。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 36,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "Wang等提出的双目标交通分配模型的目标是什么？",
+      "ground_truth": "Wang等从多目标优化的角度，分析了部分交通分配模型的解析特征，提出了双目标交通分配模型。该模型的目标是最小化行程时间的平均值和标准差。这意味着模型旨在同时优化行程时间的平均水平和稳定性。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 36,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》中，第18页提到的是什么内容？",
+      "ground_truth": "第18页介绍了与交通工程学术研究相关的具体内容，包括研究方法、研究成果、重要学者等，但具体细节需要查阅原文才能得知。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 37,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据文档，交通工程学术研究的哪些方面在2016年受到了关注？",
+      "ground_truth": "在2016年的中国交通工程学术研究中，关注的方面可能包括道路设计、交通规划、交通管理、交通安全等，具体内容需要根据文档中的详细描述来确定。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 37,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "什么是交通-土地利用互动关系？",
+      "ground_truth": "交通-土地利用互动关系是指城市交通和土地利用之间相互影响、相互作用的动态关系。这种关系强调土地利用与交通系统之间的互动，通过建立城市用地与交通系统之间系统性的联系，使两者的发展一体化。传统四阶段法轻视了这种互动关系，而现代研究则更加关注如何通过互馈机制实现城市交通规划，并将其应用于构建以公共交通为导向的城市交通系统。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 38,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在交通-土地利用互动关系的研究中，哪位学者提出了可达性度量模型？",
+      "ground_truth": "在交通-土地利用互动关系的研究中，Paetz等学者提出了可达性度量模型。该模型以交通-土地利用互动模型为基础，建立了规划模型与理论，对城市整体用地布局及城市交通系统规划的目标和有效方案进行了研究。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 38,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "交通-环境协调发展的研究目的是什么？",
+      "ground_truth": "交通-环境协调发展的研究目的是通过调节个体的出行方式选择行为，减少交通对城市环境的影响。这包括减少尾气排放污染、噪声污染及能源消耗等，实现城市交通-环境-出行的良性协调发展。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 38,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "哪些模型被用于交通-土地利用整体规划？",
+      "ground_truth": "被用于交通-土地利用整体规划的模型主要有：基于Lowry模型的空间交互模型，如DRAM/EM-PAL；空间投入产出模型，如MEPLAN、TRANUS和PECA模型；基于城市经济竞租理论和离散选择的模型，如METROSIMS和MUS-SAS系统；基于微观仿真的UrbanSim模型；基于元胞自动机的SLEUTH和CLUE模型。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 38,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "出行行为特征的研究在交通规划领域中扮演什么角色？",
+      "ground_truth": "出行行为特征的研究是城市交通规划、建设与管理的基础工作，也是交通规划领域的重要课题及热点方向。它通过分析个体出行行为特征，如出行方式选择、出行目的等，为交通规划提供依据和指导，从而实现交通系统的优化。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 38,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》中，第39段提到了哪位作者的研究成果？",
+      "ground_truth": "第39段提到了马建的研究成果。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 39,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据文档，马建的研究成果主要涉及哪些方面？",
+      "ground_truth": "马建的研究成果主要涉及中国交通工程的学术研究综述，具体包括对现有研究的总结、分析以及未来研究方向的建议。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 39,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在交通调查及数据采集分析中，Sperry和Diana首先利用什么作为新型的调查媒介来获取更广泛而全面的出行数据？",
+      "ground_truth": "Sperry和Diana首先利用互联网作为新型的调查媒介来获取更广泛而全面的出行数据。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 40,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "随着交通领域研究的不断深入，各国学者对需求预测各阶段方法进行了哪些改进？请举例说明。",
+      "ground_truth": "随着交通领域研究的不断深入，各国学者对需求预测各阶段方法进行了改进。例如，Yasmin等和Davidson等建立了考虑出行者多样化偏好的基于活动出行的交通需求预测模型；Arsalan等和Gulden等将出行生成预测理论与个体的活动出行分析研究紧密结合，从集计的、以交通小区为基础单元的预测方法发展至非集计的、以家庭或个体出行层次为研究单位的预测模型；Perera-kis等和Coole等将传统的分布预测方法与基于活动出行或出行链的出行模型相结合。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 40,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》中，第20页提到的是关于哪方面的交通工程学术研究综述？",
+      "ground_truth": "第20页提到的是关于中国交通工程学术研究的综述，具体涵盖了2016年的研究成果和趋势。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 41,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据文档，2016年中国交通工程学术研究综述的主要目的是什么？",
+      "ground_truth": "2016年中国交通工程学术研究综述的主要目的是总结和展示2016年度中国交通工程领域的研究成果，分析研究趋势，并为未来的研究提供参考和指导。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 41,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "什么是国外学者在交通政策效果预测评估和交通规划建设项目排序中常用的决策工具应用对象？",
+      "ground_truth": "国外学者在交通政策效果预测评估和交通规划建设项目排序中常用的决策工具应用对象主要包括交通政策的效果预测评估和交通规划建设项目排序两大类。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 42,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "巴福德、野口修、雷宁等学者是如何构建数据库和模型库进行可达性测度、项目优选、投资决策、政策及基础设施建设的影响分析的？",
+      "ground_truth": "巴福德、野口修、雷宁等学者通过研究社会经济、人口特征、环境、地域、居民活动参与、出行特性等因素的综合作用，在大量基础数据的基础上，结合现代信息技术（如GIS，ArcGIS等），构建数据库和模型库，进行可达性测度、项目优选、投资决策、政策及基础设施建设的影响分析，并用以编制综合、协调且具有可持续发展性的交通运输规划策略。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 42,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "国外学者在交通规划项目的效益分析中主要从哪个角度出发？",
+      "ground_truth": "国外学者在交通规划项目的效益分析中主要从经济学的角度出发，探讨交通基础设施建设、公共交通系统建设对国民经济所带来的综合影响。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 42,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "Lam、Lithman、Olaru等学者围绕哪个问题建立了土地-交通系统的互动模型？",
+      "ground_truth": "Lam、Lithman、Olaru等学者围绕土地利用和交通政策一体化问题建立了土地-交通系统的互动模型，为构建以公交为导向的土地利用发展政策奠定了基础。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 42,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "Wang等学者研究了哪些经济杠杆政策对城市交通的影响？",
+      "ground_truth": "Wang等学者研究了碳税、燃油税、公交票价、油价、拥堵收费制度、道路收费制度、停车费等经济杠杆政策对城市交通的影响，研究成果支撑了斯德哥尔摩、伦敦、佛罗里达州以及新加坡等地区的拥堵收费、差别化停车收费、个体机动化交通工具拥有和使用成本调节等经济杠杆政策的应用。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 42,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "中国交通规划领域目前可以分为哪些主要研究方向？",
+      "ground_truth": "中国交通规划领域目前可以分为交通与土地利用、交通与可持续发展、交通调查方法、交通出行行为特征、交通需求预测与交通网络分析等主要研究方向。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 42,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "张在民等学者提出了哪些建议以优化中心商业区用地与交通？",
+      "ground_truth": "张在民等学者提出了中心商业区用地与交通优化分析方法。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 42,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "王炜等学者提出了城市交通系统发展的哪个首要目标？",
+      "ground_truth": "王炜等学者提出，城市交通系统必须寻求合理、均衡、可持续的发展目标与模式，建立可持续化发展的城市交通系统是21世纪城市交通发展的首要目标。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 42,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "陆化普、陆建等学者提出了哪个交通规划新理论体系？",
+      "ground_truth": "陆化普、陆建等学者提出了考虑可持续发展的交通规划新理论体系，并建立了交通系统可持续发展的综合保障体系。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 42,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在《中国交通工程学术研究综述·2016》中，第21页提到了哪位作者的综述文章？",
+      "ground_truth": "马建",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 43,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "根据文档内容，马建的综述文章主要讨论了哪些方面的交通工程学术研究？",
+      "ground_truth": "马建的综述文章涵盖了交通工程学术研究的主要领域、研究现状、发展趋势等内容。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 43,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在21世纪，中国学者如何通过新技术来获得质量可靠的交通数据？",
+      "ground_truth": "在21世纪，中国学者将新技术应用于交通调查，通过较为经济的方式及时获得质量可靠的交通数据。例如，王秋平分析了西安市城市交通调查与数据处理分析系统；张小宁等、钱卫东等分别将剩余最短路径算法、Google地图应用于起迄点交通调查统计；孙章等针对上海市第5次居民出行调查进行研究，并提出交通大数据概念；杨飞、姚宝珍等、詹起林等分别将基于手机定位、公交IC卡、货运车辆GPS数据等技术应用于实时交通数据采集。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 44,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "杨涛的研究方向是什么？",
+      "ground_truth": "杨涛首先开始进行城市居民出行行为心理分析。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 44,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "交通生成在中国城市交通规划领域面临什么重大课题？",
+      "ground_truth": "交通生成是交通规划的基础，如何客观、科学地进行交通生成预测，一直是中国城市交通规划领域面临的重大课题。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 44,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在交通方式划分模型方面，中国学者提出了哪些改进模型？",
+      "ground_truth": "在交通方式划分模型方面，中国学者提出了多种改进的交通方式划分模型，如王正等建立了广义Logit交通方式划分预测方法；王山川等研究了联合方式划分/交通分配模型；安文娟等提出了基于改进MD模型的区域交通方式划分预测方法；左志等建立了基于出行者有限理性的交通方式划分模型。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 44,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "非集计模型在交通规划中具有哪些优点？",
+      "ground_truth": "非集计模型具有很多集计模型无法比拟的优点，开始引起人们的关注并发展起来。经典的四阶段法开始广泛应用于实际之中并被大家所认可，但随着交通的不断发展，其局限性也不断显现。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 44,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "停车换乘对城市交通有何重要意义？",
+      "ground_truth": "停车换乘是减少小汽车使用、缓解城市交通拥堵的重要措施之一，对停车换乘的研究有助于合理规划以及协调发展多种交通方式。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 44,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "中国交通规划的研究经历了哪些发展阶段？",
+      "ground_truth": "改革开放以来，国内外学者的交流学习为中国带来了西方的交通规划理念、理论、方法和技术，1990年代开始的留学人员回国服务使得交通规划理论与方法应用于工程实践之中，并且在研究实践中创新性地提出了适应中国国情的交通规划方法，因此中国交通规划的研究经历了1980年代至1990年代理论和方法的引进，1990年代至20世纪末的消化、吸收、创新，以及从21世纪初开始结合中国实际的创新性研究过程。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 44,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在交通规划理念的更新方面，有哪些新的观念？",
+      "ground_truth": "在交通规划理念的更新方面，新的观念包括设计多层次、多模式互相协调的出行方式架构，优化交通资源配置，加强交通网络结构的紧密性，强调各交通方式的协同作用和交通信息的联通互动，以促进交通服务一体化和交通系统效率的整体提升。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 44,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在交通与土地利用相互关系的定量化分析方面，中国目前存在哪些问题？",
+      "ground_truth": "在交通与土地利用相互关系的定量化分析方面，中国目前仍缺乏定量化的分析与总结，从而影响着中国的土地利用布局和强度等的顶层设计，造成了大多数城市由于土地利用规划不合理而带来道路交通拥堵。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 44,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "大数据技术如何为交通规划提供技术支撑？",
+      "ground_truth": "大数据技术能及时、高效和准确地处理不同层次、不同需求的综合交通信息，分析居民的出行行为与出行偏好，准确把握居民出行的时空特征，为交通运输系统需求的快速、动态、精准预测提供有力的技术支撑。",
+      "source_document": "中国交通工程学术研究综述·2016_马建_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\中国交通工程学术研究综述·2016_马建_merged.txt",
+      "segment_index": 44,
+      "doc_type": "very_long"
+    },
+    {
+      "question": "在叶昌友和王遐见的研究中，哪个时间段的中国地区间经济增长具有明显的空间相关性？",
+      "ground_truth": "在1997年至2010年期间，中国地区间的经济增长具有明显的空间相关性。",
+      "source_document": "交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "根据叶昌友和王遐见的研究，哪种交通方式对经济增长的带动作用更加明显？",
+      "ground_truth": "根据研究，铁路运输业比公路运输业对经济增长的作用更加明显。",
+      "source_document": "交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "叶昌友和王遐见的研究中提到，高速公路密度提高一个百分点可以带动经济增长多少个百分点？",
+      "ground_truth": "研究指出，高速公路密度提高一个百分点可以带动经济增长约0.034个百分点。",
+      "source_document": "交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "在叶昌友和王遐见的研究中，哪个指标被用来衡量区域经济发展水平？",
+      "ground_truth": "研究使用人均GDP作为衡量区域经济发展水平的指标。",
+      "source_document": "交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "在《交通基础设施与服务业发展—...二次经济普查企业数据的证据》一文中，作者引用了哪次经济普查的数据进行分析？",
+      "ground_truth": "作者引用了第二次经济普查的数据进行分析。",
+      "source_document": "交通基础设施与服务业发展—...二次经济普查企业数据的证据_高翔_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\交通基础设施与服务业发展—...二次经济普查企业数据的证据_高翔_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "根据文档内容，二次经济普查企业数据对于研究交通基础设施与服务业发展有何重要性？",
+      "ground_truth": "二次经济普查企业数据对于研究交通基础设施与服务业发展的重要性在于，它提供了详细的企业数据，有助于分析这些行业的发展现状、趋势以及存在的问题，从而为政策制定和行业规划提供依据。",
+      "source_document": "交通基础设施与服务业发展—...二次经济普查企业数据的证据_高翔_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\交通基础设施与服务业发展—...二次经济普查企业数据的证据_高翔_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "在本文中，研究者使用了哪一年的第二次经济普查企业数据来研究交通基础设施对服务业企业劳动生产率的影响？",
+      "ground_truth": "研究者使用了2008年的第二次经济普查企业数据来研究交通基础设施对服务业企业劳动生产率的影响。",
+      "source_document": "交通基础设施与服务业发展—...二次经济普查企业数据的证据_高翔_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\交通基础设施与服务业发展—...二次经济普查企业数据的证据_高翔_merged.txt",
+      "segment_index": 2,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "根据本文的研究，哪些类型的服务业从高速公路连接中受益最多？",
+      "ground_truth": "根据本文的研究，需求主要来自外部的可贸易服务业从高速公路连接中受益最多。",
+      "source_document": "交通基础设施与服务业发展—...二次经济普查企业数据的证据_高翔_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\交通基础设施与服务业发展—...二次经济普查企业数据的证据_高翔_merged.txt",
+      "segment_index": 2,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "在20世纪90年代以来，中国交通基础设施的迅速发展引起了哪些方面的研究兴趣？",
+      "ground_truth": "在20世纪90年代以来，中国交通基础设施的迅速发展引起了学术界对区域经济、城乡收入差距、工业增加值增长率、制造业企业发展等方面的影响的研究兴趣。",
+      "source_document": "交通基础设施与服务业发展—...二次经济普查企业数据的证据_高翔_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\交通基础设施与服务业发展—...二次经济普查企业数据的证据_高翔_merged.txt",
+      "segment_index": 3,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "为什么说高速公路是本文重点研究交通基础设施的原因之一？",
+      "ground_truth": "高速公路是本文重点研究交通基础设施的原因之一，因为当时中国建成并营运的高速铁路还非常少，能够提供快速人员运输的交通基础设施主要是高速公路。此外，普通铁路和公路已基本普及，不适合进行统计分析来识别因果关系，并且其运输速度大大低于高速公路，对服务贸易的影响也较小。",
+      "source_document": "交通基础设施与服务业发展—...二次经济普查企业数据的证据_高翔_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\交通基础设施与服务业发展—...二次经济普查企业数据的证据_高翔_merged.txt",
+      "segment_index": 3,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "何为可达性？",
+      "ground_truth": "可达性（accessibility）又被称为通达性，简单的说，是指一个地方能够从另一个地方到达的容易程度。其基本内涵便是研究区域内社会经济交往的便利程度。它可以用空间距离、旅行时间、运输费用来衡量。",
+      "source_document": "高等级公路网建设对区域可达性的影响——以江苏省为例_徐旳_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\高等级公路网建设对区域可达性的影响——以江苏省为例_徐旳_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "文中提到的通达指数是什么？",
+      "ground_truth": "通达指数是网络中从一个顶点到其他所有顶点的最短路径。其表达式为：Ai ＝● n j＝1Dij，式中：Ai 是顶点i 在网络中的通达度；Dij 是顶点i 到顶点j 的最短距离；● n j＝1Dij 顶点i 到所有其他顶点的距离。",
+      "source_document": "高等级公路网建设对区域可达性的影响——以江苏省为例_徐旳_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\高等级公路网建设对区域可达性的影响——以江苏省为例_徐旳_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "江苏省高等级公路网络的建设对区域内的各个城市的交通可达性产生了怎样的影响？",
+      "ground_truth": "随着江苏省高等级路网建设的逐步完善，省域内13个地级市的可达性均有大幅提高。所有城市间行车时间从1993年的555.34h减少至2003年的367.65h，减少了33.8%。各地级市的可达性平均值由1993年的42.72h降至2003年的28.28h。",
+      "source_document": "高等级公路网建设对区域可达性的影响——以江苏省为例_徐旳_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\高等级公路网建设对区域可达性的影响——以江苏省为例_徐旳_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "文中提到的相对可达性是如何定义的？",
+      "ground_truth": "相对可达性的概念是通过引入相对可达性的概念来更好的表明省内13个地级市可达性变化的趋势及在整个江苏省高等级公路网络中所处的地位。其计算公式为：RCi ＝Ai －A′ A∗－A′，式中，RCi －－－表示第i 点的相对可达性值（0≤RCi ≤1）。RCi 值越小，该点与网络中的其他点的联系越容易。",
+      "source_document": "高等级公路网建设对区域可达性的影响——以江苏省为例_徐旳_merged.txt",
+      "source_file": "知识库\\知识库\\相关论文\\高等级公路网建设对区域可达性的影响——以江苏省为例_徐旳_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "2024年度海上搜救奖励专项资金安排明细表共有多少页？",
+      "ground_truth": "2024年度海上搜救奖励专项资金安排明细表共有29页。",
+      "source_document": "2024年度海上搜救奖励专项资金安排明细表.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\政策\\2024年度海上搜救奖励专项资金安排明细表.txt",
+      "segment_index": 1,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "请简述该明细表的主要内容。",
+      "ground_truth": "该明细表主要内容为2024年度海上搜救奖励专项资金的具体安排情况，包括资金分配、用途等详细信息。",
+      "source_document": "2024年度海上搜救奖励专项资金安排明细表.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\政策\\2024年度海上搜救奖励专项资金安排明细表.txt",
+      "segment_index": 1,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "在黑龙江省水上搜救指挥中心中，哪些组织因长期坚持参与水上搜救行动获得了奖励资金？",
+      "ground_truth": "哈尔滨市水上搜救志愿者协会、滨玛逊摩托艇俱乐部、通河县蓝天救援队、方正县蓝天救援队、黑河市黑龙冬泳俱乐部、牡丹江红十字雪城救援队、牡丹江市江滨船艇游乐有限公司、大庆市蓝天救援队、黑龙江海盾水运技术服务有限公司。",
+      "source_document": "2024年度海上搜救奖励专项资金安排明细表.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\政策\\2024年度海上搜救奖励专项资金安排明细表.txt",
+      "segment_index": 2,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "在2024年度海上搜救奖励专项资金安排明细表中，黑龙江省水上搜救指挥中心共分配了多少资金？",
+      "ground_truth": "15万元。",
+      "source_document": "2024年度海上搜救奖励专项资金安排明细表.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\政策\\2024年度海上搜救奖励专项资金安排明细表.txt",
+      "segment_index": 2,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "河北省海上搜救中心在2024年度海上搜救奖励专项资金安排明细表中，参与了哪些具体的搜救行动？",
+      "ground_truth": "河北省海上搜救中心在2024年度海上搜救奖励专项资金安排明细表中，参与了以下具体的搜救行动：\n1. 乔治娜希望号（MV GEORGINA HOPE）在7.14韩国籍油船“KEOYOUNG DREAM 3”轮在黄海海域货油舱爆炸险情中的搜救。\n2. 海上应急救援响应中心冀东救援站在5月20日“冀黄渔06557”搁浅5人遇险较大险情事故中的搜救。\n3. 苗志刚在3月12日唐山市海域钓鱼艇翻扣3人失联事件中的搜救。\n4. 张玉平在1月唐山市海域钓鱼艇翻扣3人失联事件中的搜救。\n5. 秦皇岛市蓝天救援队在长期坚持海上搜救行动中的贡献。\n6. 秦皇岛正真商贸有限责任公司在长期坚持海上搜救行动中的贡献。\n7. 唐山市近海救援志愿者协会在长期坚持海上搜救行动中的贡献。\n8. 唐山市曹妃甸区蓝天救援服务中心在长期坚持海上搜救行动中的贡献。",
+      "source_document": "2024年度海上搜救奖励专项资金安排明细表.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\政策\\2024年度海上搜救奖励专项资金安排明细表.txt",
+      "segment_index": 3,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "天津市海上搜救中心在2024年度海上搜救奖励专项资金安排明细表中，参与了哪些具体的搜救行动？",
+      "ground_truth": "天津市海上搜救中心在2024年度海上搜救奖励专项资金安排明细表中，参与了以下具体的搜救行动：\n1. 儒捷2在1月16日天津港锚地海域搜救“卓雅”轮遇险人员的搜救。\n2. 文渤16在1月25日天津临港海域搜救“凯盛油1”轮遇险人员的搜救。\n3. 津港轮35在1月25日天津临港海域搜救“凯盛油1”轮遇险人员的搜救。\n4. 德拓在1月26日天津港主航道22号浮附近海域救助“西沛”轮遇险人员的搜救。\n5. 滨海252在2月25日天津港内救助“勇士”轮遇险人员的搜救。\n6. 津港轮27在2月25日天津港内救助“勇士”轮遇险人员的搜救。\n7. 民生003在3月6日天津港内水域救助“朱比特”轮遇险人员的搜救。\n8. 德耀在3月10日天津港主航道24号浮附近水域救助“锦弘之星”轮遇险人员的搜救。\n9. 航通9在5月11日天津北塘河口海域搜救“大陆01”游艇遇险人员的搜救。\n10. 深科拖9在5月11日天津北塘河口海域搜救“大陆01”游艇遇险人员的搜救。\n11. 民生001在5月11日天津北塘河口海域搜救“大陆01”游艇遇险人员的搜救。\n12. 海洋石油646在5月11日天津北塘河口海域搜救“大陆01”游艇遇险人员的搜救。\n13. 津塘渔02261在5月11日天津北塘河口海域搜救“大陆01”游艇遇险人员的搜救。\n14. 交通3在6月5日实华码头东侧防波堤海域搜救被困遇险人员的搜救。\n15. 博予9在7月4日大港马棚口海域搜救游艇“韦德66”遇险人员的搜救。\n16. 津塘渔02262在7月4日大港马棚口海域搜救游艇“韦德66”遇险人员的搜救。\n17. 德拓在8月1日永定新河特大桥桥下海域搜救游艇“海舟06”遇险人员的搜救。\n18. 启航667在8月1日永定新河特大桥桥下海域搜救游艇“海舟06”遇险人员的搜救。\n19. 大权666在8月1日永定新河特大桥桥下海域搜救游艇“海舟06”遇险人员的搜救。\n20. 津门668在8月1日永定新河特大桥桥下海域搜救游艇“海舟06”遇险人员的搜救。\n21. 连交运维26在8月1日永定新河特大桥桥下海域搜救游艇“海舟06”遇险人员的搜救。\n22. 天津生态城蓝天应急救援服务中心在12月14日北塘海域搜救渔船“津塘渔03523”遇险人员的搜救。\n23. 天津港轮驳有限公司长期坚持参与搜救行动。\n24. 天津临港船务有限公司长期坚持参与搜救行动。",
+      "source_document": "2024年度海上搜救奖励专项资金安排明细表.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\政策\\2024年度海上搜救奖励专项资金安排明细表.txt",
+      "segment_index": 3,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "公路交通应急抢通技术规程共有多少页？",
+      "ground_truth": "公路交通应急抢通技术规程共有54页。",
+      "source_document": "公路交通应急抢通技术规程.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\政策\\公路交通应急抢通技术规程.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "请描述该规程的主要内容。",
+      "ground_truth": "该规程主要包含公路交通应急抢通技术的相关内容，旨在指导实际操作，提高抢通效率，减少事故损失。",
+      "source_document": "公路交通应急抢通技术规程.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\政策\\公路交通应急抢通技术规程.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "根据招标公告，本次招标的项目资金来源是什么？",
+      "ground_truth": "根据招标公告，本次招标的项目资金来源为交通运输部年度财政预算。",
+      "source_document": "国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\政策\\国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "本次招标的招标代理机构是哪家公司？",
+      "ground_truth": "本次招标的招标代理机构为北京中交建设工程咨询有限公司。",
+      "source_document": "国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\政策\\国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "本次招标分为哪两部分内容？",
+      "ground_truth": "本次招标分为国家重点公路建设项目2025年度初步设计审批技术咨询服务企业业绩和人员业绩审查及国家重点公路建设项目初步设计审批技术咨询服务招标（2025年度第一批）两部分。",
+      "source_document": "国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\政策\\国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "在本次招标中，投标人企业及人员业绩以何为准？",
+      "ground_truth": "在本次招标中，除另有规定外，投标人企业及人员业绩以本次认定结果及投标人新取得初步设计批复的项目或为证明投标人满足新设定业绩要求增加的项目为准。",
+      "source_document": "国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\政策\\国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "根据《道路旅客运输企业安全管理规范》，客运企业应如何保障安全生产投入？",
+      "ground_truth": "客运企业应当保障安全生产投入，依据有关规定，按照上一年度营业收入1.5%的比例确定企业本年度安全生产费用应计提金额，并逐月平均提取，专项核算。安全生产费用主要用于完善、改造、维护安全运营设施设备支出，道路运输车辆动态监控平台、视频监控系统的建设、运行、维护和升级改造等，配备、维护、保养应急救援器材、设备支出和应急救援队伍建设、应急预案制修订与应急演练支出，开展安全风险分级管控和事故隐患排查整改支出，安全生产信息化、智能化建设、运维和网络安全支出，安全生产检查、评估评价（不含新建、改建、扩建项目安全评价）、咨询和安全生产标准化建设支出，配备和更新现场作业人员安全防护用品支出，安全生产宣传、教育、培训和从业人员发现并报告事故隐患的奖励支出，安全生产适用的新技术、新标准、新工艺、新装备的推广应用支出，安全设施及特种设备检验检测、检定校准支出，承运人责任险及安全生产责任保险支出，与安全生产直接相关的其他支出。",
+      "source_document": "交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\规范性文件\\交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "《道路旅客运输企业安全管理规范》适用于哪些企业？",
+      "ground_truth": "《道路旅客运输企业安全管理规范》适用于从事道路旅客运输经营的企业（以下简称客运企业）。",
+      "source_document": "交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\规范性文件\\交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "客运企业主要负责人和安全生产管理人员应当具备哪些安全生产知识和管理能力？",
+      "ground_truth": "客运企业主要负责人和安全生产管理人员应当具备与本企业所从事的道路旅客运输生产经营活动相适应的安全生产知识和管理能力，并按规定经交通运输主管部门对其安全生产知识和管理能力考核合格；或者取得注册安全工程师（道路运输安全）执业资格，在道路运输领域有效注册后向属地市级交通运输主管部门报备，并做好相关信息上传工作。客运企业主要负责人和安全生产管理人员应当在从事道路旅客运输安全生产相关工作6个月内完成安全考核工作。",
+      "source_document": "交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\规范性文件\\交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "客运企业应当如何建立客运驾驶员聘用制度？",
+      "ground_truth": "客运企业应当依法建立客运驾驶员聘用制度，可依法探索驾驶员第三方劳务派遣管理制度。统一录用程序和客运驾驶员录用条件，严格审核客运驾驶员从业资格条件、安全行车经历及职业健康检查结果，对实际驾驶技能进行测试。驾驶员存在无有效的、适用的机动车驾驶证和从业资格证件，以及被列入黑名单的；36个月内发生道路交通事故致人死亡且负同等以上责任的；最近3个完整记分周期内有1个记分周期交通违法记满12分的；36个月内有酒后驾驶、超员20%以上、超速50%（高速公路超速20%）以上或12个月内有3次以上公安机关交通管理部门记录超速违法行为的；有吸食、注射毒品行为记录，或者长期服用依赖性精神药品成瘾尚未戒除的，以及发现其他职业禁忌的；已经取得驾驶证，但身体条件变化，有器质性心脏病、癫痫病、美尼尔氏症、眩晕症、癔病、震颤麻痹、精神病、痴呆以及影响肢体活动的神经系统疾病等妨碍安全驾驶疾病的情形之一的，客运企业不得聘用其驾驶客运车辆。",
+      "source_document": "交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\规范性文件\\交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "根据2022年修订的《公路工程建设项目评标工作细则》，招标人及其子公司、招标人下属单位在评标活动中的角色发生了怎样的变化？",
+      "ground_truth": "根据2022年修订的《公路工程建设项目评标工作细则》，将第十二条中“招标人及其子公司”修改为“招标人及其子公司、招标人下属单位”，这意味着在评标活动中，招标人下属单位的角色也被纳入考虑范围。",
+      "source_document": "交通运输部关于修订《公路工程建设项目评标工作细则》的通知.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\规范性文件\\交通运输部关于修订《公路工程建设项目评标工作细则》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "《公路工程建设项目评标工作细则》的修订版本何时开始施行，其有效期是多长时间？",
+      "ground_truth": "《公路工程建设项目评标工作细则》的修订版本自2022年10月1日起施行，有效期5年。",
+      "source_document": "交通运输部关于修订《公路工程建设项目评标工作细则》的通知.txt",
+      "source_file": "知识库\\知识库\\backup_original\\中华人民共和国交通运输部\\规范性文件\\交通运输部关于修订《公路工程建设项目评标工作细则》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "2024年度海上搜救奖励专项资金安排明细表共有多少页？",
+      "ground_truth": "2024年度海上搜救奖励专项资金安排明细表共有29页。",
+      "source_document": "2024年度海上搜救奖励专项资金安排明细表_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\2024年度海上搜救奖励专项资金安排明细表_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "该明细表的主要目的是什么？",
+      "ground_truth": "该明细表的主要目的是展示2024年度海上搜救奖励专项资金的安排情况，包括资金的具体分配和使用明细。",
+      "source_document": "2024年度海上搜救奖励专项资金安排明细表_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\2024年度海上搜救奖励专项资金安排明细表_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "根据2024年度海上搜救奖励专项资金安排明细表，黑龙江省水上搜救指挥中心共奖励了多少万元？",
+      "ground_truth": "根据明细表，黑龙江省水上搜救指挥中心共奖励了15万元。",
+      "source_document": "2024年度海上搜救奖励专项资金安排明细表_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\2024年度海上搜救奖励专项资金安排明细表_merged.txt",
+      "segment_index": 2,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "在辽宁省海上搜救中心中，哪艘船在2月19日新造船“DACKS126”在旅顺老铁山水道海域失控险情中获得了奖励资金？",
+      "ground_truth": "在辽宁省海上搜救中心中，'连港79'轮在2月19日新造船'DACKS126'在旅顺老铁山水道海域失控险情中获得了0.5万元的奖励资金。",
+      "source_document": "2024年度海上搜救奖励专项资金安排明细表_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\2024年度海上搜救奖励专项资金安排明细表_merged.txt",
+      "segment_index": 2,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "在2024年度海上搜救奖励专项资金安排明细表中，河北省海上搜救中心参与了哪些具体的搜救行动？",
+      "ground_truth": "河北省海上搜救中心参与的具体搜救行动包括：乔治娜希望号（MV GEORGINA HOPE）在黄海海域货油舱爆炸险情、海上应急救援响应中心冀东救援站参与“冀黄渔06557”搁浅5人遇险较大险情事故、苗志刚在唐山市海域钓鱼艇翻扣3人失联、秦皇岛市蓝天救援队长期坚持海上搜救行动、秦皇岛正真商贸有限责任公司长期坚持海上搜救行动、唐山市近海救援志愿者协会长期坚持海上搜救行动、唐山市曹妃甸区蓝天救援服务中心长期坚持海上搜救行动。",
+      "source_document": "2024年度海上搜救奖励专项资金安排明细表_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\2024年度海上搜救奖励专项资金安排明细表_merged.txt",
+      "segment_index": 3,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "根据明细表，天津市海上搜救中心在2024年度哪些搜救行动中获得了奖励资金？",
+      "ground_truth": "天津市海上搜救中心在2024年度以下搜救行动中获得了奖励资金：儒捷1月16日在天津港锚地海域搜救“卓雅”轮遇险人员、文渤16 1月25日在天津临港海域搜救“凯盛油1”轮遇险人员、德拓1月26日在天津港主航道22号浮附近海域救助“西沛”轮遇险人员、滨海252 2月25日在天津港内救助“勇士”轮遇险人员、民生003 3月6日在天津港内水域救助“朱比特”轮遇险人员、德耀3月10日在天津港主航道24号浮附近水域救助“锦弘之星”轮遇险人员、航通96月5日在天津北塘河口海域搜救“大陆01”游艇遇险人员、博予97月4日在大港马棚口海域搜救游艇“韦德66”遇险人员、德拓8月1日在永定新河特大桥桥下海域搜救游艇“海舟06”遇险人员、天津生态城蓝天应急救援服务中心12月14日在北塘海域搜救渔船“津塘渔03523”遇险人员、天津港轮驳有限公司长期坚持参与搜救行动、天津临港船务有限公司长期坚持参与搜救行动。",
+      "source_document": "2024年度海上搜救奖励专项资金安排明细表_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\2024年度海上搜救奖励专项资金安排明细表_merged.txt",
+      "segment_index": 3,
+      "doc_type": "medium_long"
+    },
+    {
+      "question": "该文档的名称是什么？",
+      "ground_truth": "该文档的名称是《公路交通应急抢通技术规程_merged.txt》。",
+      "source_document": "公路交通应急抢通技术规程_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\公路交通应急抢通技术规程_merged.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "请描述该文档的主要内容。",
+      "ground_truth": "该文档主要内容为公路交通应急抢通技术的规程，详细阐述了在公路交通发生紧急情况时，如何进行有效的抢通工作，包括技术方法、操作步骤、安全注意事项等。",
+      "source_document": "公路交通应急抢通技术规程_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\公路交通应急抢通技术规程_merged.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "根据招标公告，本次招标的招标人是谁？",
+      "ground_truth": "招标人是交通运输部公路局。",
+      "source_document": "国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "本次招标的项目资金来源是什么？",
+      "ground_truth": "项目资金来源为交通运输部年度财政预算。",
+      "source_document": "国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "本次招标的招标编号是什么？",
+      "ground_truth": "招标编号是ZEC-Z25F-034。",
+      "source_document": "国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "本次招标的招标范围包括哪两部分？",
+      "ground_truth": "招标范围包括国家重点公路建设项目2025年度初步设计审批技术咨询服务企业业绩和人员业绩审查，以及国家重点公路建设项目初步设计审批技术咨询服务招标（2025年度第一批）。",
+      "source_document": "国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "本次招标的招标代理机构是哪家公司？",
+      "ground_truth": "本次招标的招标代理机构为北京中交建设工程咨询有限公司。",
+      "source_document": "国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "本次招标的项目资金来源是什么？",
+      "ground_truth": "本次招标的项目资金来源为交通运输部年度财政预算。",
+      "source_document": "国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "本次招标的招标编号是什么？",
+      "ground_truth": "本次招标的招标编号为ZEC-Z25F-034。",
+      "source_document": "国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "本次招标的招标范围包括哪两部分？",
+      "ground_truth": "本次招标的招标范围包括国家重点公路建设项目2025年度初步设计审批技术咨询服务企业业绩和人员业绩审查，以及国家重点公路建设项目初步设计审批技术咨询服务招标（2025年度第一批）两部分。",
+      "source_document": "国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\政策\\国家重点公路建设项目2025年度初步设计审批技术咨询服务业绩审查及初步设计审批技术咨询服务（2025年度第一批）招标公告_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "根据通知，高速公路服务区“节水驿站”建设试点工作的主要目标是什么？",
+      "ground_truth": "高速公路服务区“节水驿站”建设试点工作的主要目标是：在全国选择代表性强、基础条件好的高速公路服务区开展试点工作，实施各项节水措施，强化用水全过程管理，建设成为节水器具普及、用水管理精细、节水氛围浓厚的节水宣传窗口阵地，形成可复制推广的高速公路服务区节水建设和管理模式。",
+      "source_document": "交通运输部办公厅 水利部办公厅关于开展高速公路服务区“节水驿站”建设试点工作的通知.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规划计划\\交通运输部办公厅 水利部办公厅关于开展高速公路服务区“节水驿站”建设试点工作的通知.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "在“节水驿站”建设中，对于服务区公共区域的节水型器具，通知中提出了什么要求？",
+      "ground_truth": "在“节水驿站”建设中，通知要求在保障服务品质的前提下，推动服务区公共区域节水型器具全覆盖，并开展老旧供水管网、耗水设备等节水改造，推广使用先进实用的节水新技术、新产品。试点高速公路服务区单位车次用水量控制在30升以内。",
+      "source_document": "交通运输部办公厅 水利部办公厅关于开展高速公路服务区“节水驿站”建设试点工作的通知.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规划计划\\交通运输部办公厅 水利部办公厅关于开展高速公路服务区“节水驿站”建设试点工作的通知.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "根据通知，公路网规划编制时需要结合哪些规划？",
+      "ground_truth": "公路网规划编制时需要结合国土空间规划、生态环境分区管控方案。",
+      "source_document": "交通运输部办公厅生态环境部办公厅关于进一步加强公路规划建设和环评工作 推动绿色低碳转型发展的通知.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规划计划\\交通运输部办公厅生态环境部办公厅关于进一步加强公路规划建设和环评工作 推动绿色低碳转型发展的通知.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "公路建设项目选址选线时，应尽量避开哪些区域？",
+      "ground_truth": "公路建设项目选址选线时，应尽量避开饮用水水源保护区、生态保护红线、自然保护地以及其他野生动物重要栖息地、迁徙洄游通道等环境敏感区。",
+      "source_document": "交通运输部办公厅生态环境部办公厅关于进一步加强公路规划建设和环评工作 推动绿色低碳转型发展的通知.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规划计划\\交通运输部办公厅生态环境部办公厅关于进一步加强公路规划建设和环评工作 推动绿色低碳转型发展的通知.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "根据《道路旅客运输企业安全管理规范》，客运企业安全生产管理的主要目的是什么？",
+      "ground_truth": "客运企业安全生产管理的主要目的是加强和规范道路旅客运输企业安全生产工作，提高企业安全管理水平，全面落实客运企业安全主体责任，有效预防和减少道路交通事故，保障人民群众生命和财产安全。",
+      "source_document": "交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "《道路旅客运输企业安全管理规范》适用于哪些企业？",
+      "ground_truth": "《道路旅客运输企业安全管理规范》适用于从事道路旅客运输经营的企业（以下简称客运企业）。",
+      "source_document": "交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "根据规范，拥有多少辆以上客运车辆的客运企业应当设置安全生产管理机构，配备专职安全生产管理人员？",
+      "ground_truth": "拥有20辆（含）以上客运车辆的客运企业应当设置安全生产管理机构，配备专职安全生产管理人员。",
+      "source_document": "交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "客运企业主要负责人和安全生产管理人员应当具备哪些条件？",
+      "ground_truth": "客运企业主要负责人和安全生产管理人员应当具备与本企业所从事的道路旅客运输生产经营活动相适应的安全生产知识和管理能力，并按规定经交通运输主管部门对其安全生产知识和管理能力考核合格；或者取得注册安全工程师（道路运输安全）执业资格，在道路运输领域有效注册后向属地市级交通运输主管部门报备，并做好相关信息上传工作。",
+      "source_document": "交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "根据《道路旅客运输企业安全管理规范》，客运企业应当如何设置安全生产管理机构？",
+      "ground_truth": "客运企业及分支机构应当依法设置安全生产管理机构或者配备专职安全生产管理人员。对于拥有20辆（含）以上客运车辆的客运企业，应当设置安全生产管理机构，配备专职安全生产管理人员，并提供必要的工作条件。对于拥有20辆以下客运车辆的客运企业，应当配备专职安全生产管理人员，并提供必要的工作条件。专职安全生产管理人员的配备数量原则上按照每50辆车1人的标准配备，最低不少于1人。",
+      "source_document": "交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "《道路旅客运输企业安全管理规范》中规定，客运企业主要负责人和安全生产管理人员应当具备什么样的安全生产知识和管理能力？",
+      "ground_truth": "客运企业主要负责人和安全生产管理人员应当具备与本企业所从事的道路旅客运输生产经营活动相适应的安全生产知识和管理能力，并按规定经交通运输主管部门对其安全生产知识和管理能力考核合格；或者取得注册安全工程师（道路运输安全）执业资格，在道路运输领域有效注册后向属地市级交通运输主管部门报备，并做好相关信息上传工作。客运企业主要负责人和安全生产管理人员应当在从事道路旅客运输安全生产相关工作6个月内完成安全考核工作。",
+      "source_document": "交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "在《道路旅客运输企业安全管理规范》中，客运企业应当如何对从业人员进行安全生产教育培训？",
+      "ground_truth": "客运企业应当对从业人员进行安全生产教育培训，未经安全生产教育培训合格的从业人员，不得上岗作业。客运企业使用实习学生的，应当将实习学生纳入本企业从业人员统一进行安全生产教育培训。企业采用新工艺、新技术、新材料或者使用新设备，应当对从业人员进行专门的安全生产教育培训。从业人员的安全生产教育培训应当以客运企业自主培训为主，也可委托、聘请具备对外开展安全生产教育培训业务的机构或其他客运企业进行安全生产教育培训。客运企业主要负责人和安全生产管理人员初次安全生产教育培训时间不得少于24学时，每年再培训时间不少于12学时，每个学时不得少于45分钟。",
+      "source_document": "交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "根据《道路旅客运输企业安全管理规范》，客运企业应当如何保障安全生产投入？",
+      "ground_truth": "客运企业应当保障安全生产投入，依据有关规定，按照上一年度营业收入1.5%的比例确定企业本年度安全生产费用应计提金额，并逐月平均提取，专项核算。安全生产费用主要用于完善、改造、维护安全运营设施设备支出，道路运输车辆动态监控平台、视频监控系统的建设、运行、维护和升级改造，配备、维护、保养应急救援器材、设备支出和应急救援队伍建设、应急预案制修订与应急演练支出，开展安全风险分级管控和事故隐患排查整改支出，安全生产检查、评估评价（不含新建、改建、扩建项目安全评价）、咨询和安全生产标准化建设支出，配备和更新现场作业人员安全防护用品支出，安全生产宣传、教育、培训和从业人员发现并报告事故隐患的奖励支出，安全生产适用的新技术、新标准、新工艺、新装备的推广应用支出，安全设施及特种设备检验检测、检定校准支出，承运人责任险及安全生产责任保险支出，与安全生产直接相关的其他支出。",
+      "source_document": "交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部 公安部 应急管理部关于印发《道路旅客运输企业安全管理规范》的通知_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "根据2022年9月30日发布的修订通知，哪些单位被包括在新的‘招标人及其子公司’定义中？",
+      "ground_truth": "根据修订通知，新的‘招标人及其子公司’定义包括招标人及其子公司、招标人下属单位。",
+      "source_document": "交通运输部关于修订《公路工程建设项目评标工作细则》的通知.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部关于修订《公路工程建设项目评标工作细则》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "修订后的《公路工程建设项目评标工作细则》何时开始实施，其有效期是多长？",
+      "ground_truth": "修订后的《公路工程建设项目评标工作细则》自2022年10月1日起施行，有效期5年。",
+      "source_document": "交通运输部关于修订《公路工程建设项目评标工作细则》的通知.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部关于修订《公路工程建设项目评标工作细则》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "根据《公路工程建设项目评标工作细则》修订通知，哪些单位的人员不得以专家身份参与本单位招标或招标代理项目的评标？",
+      "ground_truth": "招标人及其子公司、招标人下属单位、招标人的上级主管部门或者控股公司、招标代理机构的工作人员或者退休人员不得以专家身份参与本单位招标或招标代理项目的评标。",
+      "source_document": "交通运输部关于修订《公路工程建设项目评标工作细则》的通知_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部关于修订《公路工程建设项目评标工作细则》的通知_merged.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "《公路工程建设项目评标工作细则》修订后，新规定的施行日期和有效期是多久？",
+      "ground_truth": "新规定的施行日期是2022年10月1日，有效期为5年。",
+      "source_document": "交通运输部关于修订《公路工程建设项目评标工作细则》的通知_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部关于修订《公路工程建设项目评标工作细则》的通知_merged.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "根据《交通运输安全生产警示约谈和挂牌督办办法》，哪些情况下，由交通运输部实施警示？",
+      "ground_truth": "根据《交通运输安全生产警示约谈和挂牌督办办法》第七条，以下情况下，由交通运输部实施警示：(一)发生重大及以上事故的；(二)发生性质严重、影响恶劣的较大事故、重大险情或突发事件的；(三)经研判安全生产苗头性、趋势性问题突出，行业或领域安全生产形势趋于严峻的；(四)其他需要警示的情形。",
+      "source_document": "交通运输部关于印发《交通运输安全生产警示约谈和挂牌督办办法》的通知.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部关于印发《交通运输安全生产警示约谈和挂牌督办办法》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "在《交通运输安全生产警示约谈和挂牌督办办法》中，警示、约谈和挂牌督办各自指的是什么？",
+      "ground_truth": "根据《交通运输安全生产警示约谈和挂牌督办办法》第二条，警示是指交通运输主管部门就交通运输安全生产有关问题，向行业发出提醒告诫。约谈是指交通运输主管部门对交通运输安全生产管理不力的下级交通运输主管部门有关负责人或交通运输生产经营单位主要负责人进行安全生产督促整改的谈话。挂牌督办是指交通运输主管部门督促下级交通运输主管部门或交通运输生产经营单位履行安全生产职责，对存在的安全生产风险或隐患进行管控或整改的行为。",
+      "source_document": "交通运输部关于印发《交通运输安全生产警示约谈和挂牌督办办法》的通知.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部关于印发《交通运输安全生产警示约谈和挂牌督办办法》的通知.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "根据《交通运输安全生产警示约谈和挂牌督办办法》，警示是指什么？",
+      "ground_truth": "根据《交通运输安全生产警示约谈和挂牌督办办法》，警示是指交通运输主管部门就交通运输安全生产有关问题，向行业发出提醒告诫。",
+      "source_document": "交通运输部关于印发《交通运输安全生产警示约谈和挂牌督办办法》的通知_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部关于印发《交通运输安全生产警示约谈和挂牌督办办法》的通知_merged.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "在《交通运输安全生产警示约谈和挂牌督办办法》中，由哪个部门负责指导全国交通运输行业安全生产警示、约谈和挂牌督办工作？",
+      "ground_truth": "在《交通运输安全生产警示约谈和挂牌督办办法》中，交通运输部负责指导全国交通运输行业安全生产警示、约谈和挂牌督办工作。",
+      "source_document": "交通运输部关于印发《交通运输安全生产警示约谈和挂牌督办办法》的通知_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\规范性文件\\交通运输部关于印发《交通运输安全生产警示约谈和挂牌督办办法》的通知_merged.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "根据《船舶载运危险货物安全监督管理规定》，哪些机构负责全国船舶载运危险货物的安全监督管理工作？",
+      "ground_truth": "根据《船舶载运危险货物安全监督管理规定》，交通运输部主管全国船舶载运危险货物的安全管理工作。交通运输部海事局负责全国船舶载运危险货物的安全监督管理工作。各级海事管理机构按照职责权限具体负责船舶载运危险货物的安全监督管理工作。",
+      "source_document": "船舶载运危险货物安全监督管理规定.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\部颁规章\\船舶载运危险货物安全监督管理规定.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "在《船舶载运危险货物安全监督管理规定》中，载运危险货物的船舶需要满足哪些条件才能进出港口？",
+      "ground_truth": "根据《船舶载运危险货物安全监督管理规定》，载运危险货物的船舶进出港口需要符合以下条件：所载运的危险货物符合水上安全运输要求；船舶的装载符合所持有的证书、文书的要求；拟靠泊或者进行危险货物装卸作业的港口、码头、泊位具备有关法律、行政法规规定的危险货物作业经营资质。申请人应当在船舶进出港口24小时前（航程不足24小时的，在驶离上一港口前），向海事管理机构办理船舶载运危险货物申报手续，提交相应的材料。",
+      "source_document": "船舶载运危险货物安全监督管理规定.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\部颁规章\\船舶载运危险货物安全监督管理规定.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "根据《船舶载运危险货物安全监督管理规定》，哪些机构负责全国船舶载运危险货物的安全监督管理工作？",
+      "ground_truth": "根据《船舶载运危险货物安全监督管理规定》，交通运输部主管全国船舶载运危险货物的安全管理工作。交通运输部海事局负责全国船舶载运危险货物的安全监督管理工作。各级海事管理机构按照职责权限具体负责船舶载运危险货物的安全监督管理工作。",
+      "source_document": "船舶载运危险货物安全监督管理规定_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\部颁规章\\船舶载运危险货物安全监督管理规定_merged.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "在中华人民共和国管辖水域载运危险货物的活动，适用哪项规定？",
+      "ground_truth": "在中华人民共和国管辖水域载运危险货物的活动，适用《船舶载运危险货物安全监督管理规定》。",
+      "source_document": "船舶载运危险货物安全监督管理规定_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\部颁规章\\船舶载运危险货物安全监督管理规定_merged.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "根据《铁路机车车辆驾驶人员资格许可办法》，哪些人员不得驾驶铁路机车车辆？",
+      "ground_truth": "根据《铁路机车车辆驾驶人员资格许可办法》第四条，以下人员不得驾驶铁路机车车辆：（一）走私、贩卖或者吸食毒品的；（二）组织、领导或者参与恐怖主义活动的；（三）饮酒、服用国家管制的精神药品或者麻醉药品，或者患有妨碍安全驾驶铁路机车车辆疾病，或者存在其他影响安全驾驶行为的；（四）违章驾驶后未采取考核、教育、培训等措施的；（五）不具有相应驾驶资格或者持过期、失效、不符合准驾类型驾驶证的。",
+      "source_document": "铁路机车车辆驾驶人员资格许可办法.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\部颁规章\\铁路机车车辆驾驶人员资格许可办法.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "在《铁路机车车辆驾驶人员资格许可办法》中，驾驶资格如何按机车车辆类型进行分类？",
+      "ground_truth": "在《铁路机车车辆驾驶人员资格许可办法》中，驾驶资格按机车车辆类型分为机车系列和自轮运转车辆系列。机车系列包括内燃机车、电力机车、动力分散型电力动车组、动力集中型内燃动车组和动力集中型电力动车组；自轮运转车辆系列包括大型养路机械和轨道车、接触网作业车。每种类型又根据适用范围分为不同的类别，如J5类内燃机车分为J5、J5S1、J5S2、J5Z1、J5Z2类型。",
+      "source_document": "铁路机车车辆驾驶人员资格许可办法.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\部颁规章\\铁路机车车辆驾驶人员资格许可办法.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "根据《铁路机车车辆驾驶人员资格许可办法》，哪些人员不得驾驶铁路机车车辆？",
+      "ground_truth": "根据《铁路机车车辆驾驶人员资格许可办法》第四条，以下人员不得驾驶铁路机车车辆：(一)走私、贩卖或者吸食毒品的；(二)组织、领导或者参与恐怖主义活动的；(三)饮酒、服用国家管制的精神药品或者麻醉药品，或者患有妨碍安全驾驶铁路机车车辆疾病，或者存在其他影响安全驾驶行为的；(四)违章驾驶后未采取考核、教育、培训等措施的；(五)不具有相应驾驶资格或者持过期、失效、不符合准驾类型驾驶证的。",
+      "source_document": "铁路机车车辆驾驶人员资格许可办法_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\部颁规章\\铁路机车车辆驾驶人员资格许可办法_merged.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "《铁路机车车辆驾驶人员资格许可办法》中，J5类驾驶资格准驾哪种机车？",
+      "ground_truth": "根据《铁路机车车辆驾驶人员资格许可办法》第七条，J5类驾驶资格准驾内燃机车（含内电混合动力新能源机车），按适用范围分为J5、J5S1、J5S2、J5Z1、J5Z2类型。",
+      "source_document": "铁路机车车辆驾驶人员资格许可办法_merged.txt",
+      "source_file": "知识库\\知识库\\中华人民共和国交通运输部\\部颁规章\\铁路机车车辆驾驶人员资格许可办法_merged.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "遂川至大余高速公路新建项目已获得哪些官方批复？",
+      "ground_truth": "遂川至大余高速公路新建项目已获得江西省发展和改革委员会的可行性研究报告批复（赣发改交通〔2021〕707号）、初步设计批复（赣发改投资〔2021〕792号）、施工图设计批复（赣交高速〔2021〕第27号）以及房建工程施工图设计批复（赣交许字〔2024〕第12号）。",
+      "source_document": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标公告.txt",
+      "source_file": "知识库\\知识库\\供应链上下游企业\\招投标文件\\遂川至大余高速公路新建工程服务区加油站相关项目\\遂川至大余高速公路新建工程服务区加油站加油机设备采购招标公告.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "本次招标项目的交货地点在哪里？",
+      "ground_truth": "本次招标项目的交货地点为遂川西服务区加油站、阳明湖服务区加油站、大余西服务区加油站或招标人指定的地点。",
+      "source_document": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标公告.txt",
+      "source_file": "知识库\\知识库\\供应链上下游企业\\招投标文件\\遂川至大余高速公路新建工程服务区加油站相关项目\\遂川至大余高速公路新建工程服务区加油站加油机设备采购招标公告.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "遂川至大余高速公路新建项目的初步设计批复文件由哪个部门发布？",
+      "ground_truth": "遂川至大余高速公路新建项目的初步设计批复文件由江西省发展和改革委员会发布。",
+      "source_document": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标公告_merged.txt",
+      "source_file": "知识库\\知识库\\供应链上下游企业\\招投标文件\\遂川至大余高速公路新建工程服务区加油站相关项目\\遂川至大余高速公路新建工程服务区加油站加油机设备采购招标公告_merged.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "本项目服务区加油站加油机设备采购招标的招标人为谁？",
+      "ground_truth": "本项目服务区加油站加油机设备采购招标的招标人为江西高速石化有限责任公司。",
+      "source_document": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标公告_merged.txt",
+      "source_file": "知识库\\知识库\\供应链上下游企业\\招投标文件\\遂川至大余高速公路新建工程服务区加油站相关项目\\遂川至大余高速公路新建工程服务区加油站加油机设备采购招标公告_merged.txt",
+      "segment_index": 1,
+      "doc_type": "short"
+    },
+    {
+      "question": "本次遂川至大余高速公路新建工程服务区加油站加油机设备采购招标采用的评标方法是哪一种？",
+      "ground_truth": "本次招标采用综合评估法。",
+      "source_document": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开.txt",
+      "source_file": "知识库\\知识库\\供应链上下游企业\\招投标文件\\遂川至大余高速公路新建工程服务区加油站相关项目\\遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "招标代理机构江西交投嘉特信招标咨询有限公司的联系电话是什么？",
+      "ground_truth": "联系电话为0791-86668255。",
+      "source_document": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开.txt",
+      "source_file": "知识库\\知识库\\供应链上下游企业\\招投标文件\\遂川至大余高速公路新建工程服务区加油站相关项目\\遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "投标人需要满足哪些资格要求才能参与遂川至大余高速公路新建工程服务区加油站加油机设备采购招标？",
+      "ground_truth": "投标人需要满足具备有效的营业执照、制造商授权书（如有）和基本账户开户许可证，资质等级、财务要求、业绩要求、信誉要求等，具体要求详见招标公告。",
+      "source_document": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开.txt",
+      "source_file": "知识库\\知识库\\供应链上下游企业\\招投标文件\\遂川至大余高速公路新建工程服务区加油站相关项目\\遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "评标办法中提到，当综合评分相等时，评标委员会将如何依次推荐中标候选人或确定中标人？",
+      "ground_truth": "评标委员会将依次按照以下优先顺序推荐中标候选人或确定中标人：（1）评标价低的投标人优先；（2）商务和技术得分较高的投标人优先；（3）技术文件得分较高的投标人优先。",
+      "source_document": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开.txt",
+      "source_file": "知识库\\知识库\\供应链上下游企业\\招投标文件\\遂川至大余高速公路新建工程服务区加油站相关项目\\遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件的关键内容公开，招标人是谁？",
+      "ground_truth": "招标人是江西高速石化有限责任公司。",
+      "source_document": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开_merged.txt",
+      "source_file": "知识库\\知识库\\供应链上下游企业\\招投标文件\\遂川至大余高速公路新建工程服务区加油站相关项目\\遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "在遂川至大余高速公路新建工程服务区加油站加油机设备采购招标中，采用的是什么评标办法？",
+      "ground_truth": "本次招标采用综合评估法。",
+      "source_document": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开_merged.txt",
+      "source_file": "知识库\\知识库\\供应链上下游企业\\招投标文件\\遂川至大余高速公路新建工程服务区加油站相关项目\\遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "如果评标委员会在综合评估法中遇到综合评分相等的情况，他们会如何依次推荐中标候选人或确定中标人？",
+      "ground_truth": "评标委员会会依次按照以下优先顺序推荐中标候选人或确定中标人：（1）评标价低的投标人优先；（2）商务和技术得分较高的投标人优先；（3）技术文件得分较高的投标人优先。",
+      "source_document": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开_merged.txt",
+      "source_file": "知识库\\知识库\\供应链上下游企业\\招投标文件\\遂川至大余高速公路新建工程服务区加油站相关项目\\遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    },
+    {
+      "question": "在遂川至大余高速公路新建工程服务区加油站加油机设备采购招标中，投标文件必须符合哪些实质性要求和条件？",
+      "ground_truth": "投标文件必须符合以下实质性要求和条件：交货期、交货地点、技术性能指标、安全目标、投标有效期、投标保证金、投标文件备选方案、权利义务、技术支持资料、是否含有投标报价内容、其他。",
+      "source_document": "遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开_merged.txt",
+      "source_file": "知识库\\知识库\\供应链上下游企业\\招投标文件\\遂川至大余高速公路新建工程服务区加油站相关项目\\遂川至大余高速公路新建工程服务区加油站加油机设备采购招标文件关键内容公开_merged.txt",
+      "segment_index": 1,
+      "doc_type": "medium"
+    }
+  ],
+  "stats": {
+    "total_docs": 86,
+    "processed_docs": 60,
+    "total_segments": 139,
+    "total_questions": 408,
+    "failed_docs": 0,
+    "skipped_docs": 0,
+    "start_time": "2026-03-04T15:11:05.935852"
+  }
+}

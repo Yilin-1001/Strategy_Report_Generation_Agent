@@ -21,8 +21,9 @@ def detect_doc_type(file_path: str) -> str:
     type_mapping = {
         '.txt': 'news',
         '.pdf': 'pdf',
-        '.docx': 'regulation',
-        '.doc': 'regulation',
+        # Skip DOCX and DOC files for now
+        # '.docx': 'regulation',
+        # '.doc': 'regulation',
     }
 
     return type_mapping.get(extension, 'default')
@@ -43,9 +44,9 @@ def get_loader_for_file(file_path: str):
         'news': lambda: TextLoader(file_path, encoding='utf-8', autodetect_encoding=True),
         'pdf': lambda: UnstructuredPDFLoader(
             file_path,
-            mode="elements",
-            strategy="hi_res",
-            extract_images_in_pdf=True
+            mode="single",  # Single text mode
+            strategy="fast",  # Fast strategy (no OCR)
+            extract_images_in_pdf=False  # Skip images
         ),
         'regulation': lambda: UnstructuredWordDocumentLoader(
             file_path,

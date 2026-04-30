@@ -1,0 +1,28 @@
+{
+  "description": "RAG系统各维度评估最终结果汇总",
+  "created": "2026-04-07",
+  "testset": "ragas_testset_doc_51q.json (51题) / smart_testset_full.json (464题)",
+  "files": {
+    "01_faithfulness_summary.json": "生成忠实度评估摘要 (50题, Faithfulness=0.775)",
+    "02_faithfulness_detailed_results.csv": "生成忠实度逐题详情",
+    "03_layer2_comparison_top10.json": "Layer2 上下文质量 - Context Precision/Recall/F1 (51题, DeepSeek评估)",
+    "04_layer1_comparison_top10.json": "Layer1 检索排序质量 - MRR/NDCG/Hit/Precision (51题, Embedding评估)",
+    "05_retrieval_comparison_top10.json": "检索指标对比 - Baseline vs BGE Reranker (51题)",
+    "06_reranker_comparison_report.json": "Reranker对比报告 - Baseline vs BGE vs Qwen3 (51题)",
+    "07_hybrid_comparison_top10.json": "混合检索对比 - Dense vs Hybrid RRF vs Hybrid BGE vs Hybrid Qwen3 (51题)"
+  },
+  "key_metrics": {
+    "faithfulness": 0.775,
+    "context_precision_baseline": 0.760,
+    "context_recall_baseline": 0.700,
+    "f1_score_baseline": 0.729,
+    "context_precision_bge_reranker": 0.774,
+    "context_recall_bge_reranker": 0.675,
+    "f1_score_bge_reranker": 0.721,
+    "layer1_mrr1_baseline": 0.920,
+    "layer1_mrr1_bge_reranker": 0.960,
+    "layer1_precision5_baseline": 0.840,
+    "layer1_precision5_bge_reranker": 0.956
+  },
+  "note": "Layer2和Faithfulness使用DeepSeek评估，Layer1使用BGE-M3 Embedding评估，避免了同模型自评的数据泄露问题"
+}

@@ -2,7 +2,7 @@ import uuid
 from typing import List, Dict, Optional
 from datetime import datetime
 import numpy as np
-from pymilvus import (
+from pymilvus import (  # type: ignore
     connections,
     Collection,
     FieldSchema,
@@ -19,7 +19,7 @@ class MilvusManager:
     def __init__(
         self,
         config_path: str = "config/milvus_config.yaml",
-        collection_name: str = None
+        collection_name: Optional[str] = None
     ):
         """
         Initialize Milvus manager
@@ -192,8 +192,9 @@ class MilvusManager:
         Returns:
             List of search results with text, score, and metadata
         """
-        # Load collection
-        self.collection.load()
+        # Note: Collection loading is managed automatically by Milvus in Docker environments
+        # Explicit load() call can be very slow for large collections, so we skip it
+        # self.collection.load()  # Commented out to avoid slow loading
 
         # Search parameters
         search_config = self.milvus_config.get('search', {})

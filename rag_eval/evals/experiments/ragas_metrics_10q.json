@@ -1,0 +1,13 @@
+{
+  "metrics": {
+    "context_precision": 0.9455555555240369,
+    "context_recall": 1.0,
+    "f1_score": 0.9720159908457107
+  },
+  "testset": "rag_eval/evals/datasets/smart_testset_full.json",
+  "top_k": 5,
+  "num_samples": 10,
+  "total_questions_in_testset": 464,
+  "ragas_version": "0.4.3",
+  "model": "glm-4-flash"
+}

@@ -1,0 +1,45 @@
+================================================================================
+中国通用航空2021 - 文档清洗总结 / Document Cleaning Summary
+================================================================================
+
+文件位置 / File Location:
+  知识库/知识库/研究报告/中国通用航空2021.txt
+
+清洗统计 / Cleaning Statistics:
+  - 原始长度 / Original Length: 281,124 字符 (characters)
+  - 清洗后长度 / Cleaned Length: 221,184 字符 (characters)
+  - 减少字符 / Characters Removed: 59,940 字符 (characters)
+  - 压缩率 / Compression Rate: 21.3%
+
+页面处理统计 / Page Processing Statistics:
+  - 总页数 / Total Pages: 305
+  - 检测到页眉的页面 / Pages with Headers: 298
+  - 检测到页脚的页面 / Pages with Footers: 22
+  - 识别为目录的页面 / Pages Identified as TOC: 3
+  - 实际内容页面 / Actual Content Pages: 302
+
+删除的页面 / Removed Pages:
+  - 第 8 页 (Page 8)
+  - 第 212 页 (Page 212)
+  - 第 298 页 (Page 298)
+
+清洗内容 / What Was Cleaned:
+  ✓ 页眉页脚 (Headers and footers with page numbers, copyright notices)
+  ✓ 目录页面 (Table of Contents pages)
+  ✓ 多余空行 (Excessive blank lines)
+  ✓ 分页标记 (Page markers preserved for chunking)
+
+保留内容 / What Was Preserved:
+  ✓ 正文内容 (Main content)
+  ✓ 章节标题 (Chapter titles)
+  ✓ 图表说明 (Figure and table captions)
+  ✓ 段落结构 (Paragraph structure)
+
+文件输出 / Output Files:
+  1. 清洗后的文本: 中国通用航空2021.txt (已覆盖原文件)
+  2. 元数据文件: 中国通用航空2021_cleaned_metadata.json
+
+================================================================================
+清洗完成！文件已保存。
+Cleaning completed! File saved.
+================================================================================

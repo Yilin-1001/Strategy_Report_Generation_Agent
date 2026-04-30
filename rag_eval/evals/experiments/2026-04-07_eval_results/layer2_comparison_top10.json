@@ -1,0 +1,29 @@
+{
+  "layer": 2,
+  "description": "Context quality via LLM-as-Judge (Ragas context_precision + context_recall)",
+  "timestamp": "2026-04-07T22:36:41.878650",
+  "top_k": 10,
+  "num_questions": 51,
+  "experiments": {
+    "baseline": {
+      "experiment": "baseline",
+      "layer": 2,
+      "num_queries": 51,
+      "successful": 51,
+      "total_time_s": 2398.27,
+      "context_precision": 0.8209,
+      "context_recall": 0.6798,
+      "f1_score": 0.7437
+    },
+    "bge_reranker": {
+      "experiment": "bge_reranker",
+      "layer": 2,
+      "num_queries": 51,
+      "successful": 51,
+      "total_time_s": 3239.23,
+      "context_precision": 0.8108,
+      "context_recall": 0.692,
+      "f1_score": 0.7467
+    }
+  }
+}

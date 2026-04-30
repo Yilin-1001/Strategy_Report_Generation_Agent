@@ -1,0 +1,12 @@
+{
+  "metrics": {
+    "faithfulness": 0.7745571373071374
+  },
+  "testset": "rag_eval/evals/datasets/smart_testset_full.json",
+  "top_k": 5,
+  "num_samples": 50,
+  "gen_model": "deepseek-chat",
+  "eval_model": "deepseek-chat",
+  "elapsed_seconds": 1246.9,
+  "ragas_version": "0.4.3"
+}

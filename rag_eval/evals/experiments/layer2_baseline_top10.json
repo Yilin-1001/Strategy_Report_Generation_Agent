@@ -1,0 +1,269 @@
+{
+  "aggregate": {
+    "experiment": "baseline",
+    "layer": 2,
+    "num_queries": 51,
+    "successful": 51,
+    "total_time_s": 2398.27,
+    "context_precision": 0.8209,
+    "context_recall": 0.6798,
+    "f1_score": 0.7437
+  },
+  "per_query": [
+    {
+      "idx": 0,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 1,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 2,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 3,
+      "context_precision": 0.9999999999,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 4,
+      "context_precision": 0.0,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 5,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 6,
+      "context_precision": 0.9999999999,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 7,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 8,
+      "context_precision": 0.0,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 9,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 10,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 11,
+      "context_precision": 0.9999999999,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 12,
+      "context_precision": 0.6666666666333333,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 13,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 14,
+      "context_precision": 0.0,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 15,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 16,
+      "context_precision": 0.99999999995,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 17,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 18,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 19,
+      "context_precision": 0.9999999999,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 20,
+      "context_precision": 0.9999999999,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 21,
+      "context_precision": 0.0,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 22,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 23,
+      "context_precision": 0.699999999965,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 24,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 25,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 26,
+      "context_precision": 0.9999999999,
+      "context_recall": 0.5
+    },
+    {
+      "idx": 27,
+      "context_precision": 0.9999999999,
+      "context_recall": 0.5
+    },
+    {
+      "idx": 28,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 29,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 30,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 31,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 32,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 33,
+      "context_precision": 0.0,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 34,
+      "context_precision": 0.9999999999,
+      "context_recall": 0.47058823529411764
+    },
+    {
+      "idx": 35,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 36,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 37,
+      "context_precision": 0.99999999995,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 38,
+      "context_precision": 0.0,
+      "context_recall": 0.2
+    },
+    {
+      "idx": 39,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 40,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 41,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 42,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 43,
+      "context_precision": 0.0,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 44,
+      "context_precision": 0.99999999995,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 45,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 46,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 47,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 48,
+      "context_precision": 0.0,
+      "context_recall": 0.0
+    },
+    {
+      "idx": 49,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0
+    },
+    {
+      "idx": 50,
+      "context_precision": 0.49999999995,
+      "context_recall": 1.0
+    }
+  ]
+}

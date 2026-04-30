@@ -1,5 +1,5 @@
 import numpy as np
-from typing import List, Dict
+from typing import List, Dict, Any, Optional
 from sentence_transformers import SentenceTransformer
 from langchain_core.documents import Document
 from rag_project.utils.config_loader import load_config
@@ -37,12 +37,41 @@ class EmbeddingModel:
         cache_dir = self.embedding_config.get('cache_dir', './data/models')
 
         logger.info(f"Loading embedding model: {model_name}")
+        logger.info(f"Device: {device}")
 
+        # Force GPU validation - fail fast if CUDA is not available
+        if device == 'cuda':
+            import torch
+            if not torch.cuda.is_available():
+                raise RuntimeError(
+                    "CUDA is requested but not available! "
+                    "Please check your GPU driver and CUDA installation. "
+                    "Do not fall back to CPU."
+                )
+            logger.info(f"CUDA detected: {torch.cuda.get_device_name(0)}")
+
+        # Set environment variables to bypass torch version check
+        import os
+        os.environ['HF_HUB_ENABLE_HF_TRANSFER'] = '0'
+
+        # Load model with trust_remote_code to avoid safetensors issues
         self.model = SentenceTransformer(
             model_name,
             device=device,
-            cache_folder=cache_dir
+            cache_folder=cache_dir,
+            trust_remote_code=True
         )
+
+        # Verify model is actually on the requested device
+        if device == 'cuda':
+            import torch
+            actual_device = str(self.model.device)
+            if not actual_device.startswith('cuda'):
+                raise RuntimeError(
+                    f"Model loaded on {actual_device} instead of cuda! "
+                    "This should not happen."
+                )
+            logger.info(f"Model confirmed on GPU: {actual_device}")
 
         logger.info(f"Model loaded successfully. Dimension: {self.model.get_sentence_embedding_dimension()}")
 
@@ -60,6 +89,9 @@ class EmbeddingModel:
             self._load_model()
 
         normalize = self.embedding_config.get('normalize_embeddings', True)
+
+        if self.model is None:
+            raise RuntimeError("Model not loaded. Call _load_model() first.")
 
         embedding = self.model.encode(
             text,
@@ -85,6 +117,9 @@ class EmbeddingModel:
         batch_size = self.embedding_config.get('batch_size', 32)
         normalize = self.embedding_config.get('normalize_embeddings', True)
 
+        if self.model is None:
+            raise RuntimeError("Model not loaded. Call _load_model() first.")
+
         embeddings = self.model.encode(
             texts,
             batch_size=batch_size,
@@ -107,7 +142,7 @@ class EmbeddingModel:
         texts = [doc.page_content for doc in documents]
         return self.embed_texts(texts)
 
-    def get_model_info(self) -> Dict[str, any]:
+    def get_model_info(self) -> Dict[str, Any]:
         """
         Get information about the model
 
@@ -116,6 +151,9 @@ class EmbeddingModel:
         """
         if self.model is None:
             self._load_model()
+
+        # Assert to help type checker understand model is loaded
+        assert self.model is not None
 
         return {
             'model_name': self.embedding_config.get('model_name'),

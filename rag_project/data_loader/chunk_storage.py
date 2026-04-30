@@ -1,7 +1,7 @@
 import json
 import uuid
 from datetime import datetime
-from typing import List, Dict
+from typing import List, Dict, Any
 from pathlib import Path
 from langchain_core.documents import Document
 from rag_project.utils.logger import logger
@@ -68,7 +68,7 @@ class ChunkStorage:
 
         return documents
 
-    def get_chunks_summary(self, json_path: str) -> Dict[str, any]:
+    def get_chunks_summary(self, json_path: str) -> Dict[str, Any]:
         """
         Get summary information about chunks file
 
@@ -85,7 +85,7 @@ class ChunkStorage:
         total_chars = sum(c['char_count'] for c in chunks_data)
         avg_chunk_length = total_chars / total_chunks if total_chunks > 0 else 0
 
-        doc_types = {}
+        doc_types: Dict[str, int] = {}
         for chunk in chunks_data:
             doc_type = chunk['metadata'].get('doc_type', 'unknown')
             doc_types[doc_type] = doc_types.get(doc_type, 0) + 1

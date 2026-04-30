@@ -1,0 +1,13 @@
+{
+  "metrics": {
+    "context_precision": 0.6666666666,
+    "context_recall": 0.6666666666666666,
+    "f1_score": 0.6666666666333333
+  },
+  "num_samples": 5,
+  "successful_samples": 3,
+  "parallel_workers": 10,
+  "total_time_seconds": 2164.095012664795,
+  "speed_per_question": 432.81900253295896,
+  "timestamp": "2026-03-10T14:00:26.893304"
+}

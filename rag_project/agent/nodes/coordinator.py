@@ -21,56 +21,97 @@ logger = setup_logger(__name__)
 
 def coordinator_node(state: Dict, llm_manager) -> Dict:
     """
-    Generate a structured chapter outline from the user's request.
+    生成基于两阶段战略推演架构的固定8章大纲。
 
-    This node analyzes the user's input and creates a comprehensive plan
-    with 5-8 chapters covering all essential aspects of the topic.
+    该节点不再使用LLM动态生成，而是返回包含阶段(phase)和分析模型(analysis_model)
+    元数据的固定8章结构，适用于省属国企政策导向型战略规划报告。
+
+    两阶段架构:
+    - Diagnosis阶段（第1-3章）: 宏观环境、区域战略、内部诊断
+    - Initiatives阶段（第4-8章）: 战略思路、主业举措、创新驱动、产业协同、治理效能
 
     Args:
         state: Current GraphState containing:
             - user_input: User's original request
-        llm_manager: LLMManager instance configured for coordinator agent
+        llm_manager: LLMManager instance (not used, kept for interface compatibility)
 
     Returns:
         Dict with updates:
-            - global_plan: List of chapter titles (5-8 chapters)
+            - global_plan: List[Dict] with keys: title, phase, analysis_model, index
             - current_chapter_index: Set to 0
+            - current_phase: Set to "diagnosis"
 
     Example:
-        >>> state = {"user_input": "Generate a report on China's transportation industry"}
+        >>> state = {"user_input": "生成江西交投集团战略规划报告"}
         >>> result = coordinator_node(state, llm_manager)
-        >>> print(result["global_plan"])
-        ['Industry Background', 'Policy Environment', 'Current Status Analysis',
-         'Major Problems', 'Strategic Suggestions', 'Future Outlook']
+        >>> print(result["global_plan"][0])
+        {'title': '第一章：宏观政策环境与时代要求',
+         'phase': 'diagnosis',
+         'analysis_model': 'PEST模型 (侧重P-政策与E-经济维度)',
+         'index': 0}
     """
     user_input = state.get("user_input", "")
 
-    logger.info(f"Coordinator node generating plan for: {user_input[:100]}...")
+    logger.info(f"Coordinator node generating fixed 8-chapter strategic plan for: {user_input[:100]}...")
 
-    # Generate prompt for outline creation
-    prompt = _generate_outline_prompt(user_input)
+    # 固定的8章结构，包含phase和analysis_model元数据
+    global_plan = [
+        {
+            "title": "第一章：宏观政策环境与时代要求",
+            "phase": "diagnosis",
+            "analysis_model": "PEST模型 (侧重P-政策与E-经济维度)",
+            "index": 0
+        },
+        {
+            "title": "第二章：区域战略与'交通强省'建设剖析",
+            "phase": "diagnosis",
+            "analysis_model": "无特定模型，侧重省级政策承接与区域占位分析",
+            "index": 1
+        },
+        {
+            "title": "第三章：行业演进趋势与当前内部诊断",
+            "phase": "diagnosis",
+            "analysis_model": "波特五力模型与SWOT分析 (强制要求在分析结尾输出结构化的SWOT矩阵)",
+            "index": 2
+        },
+        {
+            "title": "第四章：总体战略思路与政策响应目标",
+            "phase": "initiatives",
+            "analysis_model": "平衡计分卡(BSC)模型 (从财务、客户/民生、内部运营、学习与成长四个维度设定目标)",
+            "index": 3
+        },
+        {
+            "title": "第五章：主责主业：高质量建设与保通保畅举措",
+            "phase": "initiatives",
+            "analysis_model": "BCG波士顿矩阵 (将主业作为'现金牛'业务，侧重精益化与稳健回报)",
+            "index": 4
+        },
+        {
+            "title": "第六章：创新驱动：绿色低碳与智慧交投建设",
+            "phase": "initiatives",
+            "analysis_model": "安索夫矩阵 (将创新业务作为新产品/新市场拓展，侧重第二增长曲线)",
+            "index": 5
+        },
+        {
+            "title": "第七章：产业协同：交旅融合与服务地方经济",
+            "phase": "initiatives",
+            "analysis_model": "产业链协同与ESG社会责任模型",
+            "index": 6
+        },
+        {
+            "title": "第八章：治理效能：深化国企改革与党建引领",
+            "phase": "initiatives",
+            "analysis_model": "麦肯锡7S模型 (从结构、制度、风格、员工、技能等维度构建组织保障)",
+            "index": 7
+        }
+    ]
 
-    try:
-        # Invoke LLM to generate outline
-        response = llm_manager.invoke(prompt, temperature=0.3)
-
-        # Parse JSON response
-        global_plan = _parse_outline_response(response)
-
-        # Validate the plan
-        if not _validate_plan(global_plan):
-            logger.warning("Generated plan failed validation, using fallback")
-            global_plan = _get_default_plan(user_input)
-
-        logger.info(f"Generated {len(global_plan)} chapters: {[c[:50] for c in global_plan]}")
-
-    except Exception as e:
-        logger.error(f"Error generating plan: {e}. Using fallback plan.")
-        global_plan = _get_default_plan(user_input)
+    logger.info(f"Generated fixed 8-chapter strategic plan with {len([c for c in global_plan if c['phase'] == 'diagnosis'])} diagnosis chapters and {len([c for c in global_plan if c['phase'] == 'initiatives'])} initiatives chapters")
 
     return {
         "global_plan": global_plan,
-        "current_chapter_index": 0
+        "current_chapter_index": 0,
+        "current_phase": "diagnosis"
     }
 
 
@@ -84,31 +125,31 @@ def _generate_outline_prompt(user_input: str) -> str:
     Returns:
         Formatted prompt string
     """
-    return f"""Based on the following user request, generate a comprehensive research report outline with 5-8 chapters.
+    return f"""根据以下用户请求，生成一个全面的研究报告大纲，包含5-8个章节。
 
-User Request: {user_input}
+用户请求: {user_input}
 
-Requirements:
-1. Generate 5-8 chapter titles that comprehensively cover the topic
-2. Each chapter should be clear and concise (ideally under 20 words)
-3. The outline should cover these aspects:
-   - Industry/Topic Background (overview and history)
-   - Policy Environment (regulations, standards, government initiatives)
-   - Current Status Analysis (market size, trends, key players)
-   - Problems and Challenges (pain points, bottlenecks, issues)
-   - Strategic Suggestions (solutions, recommendations, best practices)
-   - Additional relevant topics (future outlook, case studies, etc.)
+要求:
+1. 生成5-8个中文章节标题，全面覆盖主题
+2. 每个章节标题应清晰简洁（最好不超过20字）
+3. 大纲应涵盖以下方面：
+   - 行业/主题背景（概述和历史）
+   - 政策环境（法规、标准、政府举措）
+   - 发展现状分析（市场规模、趋势、关键参与者）
+   - 问题与挑战（痛点、瓶颈、问题）
+   - 战略建议（解决方案、建议、最佳实践）
+   - 其他相关主题（未来展望、案例研究等）
 
-4. Return ONLY a valid JSON array of strings, like this:
-   ["Chapter 1: Title", "Chapter 2: Title", ...]
+4. 仅返回有效的JSON字符串数组，格式如下：
+   ["第一章：标题", "第二章：标题", ...]
 
-5. Do not include any explanation or text outside the JSON array
-6. Use professional, academic language appropriate for research reports
+5. 不要在JSON数组外包含任何解释或文本
+6. 使用适合研究报告的专业、学术语言
 
-Generate the outline now:"""
+现在生成大纲:"""
 
 
-def _parse_outline_response(response: str) -> List[str]:
+def _parse_outline_response(response: str) -> List[Dict]:  # Kept for compatibility, now returns List[Dict]
     """
     Parse the LLM response to extract the chapter list.
 
@@ -150,7 +191,7 @@ def _parse_outline_response(response: str) -> List[str]:
         raise ValueError(f"Invalid JSON response: {e}")
 
 
-def _validate_plan(plan: List[str]) -> bool:
+def _validate_plan(plan: List[Dict]) -> bool:  # Kept for compatibility, now validates List[Dict]
     """
     Validate that the generated plan meets requirements.
 
@@ -183,7 +224,7 @@ def _validate_plan(plan: List[str]) -> bool:
     return True
 
 
-def _get_default_plan(user_input: str) -> List[str]:
+def _get_default_plan(user_input: str) -> List[Dict]:  # Kept for compatibility, now returns List[Dict]
     """
     Generate a fallback default plan when LLM fails.
 

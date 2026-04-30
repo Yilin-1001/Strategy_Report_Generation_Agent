@@ -15,7 +15,25 @@
       "Bash(E:\\\\Miniconda3\\\\envs\\\\RAG\\\\python.exe:*)",
       "Bash(conda info:*)",
       "Bash(conda env list:*)",
-      "Bash(docker:*)"
+      "Bash(docker:*)",
+      "Bash(tee:*)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(powershell:*)",
+      "Bash(timeout:*)",
+      "Bash(git restore:*)",
+      "Bash(pip show:*)",
+      "Bash(ping:*)",
+      "Bash(set PYTHONIOENCODING=utf-8:*)",
+      "Bash(ls:*)",
+      "Bash(grep -E \"^\\\\\\\\./\\(config|rag_project|data\\)\")",
+      "Bash(find rag_project -name \"*.py\" -exec basename {} \\\\;)",
+      "Bash(mkdir:*)",
+      "Bash(find . -name \"*.py\" -path \"*/rag_project/*\" -exec grep -l \"pipeline\" {} \\\\;)",
+      "Bash(find \"E:/02 Final Year Project/RAG Project/rag_project\" -name \"*.py\" -exec grep -l \"EVAL\\\\|评估\\\\|评分\\\\|review\" {} \\\\;)",
+      "Bash(find \"E:/02 Final Year Project/RAG Project\" -name \"*.py\" -exec grep -l \"evaluate_report\\\\|evaluate.*report\\\\|scoring.*report\" {} \\\\;)",
+      "Bash(cp \"E:/02 Final Year Project/RAG Project/ablation_experiment/results/evaluation_report.csv\" \"E:/02 Final Year Project/RAG Project/ablation_experiment/results/evaluation_report_backup.csv\")",
+      "Bash(cp \"E:/02 Final Year Project/RAG Project/ablation_experiment/results/evaluation_summary.txt\" \"E:/02 Final Year Project/RAG Project/ablation_experiment/results/evaluation_summary_backup.txt\")"
     ]
   }
 }

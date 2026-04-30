@@ -1,1655 +1,897 @@
-# Agent System Architecture Documentation
+# Agent 系统架构文档
 
-## Table of Contents
-- [System Overview](#system-overview)
-- [Design Principles](#design-principles)
-- [Agent Responsibilities](#agent-responsibilities)
-- [Routing Logic](#routing-logic)
-- [Tech Stack](#tech-stack)
-- [Extension Guide](#extension-guide)
+## 目录
+- [系统概述](#系统概述)
+- [两阶段战略架构](#两阶段战略架构)
+- [设计原则](#设计原则)
+- [Agent 职责](#agent-职责)
+- [引用系统设计](#引用系统设计)
+- [战略分析模型体系](#战略分析模型体系)
+- [路由逻辑](#路由逻辑)
+- [技术栈](#技术栈)
+- [扩展指南](#扩展指南)
 
 ---
 
-## System Overview
+## 系统概述
 
-### Architecture Diagram
+### 架构图
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        USER INTERFACE                            │
-│                     (CLI / Python API)                          │
+│                        用户界面层                               │
+│                   (CLI / Python API)                           │
+│          python scripts/run_agent_report.py "请求" [-a] [-o]   │
 └─────────────────────────────┬───────────────────────────────────┘
                               │
                               ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                      LangGraph Workflow                          │
+┌────────────────────────────────────────────────────────────────┐
+│                LangGraph 工作流 (两阶段战略架构)                │
 │  ┌──────────────────────────────────────────────────────────┐  │
-│  │                     StateGraph                            │  │
+│  │                    StateGraph                            │  │
 │  │  ┌────────────────────────────────────────────────────┐  │  │
-│  │  │              GraphState (Global State)              │  │  │
-│  │  │  • user_input                                        │  │  │
-│  │  │  • global_plan                                       │  │  │
-│  │  │  • context_pool (approved chapters)                  │  │  │
-│  │  │  • chapter_scratchpad (current chapter workspace)    │  │  │
-│  │  │  • current_draft                                      │  │  │
-│  │  │  • human_feedback                                    │  │  │
+│  │  │              GraphState (全局状态)                  │  │  │
+│  │  │  • user_input              (用户原始请求)           │  │  │
+│  │  │  • global_plan             (8章结构化大纲,含元数据)  │  │  │
+│  │  │  • strategic_blueprint     (战略蓝图:使命/TOWS/KPI) │  │  │
+│  │  │  • current_phase           (diagnosis / initiatives)│  │  │
+│  │  │  • context_pool            (已审核章节,只增不改)     │  │  │
+│  │  │  • chapter_scratchpad      (当前章节工作区,阅后即焚) │  │  │
+│  │  │  • current_draft           (当前章节草稿)           │  │  │
+│  │  │  • review_decision         (审核决策)               │  │  │
+│  │  │  • final_report            (最终完整报告)           │  │  │
 │  │  └────────────────────────────────────────────────────┘  │  │
-│  │                                                           │  │
-│  │  Nodes (Agents):                                          │  │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐    │  │
-│  │  │ Coordinator  │──▶│Prepare_Chapt │──▶│ Researcher   │    │  │
-│  │  └──────────────┘  └──────────────┘  └──────────────┘    │  │
-│  │                                              │             │  │
-│  │                                              ▼             │  │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐    │  │
-│  │  │   Archiver   │◀─│Human_Review  │◀─│   Writer     │    │  │
-│  │  └──────────────┘  └──────────────┘  └──────────────┘    │  │
-│  │                           ▲                                │  │
-│  │                           │                                │  │
-│  │                    ┌──────────────┐                       │  │
-│  │                    │   Analyst    │                       │  │
-│  │                    └──────────────┘                       │  │
+│  │                                                          │  │
+│  │  节点 (Agents):                                          │  │
+│  │                                                          │  │
+│  │  ┌────────────┐   ┌────────────┐   ┌─────────────┐      │  │
+│  │  │ 协调器     │──▶│ 章节准备   │──▶│  研究员     │      │  │
+│  │  │Coordinator │   │PrepChapter │   │ Researcher  │      │  │
+│  │  │ (固定8章)  │   │(蓝图注入)  │   │(多查询检索) │      │  │
+│  │  └────────────┘   └────────────┘   └─────────────┘      │  │
+│  │                                             │            │  │
+│  │                                             ▼            │  │
+│  │  ┌────────────┐   ┌────────────┐   ┌─────────────┐      │  │
+│  │  │  归档器    │◀──│ 人工审核   │◀──│  分析员     │      │  │
+│  │  │ Archiver   │   │HumanReview │   │  Analyst    │      │  │
+│  │  │(摘要+引用) │   │(章节+蓝图) │   │(模型注入)   │      │  │
+│  │  └────────────┘   └──────┬─────┘   └─────────────┘      │  │
+│  │                          │              ▲                 │  │
+│  │  ┌────────────┐          │              │                 │  │
+│  │  │ 战略规划师 │◀─────────┘              │                 │  │
+│  │  │ Strategist │  (第3章后生成蓝图)      │                 │  │
+│  │  │(SWOT→TOWS) │                         │                 │  │
+│  │  └────────────┘                          │                 │  │
+│  │                                   ┌─────────────┐         │  │
+│  │                                   │   写作员    │─────────┘  │
+│  │                                   │   Writer    │            │
+│  │                                   │(引用后处理) │            │
+│  │                                   └─────────────┘            │
 │  └──────────────────────────────────────────────────────────┘  │
-└─────────────────────────────┬───────────────────────────────────┘
+└─────────────────────────────┬──────────────────────────────────┘
                               │
           ┌───────────────────┼───────────────────┐
           │                   │                   │
           ▼                   ▼                   ▼
 ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
-│  LLM Manager    │  │  RAG Retriever  │  │  Checkpointer   │
-│  (DeepSeek API) │  │  (Milvus)       │  │  (MemorySaver)  │
+│   LLM 管理器    │  │  RAG 检索器     │  │  检查点管理     │
+│ (DeepSeek API)  │  │   (Milvus)      │  │ (MemorySaver)   │
+│ 6种Agent配置    │  │ BGE-M3嵌入      │  │ 断点恢复        │
+│ 独立温度/Token  │  │ 多查询+去重     │  │                  │
 └─────────────────┘  └─────────────────┘  └─────────────────┘
           │                   │
           ▼                   ▼
 ┌─────────────────┐  ┌─────────────────┐
-│  DeepSeek API   │  │  Milvus Vector  │
-│  (LLM Service)  │  │  Database       │
+│  DeepSeek API   │  │  Milvus 向量库  │
+│   (LLM服务)     │  │  (HNSW索引)     │
+│                 │  │  3,422条向量     │
 └─────────────────┘  └─────────────────┘
 ```
 
-### Core Components
+### 核心组件
 
-#### 1. LangGraph Workflow Engine
-- **File:** `rag_project/agent/graph.py`
-- **Purpose:** Orchestrates multi-agent workflow
-- **Key Features:**
-  - State management via StateGraph
-  - Conditional routing between nodes
-  - Interrupt points for human intervention
-  - Checkpoint-based persistence
+#### 1. LangGraph 工作流引擎
+- **文件:** `rag_project/agent/graph.py`
+- **目的:** 编排多 Agent 工作流（两阶段战略架构）
+- **核心功能:**
+  - 通过 StateGraph 进行状态管理
+  - 节点间的条件路由（含蓝图审核路由）
+  - 人工干预的断点设置（`interrupt_before=["human_review"]`）
+  - 基于检查点的持久化（MemorySaver）
+  - 两阶段流程控制（诊断 → 蓝图 → 推演）
 
-#### 2. State Management
-- **File:** `rag_project/agent/state.py`
-- **Purpose:** Maintains global workflow state
-- **Architecture:** Three-tier memory system
-  - **Long-term Memory:** Milvus RAG (persistent knowledge)
-  - **Working Memory:** `chapter_scratchpad` (per-chapter sandbox)
-  - **Approved Memory:** `context_pool` (curated content)
+#### 2. 状态管理
+- **文件:** `rag_project/agent/state.py`
+- **目的:** 维护全局工作流状态
+- **架构:** 三层记忆系统 + 战略记忆层
+  - **长期记忆:** Milvus RAG（持久化知识库，3,422条文档chunks）
+  - **工作记忆:** `chapter_scratchpad`（每章节独立沙盒，阅后即焚）
+  - **已批准记忆:** `context_pool`（仅存入审核通过的定稿，只能累加）
+  - **战略记忆:** `strategic_blueprint`（TOWS分析、使命、KPI，推演阶段的约束契约）
 
-#### 3. Agent Nodes
-- **Directory:** `rag_project/agent/nodes/`
-- **Purpose:** Specialized AI agents for specific tasks
-- **Types:**
-  - `coordinator.py` - Strategic planning
-  - `prep_chapter.py` - Context preparation
-  - `researcher.py` - Information retrieval
-  - `analyst.py` - Critical analysis
-  - `writer.py` - Content generation
-  - `human_review.py` - HITL interface
-  - `archiver.py` - Report compilation
+#### 3. Agent 节点
+- **目录:** `rag_project/agent/nodes/`
+- **8个专业化节点:**
+  - `coordinator.py` - 固定8章大纲生成（含阶段元数据和分析模型）
+  - `prep_chapter.py` - 章节状态初始化 + 推演阶段蓝图注入
+  - `researcher.py` - 多查询语义检索 + 文档去重
+  - `analyst.py` - 战略模型注入分析（PEST/SWOT/BCG等8种模型）
+  - `writer.py` - 内容生成 + 引用后处理（Document X → 真实文件名）
+  - `strategist.py` - 战略蓝图生成（SWOT → TOWS → 使命/支柱/KPI）
+  - `human_review.py` - 双模式审核（章节审核 + 蓝图审核）+ 路由函数
+  - `archiver.py` - 执行摘要生成 + 引用修复 + 报告汇编
 
-#### 4. LLM Manager
-- **File:** `rag_project/agent/llm_manager.py`
-- **Purpose:** Manages LLM API interactions
-- **Features:**
-  - Agent-specific configurations
-  - Temperature tuning per agent type
-  - OpenAI-compatible API wrapper
-  - Error handling and retry logic
+#### 4. LLM 管理器
+- **文件:** `rag_project/agent/llm_manager.py`
+- **目的:** 管理 LLM API 交互，6种Agent独立配置
+- **配置:**
 
-#### 5. RAG Retriever
-- **File:** `rag_project/agent/retriever.py`
-- **Purpose:** Knowledge base queries
-- **Features:**
-  - Semantic search via embeddings
-  - Metadata filtering
-  - Multi-query support
-  - Result formatting for agents
+| Agent | 温度 | 最大Token | 用途 |
+|-------|------|-----------|------|
+| coordinator | 0.3 | 2048 | 稳定生成大纲 |
+| researcher | 0.1 | 4096 | 精确生成查询 |
+| analyst | 0.5 | 3072 | 平衡分析 |
+| writer | 0.7 | 4096 | 创意写作 |
+| strategist | 0.5 | 4096 | 战略推导 |
+| archiver | 0.5 | 3072 | 摘要生成 |
+
+#### 5. RAG 检索器
+- **文件:** `rag_project/agent/retriever.py`
+- **目的:** 知识库查询，封装 RAGPipeline
+- **功能:**
+  - 基于 BGE-M3 嵌入的语义搜索（1024维）
+  - 多查询并行检索（Researcher节点生成3-5个查询）
+  - SHA256文本去重
+  - Top-K结果返回（默认top_k=20）
 
 ---
 
-## Design Principles
+## 两阶段战略架构
 
-### 1. State Isolation
+### 概述
 
-**Problem:** Agents need different scopes of information access
-- Researcher should see knowledge base but not other chapters
-- Writer needs current chapter context but not raw search results
-- Analyst needs clean evidence without writer's bias
+Agent 系统实现了**两阶段战略推导架构**，专为省属国企战略规划设计：
 
-**Solution:** Three-tier memory architecture
+1. **诊断阶段（第 1-3 章）:** 宏观环境 → 区域战略 → 内部诊断（SWOT）
+2. **战略蓝图生成:** TOWS矩阵分析 → 使命制定 → 支柱/KPI设定
+3. **推演阶段（第 4-8 章）:** 在蓝图约束下的战略举措
 
-#### Tier 1: Long-term Memory (Milvus RAG)
+### 固定8章结构
+
+Coordinator 不再使用 LLM 动态生成大纲，而是返回包含完整元数据的固定结构：
+
 ```python
-# Only accessible by Researcher node
-class RAGRetriever:
-    def search(self, query: str, top_k: int) -> List[Dict]:
-        # Queries Milvus for relevant documents
-        # Returns raw evidence from knowledge base
-```
-
-**Access Pattern:**
-- Researcher ONLY
-- Read-only
-- Contains entire knowledge base
-- Persistent across all chapters
-
-#### Tier 2: Working Memory (chapter_scratchpad)
-```python
-# Created fresh for each chapter
-chapter_scratchpad = {
-    "queries": ["query1", "query2"],      # From Researcher
-    "evidence": ["doc1", "doc2"],         # From Researcher
-    "analysis": {                         # From Analyst
-        "key_findings": [...],
-        "trends": [...]
+global_plan = [
+    # === 诊断阶段 (Diagnosis) ===
+    {
+        "title": "第一章：宏观政策环境与时代要求",
+        "phase": "diagnosis",
+        "analysis_model": "PEST模型 (侧重P-政策与E-经济维度)",
+        "index": 0
+    },
+    {
+        "title": "第二章：区域战略与'交通强省'建设剖析",
+        "phase": "diagnosis",
+        "analysis_model": "无特定模型，侧重省级政策承接与区域占位分析",
+        "index": 1
+    },
+    {
+        "title": "第三章：行业演进趋势与当前内部诊断",
+        "phase": "diagnosis",
+        "analysis_model": "波特五力模型与SWOT分析 (强制要求结构化SWOT矩阵)",
+        "index": 2
+    },
+    # 第3章后 → 战略规划师生成蓝图 → 人工审核蓝图
+    # === 推演阶段 (Initiatives) ===
+    {
+        "title": "第四章：总体战略思路与政策响应目标",
+        "phase": "initiatives",
+        "analysis_model": "平衡计分卡(BSC)模型 (财务/民生/运营/学习四维度)",
+        "index": 3
+    },
+    {
+        "title": "第五章：主责主业：高质量建设与保通保畅举措",
+        "phase": "initiatives",
+        "analysis_model": "BCG波士顿矩阵 (主业作为'现金牛'业务)",
+        "index": 4
+    },
+    {
+        "title": "第六章：创新驱动：绿色低碳与智慧交投建设",
+        "phase": "initiatives",
+        "analysis_model": "安索夫矩阵 (新产品/新市场拓展,第二增长曲线)",
+        "index": 5
+    },
+    {
+        "title": "第七章：产业协同：交旅融合与服务地方经济",
+        "phase": "initiatives",
+        "analysis_model": "产业链协同与ESG社会责任模型",
+        "index": 6
+    },
+    {
+        "title": "第八章：治理效能：深化国企改革与党建引领",
+        "phase": "initiatives",
+        "analysis_model": "麦肯锡7S模型 (结构/制度/风格/员工/技能等)",
+        "index": 7
     }
-}
-```
-
-**Access Pattern:**
-- Researcher: Writes queries and evidence
-- Analyst: Reads evidence, writes analysis
-- Writer: Reads all, writes draft
-- Cleared after each chapter (not added to context_pool)
-
-**Key Design:** Scratchpad is "read-and-burn" - it exists only for current chapter, preventing contamination between chapters.
-
-#### Tier 3: Approved Memory (context_pool)
-```python
-# Only contains human-approved chapters
-context_pool = [
-    "# Chapter 1: Industry Background\n\nContent...",
-    "# Chapter 2: Policy Environment\n\nContent..."
 ]
 ```
 
-**Access Pattern:**
-- Written ONLY when human approves chapter
-- Read by Prepare_Chapter for context summary
-- Accumulates throughout workflow
-- Used by Archiver for final report
+### 两阶段工作流图
 
-**State Isolation Flow:**
-```python
-# Prepare_Chapter creates compressed summary
-context_summary = compress(context_pool)
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    两阶段工作流                                 │
+└─────────────────────────────────────────────────────────────────┘
 
-# Researcher CANNOT see context_pool
-# Only uses RAG knowledge base
-
-# Analyst reads scratchpad["evidence"]
-# Cannot see other chapters in context_pool
-
-# Writer reads scratchpad (evidence + analysis)
-# Plus context_summary (brief context from prev chapters)
-# NOT full context_pool (prevents copying)
-
-# Only after human approve:
-# current_draft → context_pool
-# scratchpad → cleared
+     第一阶段：诊断阶段                第二阶段：推演阶段
+┌────────────────────────────┐    ┌────────────────────────────┐
+│  第1章：PEST宏观环境分析    │    │  第4章：BSC战略目标        │
+│  第2章：区域战略定位        │    │  第5章：BCG主责主业举措    │
+│  第3章：波特五力+SWOT诊断   │    │  第6章：安索夫创新驱动     │
+└───────────┬────────────────┘    │  第7章：ESG产业协同        │
+            │                      │  第8章：7S治理效能         │
+            ▼                      └─────────────┬──────────────┘
+┌───────────────────────┐                      │
+│   战略规划师节点       │                      │
+│   - 从第3章提取SWOT    │                      │
+│   - TOWS矩阵分析       │                      │
+│   - 推导核心使命       │                      │
+│   - 生成战略支柱       │                      │
+│   - BSC维度KPI设定     │                      │
+└───────────┬───────────┘                      │
+            │                                   │
+            ▼                                   │
+┌───────────────────────┐                      │
+│   蓝图审核 (人工批准)  │                      │
+└───────────┬───────────┘                      │
+            │                                   │
+        是否批准?                               │
+            │                                   │
+      ┌─────┴─────┐                            │
+      │           │                            │
+     是           否                            │
+      │           └────────────────┐           │
+      ▼                  (重新生成)             │
+   进入第4章                                   │
+      │          (蓝图注入到每章上下文)         │
+      └────────────────────────────────────────┘
+                   │
+                   ▼
+         ┌──────────────────┐
+         │  归档器节点       │
+         │  - 执行摘要生成   │
+         │  - 引用修复       │
+         │  - 完整报告汇编   │
+         │  - 蓝图附录       │
+         └──────────────────┘
 ```
 
-### 2. Chapter-by-Chapter Generation
+### 状态字段
 
-**Problem:** Generating full report in one LLM call causes:
-- Loss of coherence in long documents
-- Token limit exceeded
-- Hard to review and revise
-- No quality control per section
-
-**Solution:** Sequential chapter generation
-
-#### Workflow:
 ```python
-for chapter_index in range(len(global_plan)):
-    # 1. Prepare context for THIS chapter only
-    chapter_title = global_plan[chapter_index]
-    context_summary = compress(context_pool)  # Brief, not detailed
+class GraphState(TypedDict):
+    # --- 输入层 ---
+    user_input: str                     # 用户的原始请求
 
-    # 2. Create fresh scratchpad
-    chapter_scratchpad = {}  # Empty, no previous chapter data
+    # --- 全局规划层 ---
+    global_plan: List[Dict]             # 8章结构化大纲 (含title, phase, analysis_model)
+    current_chapter_index: int          # 当前执行的章节索引 (0-based)
 
-    # 3. Researcher: Fill scratchpad with evidence
-    chapter_scratchpad["evidence"] = rag_search(chapter_title)
+    # --- 战略蓝图层（两阶段架构） ---
+    strategic_blueprint: Optional[Dict] # 战略蓝图 (mission, swot_analysis, tows_strategies,
+                                        #          strategic_pillars, kpis, approved)
+    current_phase: str                  # "diagnosis" 或 "initiatives"
 
-    # 4. Analyst: Analyze evidence in scratchpad
-    chapter_scratchpad["analysis"] = analyze(chapter_scratchpad["evidence"])
+    # --- 上下文层 (长期/跨章节记忆) ---
+    context_pool: Annotated[List[str], operator.add]  # 已审核通过的章节 (只能累加)
+    context_summary: str                # 压缩后的全局上下文摘要
 
-    # 5. Writer: Generate draft from scratchpad
-    current_draft = write(chapter_scratchpad, context_summary)
+    # --- 当前章节层 (短期/工作区记忆) ---
+    chapter_title: str                  # 当前章节名
+    chapter_question: str               # 当前章节的研究问题
+    chapter_context: str                # 当前章节的上下文
+    chapter_scratchpad: Dict            # 本章结构化草稿本 (阅后即焚)
+    current_draft: str                  # Writer生成的当前草稿
 
-    # 6. Human review: Check quality
-    if approve:
-        context_pool.append(current_draft)  # Add to approved memory
-        chapter_scratchpad = {}  # Clear for next chapter
-    else:
-        # Revise without advancing
-        continue
+    # --- 控制层 ---
+    human_feedback: Dict                # 人类结构化反馈
+    review_decision: str                # "approve", "revise:data", "revise:logic",
+                                        # "revise:writing", "approve_blueprint",
+                                        # "revise_blueprint", "finished"
+
+    # --- 输出层 ---
+    final_report: str                   # Archiver生成的最终完整报告
 ```
 
-**Benefits:**
-1. **Bounded Context:** Each agent works with focused information
-2. **Quality Control:** Human can review and refine each chapter
-3. **Memory Efficiency:** Scratchpad cleared after each chapter
-4. **Iterative Improvement:** Can revise individual chapters
+---
 
-**State Updates:**
-```python
-# On approve:
-context_pool += [full_chapter]  # Accumulate approved chapters
-scratchpad = {}  # Clear working memory
-chapter_index += 1  # Advance
+## 设计原则
 
-# On revise:
-# No state changes
-# Keep same scratchpad
-# Re-run specific node (researcher/analyst/writer)
+### 1. 四层状态隔离
+
+```
+第一层：长期记忆（Milvus RAG）
+    ↓ 仅 Researcher 可访问
+    存储内容：3,422个文档chunks
+    特点：永久保存，所有章节共享
+
+第二层：短期工作区（chapter_scratchpad）
+    ↓ 当前章节专用，阅后即焚
+    存储内容：queries, retrieved_docs, key_facts, insights,
+              document_summary, analysis_model_used
+    特点：每章结束后物理清空为 {}
+
+第三层：神圣上下文池（context_pool）
+    ↓ 累积存储，只能添加
+    存储内容：人工审核通过的章节完整内容
+    特点：使用 operator.add 注解，确保纯累加不覆盖
+
+第四层：战略记忆（strategic_blueprint）
+    ↓ 推演阶段的约束契约
+    存储内容：使命、SWOT、TOWS策略、战略支柱、KPI
+    特点：第3章后生成，人工批准后约束所有推演章节
 ```
 
-### 3. Human-in-the-Loop (HITL)
+**各节点访问权限：**
 
-**Problem:** LLM outputs can have:
-- Factual errors
-- Logical inconsistencies
-- Poor writing quality
-- Missing important information
+| 节点 | Milvus RAG | Scratchpad | Context Pool | Blueprint |
+|------|:----------:|:----------:|:------------:|:---------:|
+| Researcher | 读+写 | 写 | - | - |
+| Analyst | - | 读+写 | - | - |
+| Writer | - | 读 | - | 读 |
+| Strategist | - | - | 读(前3章) | 写 |
+| Archiver | - | - | 读(全部) | 读 |
 
-**Solution:** Mandatory human review between chapters
+### 2. 逐章生成 + 蓝图检查点
 
-#### Interrupt Mechanism:
 ```python
-# LangGraph interrupt configuration
+# 诊断阶段（第1-3章）
+for chapter_index in [0, 1, 2]:
+    prepare_chapter → researcher → analyst → writer → human_review
+
+# 战略蓝图生成（第3章后自动触发）
+strategist_node(context_pool[0:3])  → strategic_blueprint
+
+# 蓝图审核
+if human_approve(blueprint):
+    blueprint["approved"] = True
+else:
+    strategist_node(context_pool, feedback)  # 重新生成
+
+# 推演阶段（第4-8章，带蓝图约束）
+for chapter_index in [3, 4, 5, 6, 7]:
+    prepare_chapter(注入蓝图) → researcher → analyst → writer → human_review
+
+# 最终报告
+archiver_node(context_pool, blueprint) → final_report
+```
+
+### 3. 人机协同（HITL）
+
+#### 中断机制
+```python
 app = workflow.compile(
     checkpointer=MemorySaver(),
-    interrupt_before=["human_review"]  # PAUSE here
+    interrupt_before=["human_review"]  # 在此处暂停
 )
 ```
 
-#### Review Flow:
-```python
-# 1. Workflow executes until interrupt
-state = app.invoke(initial_state, config)
+#### 双模式审核
 
-# Workflow PAUSED at human_review node
-# Execution stopped, waiting for input
+**章节审核（每章后）：**
+| 决策 | 路由目标 | 说明 |
+|------|----------|------|
+| `approve` | 下一章/strategist/archiver | 通过，进入下一环节 |
+| `revise:data` | researcher | 数据不足，重新检索 |
+| `revise:logic` | analyst | 逻辑问题，重新分析 |
+| `revise:writing` | writer | 文笔问题，重新撰写 |
 
-# 2. Human reviews current_draft
-print(state["current_draft"])
-
-# 3. Human provides decision
-state["review_decision"] = "approve"  # or revise:*
-state["human_feedback"] = {...}
-
-# 4. Resume workflow
-state = app.invoke(state, config)  # Continues from interrupt
-```
-
-#### Decision Types:
-
-**approve:**
-```python
-if decision == "approve":
-    # Add to approved memory
-    context_pool.append(current_draft)
-    # Clear working memory
-    scratchpad = {}
-    # Advance to next chapter
-    chapter_index += 1
-```
-
-**revise:data:**
-```python
-if decision == "revise:data":
-    # Route back to researcher
-    # Keep same scratchpad
-    # Add new queries from human_feedback
-    scratchpad["queries"].extend(human_feedback["new_queries"])
-```
-
-**revise:logic:**
-```python
-if decision == "revise:logic":
-    # Route back to analyst
-    # Keep evidence, re-analyze
-    # Use human_feedback to guide analysis
-```
-
-**revise:writing:**
-```python
-if decision == "revise:writing":
-    # Route back to writer
-    # Keep evidence and analysis
-    # Rewrite with new instructions
-```
-
-**Benefits:**
-1. **Quality Assurance:** Human catches errors before propagation
-2. **Iterative Refinement:** Multiple revision cycles possible
-3. **Flexible Control:** Human can steer direction
-4. **Trust Building:** User sees each chapter's evolution
-
-### 4. Structured Reasoning
-
-**Problem:** LLMs can:
-- Jump to conclusions without evidence
-- Hallucinate information
-- Make logical leaps
-- Miss important aspects
-
-**Solution:** Chain-of-thought with structured reasoning steps
-
-#### Reasoning Chain:
-
-**Step 1: Decomposition (Coordinator)**
-```python
-# User request → Structured outline
-user_input = "Analyze China's EV industry"
-
-# Coordinator generates plan:
-global_plan = [
-    "Industry Background",
-    "Policy Environment",
-    "Market Analysis",
-    "Key Players",
-    "Technology Trends",
-    "Challenges",
-    "Future Outlook"
-]
-```
-
-**Step 2: Evidence Gathering (Researcher)**
-```python
-# Chapter title → Search queries
-chapter_title = "Market Analysis"
-
-# Researcher generates structured queries:
-queries = [
-    "China EV market size 2024",
-    "EV sales statistics by brand",
-    "Market growth rate trends",
-    "Regional market distribution"
-]
-
-# Retrieves evidence:
-evidence = [
-    {"text": "...", "source": "...", "score": 0.92},
-    {"text": "...", "source": "...", "score": 0.89}
-]
-```
-
-**Step 3: Analysis (Analyst)**
-```python
-# Evidence → Structured insights
-analysis = {
-    "key_findings": [
-        "Market grew 35% YoY",
-        "BYD leads with 31.8% share"
-    ],
-    "trends": [
-        "Shift to premium segments",
-        "Increased export activity"
-    ],
-    "insights": [
-        "Policy support driving growth",
-        "Intensifying competition"
-    ],
-    "data_gaps": [
-        "Q4 2024 data incomplete"
-    ]
-}
-```
-
-**Step 4: Synthesis (Writer)**
-```python
-# Evidence + Analysis → Coherent content
-# Writer must:
-# 1. Reference specific evidence (citations)
-# 2. Build on analysis insights
-# 3. Structure logically (intro → body → conclusion)
-# 4. Maintain professional tone
-
-current_draft = """
-# Chapter 3: Market Analysis
-
-## 3.1 Market Size and Growth
-According to [Source], the market grew 35%...
-
-## 3.2 Competitive Landscape
-BYD leads with 31.8% market share...
-
-## 3.3 Key Trends
-Analysis shows shift to premium segments...
-"""
-```
-
-**Structured Reasoning Benefits:**
-1. **Traceability:** Each step builds on previous
-2. **Verifiability:** Evidence is explicit
-3. **Debugging:** Can inspect intermediate outputs
-4. **Quality:** Structured approach reduces errors
+**蓝图审核（第3章后）：**
+| 决策 | 路由目标 | 说明 |
+|------|----------|------|
+| `approve_blueprint` | prepare_chapter | 蓝图通过，进入推演阶段 |
+| `revise_blueprint` | strategist | 重新生成蓝图 |
 
 ---
 
-## Agent Responsibilities
+## Agent 职责
 
-### 1. Coordinator Agent
+### 1. Coordinator（协调器）
 
-**File:** `rag_project/agent/nodes/coordinator.py`
+**文件:** `rag_project/agent/nodes/coordinator.py`
 
-**Purpose:** Strategic planning and task decomposition
+**目的:** 生成固定的8章结构化大纲
 
-**Input:**
-- `user_input`: User's request text
+**实现方式:** 不调用LLM，直接返回预定义的8章结构
 
-**Output:**
-- `global_plan`: List of 5-8 chapter titles
-- `current_chapter_index`: Set to 0
-
-**Responsibilities:**
-1. Analyze user request intent
-2. Determine report scope and structure
-3. Generate comprehensive chapter outline
-4. Ensure logical flow between chapters
-
-**Configuration:**
-```python
-AGENT_CONFIGS["coordinator"] = {
-    "temperature": 0.3,  # Low for consistency
-    "max_tokens": 2048,
-    "system_prompt": "Be concise, strategic, and focused..."
-}
-```
-
-**Prompt Strategy:**
-```python
-prompt = f"""
-Based on user request: {user_input}
-
-Generate 5-8 chapter titles covering:
-- Industry/Topic Background
-- Policy Environment
-- Current Status Analysis
-- Problems and Challenges
-- Strategic Suggestions
-- Additional relevant topics
-
-Return ONLY a JSON array of strings.
-"""
-```
-
-**Error Handling:**
-- JSON parse failure → Use fallback plan
-- Validation failure → Use default template
-- API error → Return default structure
-
-**Example Output:**
-```json
-[
-  "第一章：中国新能源汽车行业发展背景与历程",
-  "第二章：政策环境与监管框架分析",
-  "第三章：市场规模与销量现状分析",
-  "第四章：主要企业竞争格局",
-  "第五章：技术创新与智能化发展",
-  "第六章：面临的挑战与制约因素",
-  "第七章：发展建议与战略展望"
-]
-```
-
-### 2. Prepare Chapter Agent
-
-**File:** `rag_project/agent/nodes/prep_chapter.py`
-
-**Purpose:** Initialize chapter-specific context
-
-**Input:**
-- `global_plan`: Full chapter list
-- `current_chapter_index`: Current chapter number
-- `context_pool`: List of approved chapters
-
-**Output:**
-- `chapter_title`: Current chapter title
-- `context_summary`: Compressed summary of previous chapters
-- `chapter_scratchpad`: Empty dict for this chapter
-
-**Responsibilities:**
-1. Extract current chapter title from plan
-2. Compress context_pool into brief summary
-3. Initialize clean scratchpad for this chapter
-4. Prepare context for Researcher
-
-**Context Compression Strategy:**
-```python
-def compress_context(context_pool):
-    # Don't pass full chapters (too much context)
-    # Create brief summary instead
-
-    all_titles = [extract_title(chapter) for chapter in context_pool]
-
-    summary_prompt = f"""
-    Previous chapters covered: {all_titles}
-
-    Provide a 2-3 sentence summary of key points
-    that the current chapter should reference.
-    """
-
-    return llm.invoke(summary_prompt, max_tokens=200)
-```
-
-**State Isolation:**
-- Creates FRESH scratchpad (no previous chapter data)
-- Prevents information leakage between chapters
-- Ensures each chapter starts clean
-
-**Example Output:**
+**输出:**
 ```python
 {
-    "chapter_title": "第三章：市场规模与销量现状分析",
-    "context_summary": "前两章介绍了行业发展背景和政策支持框架。本章应重点引用政策支持对市场增长的推动作用。",
-    "chapter_scratchpad": {}  # Empty, ready for Researcher
+    "global_plan": [
+        {"title": "第一章：...", "phase": "diagnosis", "analysis_model": "PEST模型...", "index": 0},
+        # ... 8章
+    ],
+    "current_chapter_index": 0,
+    "current_phase": "diagnosis"
 }
 ```
 
-### 3. Researcher Agent
+**为什么不用LLM生成？**
+- 省属国企战略规划有标准格式要求
+- 避免LLM生成不一致的大纲结构
+- 每章的分析模型需精确匹配战略框架
 
-**File:** `rag_project/agent/nodes/researcher.py`
+---
 
-**Purpose:** Information retrieval from knowledge base
+### 2. Prepare Chapter（章节准备）
 
-**Input:**
-- `chapter_title`: Current chapter to research
-- `chapter_scratchpad`: Empty dict (to be populated)
+**文件:** `rag_project/agent/nodes/prep_chapter.py`
 
-**Output:**
-- `chapter_scratchpad`: Updated with queries, evidence, sources
+**目的:** 初始化章节状态 + 推演阶段蓝图注入
 
-**Responsibilities:**
-1. Generate search queries from chapter title
-2. Query RAG knowledge base (Milvus)
-3. Retrieve relevant documents with metadata
-4. Populate scratchpad with structured evidence
+**核心操作:**
+1. 从 `global_plan[index]` 提取章节标题和元数据
+2. 清空 `chapter_scratchpad = {}`（状态隔离）
+3. 清空 `current_draft = ""`（确保干净起点）
+4. 生成 `chapter_question`（从标题转换）
+5. **推演阶段特殊处理:** 如果 `phase == "initiatives"` 且蓝图已批准，将蓝图注入到 `chapter_scratchpad`
 
-**Query Generation:**
+**蓝图注入逻辑:**
 ```python
-# Generate 3-5 diverse queries
-prompt = f"""
-Generate search queries for: {chapter_title}
-
-Create 3-5 specific queries that:
-1. Cover different aspects of the topic
-2. Use relevant keywords
-3. Target different document types (news, reports, regulations)
-4. Include recent time periods if applicable
-
-Return as JSON array.
-"""
-
-queries = json.loads(llm.invoke(prompt))
+if is_initiatives_phase and blueprint and blueprint.get("approved"):
+    chapter_scratchpad["strategic_blueprint"] = strategic_blueprint
 ```
 
-**RAG Search:**
-```python
-for query in queries:
-    results = rag_retriever.search(
-        query=query,
-        top_k=5,
-        filters={
-            "doc_type": ["news", "report", "regulation"],
-            "publish_date": ["2023-01-01", "2024-12-31"]
-        }
-    )
-    all_results.extend(results)
+---
+
+### 3. Researcher（研究员）
+
+**文件:** `rag_project/agent/nodes/researcher.py`
+
+**目的:** 多查询语义检索
+
+**工作流程:**
+```
+chapter_question → LLM生成3-5个查询 → Milvus检索每查询top_k=20
+→ SHA256文本去重 → 按score降序 → 保留top 20
 ```
 
-**Evidence Structuring:**
+**状态读写:**
+- 读: `chapter_question`, `chapter_context`, `chapter_scratchpad`
+- 写: `chapter_scratchpad["queries"]`, `chapter_scratchpad["retrieved_docs"]`
+
+---
+
+### 4. Analyst（分析员）
+
+**文件:** `rag_project/agent/nodes/analyst.py`
+
+**目的:** 战略模型注入分析，提取关键事实和洞察
+
+**核心创新:** 根据每章的 `analysis_model` 字段动态注入对应的战略分析框架
+
+**工作流程:**
+```
+retrieved_docs → 文档摘要(限10篇,含来源标注) → LLM分析(注入战略模型)
+→ 结构化key_facts + insights
+```
+
+**支持的8种战略分析模型:**
+
+| 模型 | 适用章节 | key_facts结构 |
+|------|----------|---------------|
+| PEST模型 | 第1章 | `{"Political": [], "Economic": [], "Social": [], "Technological": []}` |
+| 通用分析 | 第2章 | `["事实1", "事实2", ...]` |
+| 波特五力+SWOT | 第3章 | `{"现有竞争者": [], "潜在进入者": [], ...}` |
+| 平衡计分卡(BSC) | 第4章 | `{"财务维度": [], "客户/民生维度": [], ...}` |
+| BCG波士顿矩阵 | 第5章 | `{"现金牛业务": [], "明星业务": [], ...}` |
+| 安索夫矩阵 | 第6章 | `{"市场渗透": [], "市场开发": [], ...}` |
+| ESG+产业链 | 第7章 | `{"Environment": [], "Social": [], ...}` |
+| 麦肯锡7S | 第8章 | `{"Strategy": [], "Structure": [], ...}` |
+
+**文档摘要格式（含来源标注）:**
+```
+Document 1 [来源: 中国交通年鉴2021_merged, 第15页]:
+文本内容预览...
+
+Document 2 [来源: 省交通运输厅年度工作报告]:
+文本内容预览...
+```
+
+**状态读写:**
+- 读: `chapter_question`, `chapter_context`, `chapter_scratchpad`, `global_plan[index]`
+- 写: `chapter_scratchpad["document_summary"]`, `["key_facts"]`, `["insights"]`, `["analysis_model_used"]`
+
+---
+
+### 5. Writer（写作员）
+
+**文件:** `rag_project/agent/nodes/writer.py`
+
+**目的:** 章节内容生成 + 引用后处理
+
+**工作流程:**
+```
+key_facts + insights + document_summary + analysis_model
+→ LLM写作(注入模型写作指令+蓝图约束)
+→ 引用后处理 (Document X → 真实文件名)
+→ current_draft
+```
+
+**引用后处理机制（关键）:**
+
+Writer 在生成草稿后执行自动引用替换：
 ```python
-chapter_scratchpad = {
-    "queries": queries,
-    "evidence": [
-        {
-            "text": "相关统计数据...",
-            "source": "中国汽车工业协会",
-            "publish_date": "2024-12-10",
-            "score": 0.92,
-            "doc_type": "report"
-        },
-        # ... more evidence
+# Step 1: 从 document_summary 提取映射
+mapping = {"Document 1": "中国交通年鉴2021_merged", "Document 2": "省交通运输厅报告", ...}
+
+# Step 2: 替换草稿中的通用引用
+"[来源: Document 1, 第15页]" → "[来源: 中国交通年鉴2021_merged, 第15页]"
+"[来源: 来源文档_3]" → "[来源: 真实文件名]"
+```
+
+**推演阶段增强:**
+- Writer 会接收 `strategic_blueprint` 约束
+- 写作提示词要求章节内容必须支撑战略支柱和KPI
+
+**状态读写:**
+- 读: `chapter_title`, `chapter_question`, `chapter_context`, `chapter_scratchpad`, `global_plan[index]`, `strategic_blueprint`
+- 写: `current_draft`
+
+---
+
+### 6. Strategist（战略规划师）
+
+**文件:** `rag_project/agent/nodes/strategist.py`
+
+**目的:** 从诊断阶段生成战略蓝图
+
+**触发条件:** 第3章（index=2）批准后自动触发
+
+**工作流程:**
+```
+context_pool[0:3] → 从第3章提取SWOT → TOWS矩阵分析
+→ 推导使命/支柱/KPI → strategic_blueprint (approved=False)
+```
+
+**蓝图结构:**
+```python
+{
+    "mission": "服务交通强省战略，打造一流综合交通投资运营集团",
+    "swot_analysis": {
+        "Strengths": ["省属国企平台优势", ...],
+        "Weaknesses": ["创新能力有待提升", ...],
+        "Opportunities": ["交通强省战略机遇", ...],
+        "Threats": ["经济下行压力", ...]
+    },
+    "tows_strategies": {
+        "SO": ["利用省属平台优势，抢抓交通强省战略机遇", ...],
+        "WO": ["通过战略合作弥补创新短板", ...],
+        "ST": ["强化风险防控应对经济下行", ...],
+        "WT": ["深化改革提升组织韧性", ...]
+    },
+    "strategic_pillars": [
+        "战略支柱1：主业提质 - 夯实交通投资建设主阵地",
+        "战略支柱2：创新驱动 - 培育智慧绿色交通新动能",
+        "战略支柱3：产业协同 - 构建交旅融合新生态",
+        "战略支柱4：治理提升 - 完善现代企业制度"
     ],
-    "sources": list(set([r["source"] for r in results]))
+    "kpis": {
+        "财务维度": {"营收增长率": "年增长8%", ...},
+        "客户/民生维度": {"公众满意度": "提升至90分", ...},
+        "运营维度": {"项目按期完工率": "达到95%", ...},
+        "学习成长维度": {"员工培训覆盖率": "100%", ...}
+    },
+    "approved": False
 }
 ```
 
-**Configuration:**
+**状态读写:**
+- 读: `context_pool`（前3章）, `user_input`
+- 写: `strategic_blueprint`, `current_draft`（清空为""）
+
+---
+
+### 7. Human Review（人工审核）
+
+**文件:** `rag_project/agent/nodes/human_review.py`
+
+**目的:** 双模式审核（章节审核 + 蓝图审核）+ 路由函数
+
+**章节审核逻辑:**
 ```python
-AGENT_CONFIGS["researcher"] = {
-    "temperature": 0.1,  # Very low for precision
-    "max_tokens": 4096,
-    "system_prompt": "Be precise, thorough, and focus on finding relevant information..."
-}
+if decision == "approve":
+    # 强制使用 global_plan 中的标题（替换LLM可能生成的错误标题）
+    full_chapter = f"# {correct_title_from_plan}\n\n{draft_content}"
+    context_pool.append(full_chapter)  # 通过 operator.add 累加
+    chapter_scratchpad = {}  # 阅后即焚
+
+    if current_index == 2:
+        # 第3章完成，不递增index，等待蓝图审核
+        # 路由到 strategist
+    else:
+        current_chapter_index += 1  # 进入下一章
 ```
 
-**Key Design:**
-- ONLY agent with access to Milvus RAG
-- Cannot see context_pool (prevents bias)
-- Populates scratchpad (shared with Analyst and Writer)
-
-### 4. Analyst Agent
-
-**File:** `rag_project/agent/nodes/analyst.py`
-
-**Purpose:** Critical analysis and insight generation
-
-**Input:**
-- `chapter_scratchpad`: Contains queries and evidence from Researcher
-
-**Output:**
-- `chapter_scratchpad`: Updated with analysis field
-
-**Responsibilities:**
-1. Read evidence from scratchpad
-2. Identify patterns and trends
-3. Compare multiple sources
-4. Generate structured insights
-5. Note data gaps or inconsistencies
-
-**Analysis Process:**
+**蓝图审核逻辑:**
 ```python
-evidence = scratchpad["evidence"]
+if decision == "approve_blueprint":
+    strategic_blueprint["approved"] = True
+    current_phase = "initiatives"
+    current_chapter_index += 1  # 从第3章 → 第4章
 
-prompt = f"""
-Analyze the following evidence for chapter: {chapter_title}
-
-Evidence:
-{format_evidence(evidence)}
-
-Provide structured analysis covering:
-1. Key Findings: What are the main facts?
-2. Trends: What patterns emerge?
-3. Insights: What deeper understanding can be derived?
-4. Data Gaps: What information is missing or contradictory?
-5. Connections: How do different sources relate?
-
-Return as JSON object with these fields.
-"""
-
-analysis = json.loads(llm.invoke(prompt, temperature=0.5))
+elif decision == "revise_blueprint":
+    # 保持状态不变，路由回 strategist 重新生成
 ```
 
-**Structured Output:**
+**标题保护机制:** Human Review 节点会**强制替换** LLM 生成的章节标题为 `global_plan` 中的正确标题，防止章节编号错误（如第3章生成"第二章"标题的问题）。
+
+**should_continue 路由函数:**
 ```python
-chapter_scratchpad["analysis"] = {
-    "key_findings": [
-        "2024年1-11月新能源汽车产销同比增长超35%",
-        "市场渗透率提升至36.7%"
-    ],
-    "trends": [
-        "纯电动车型占据主导地位（71.1%）",
-        "插电混动车型增速更快（82.6%）",
-        "出口市场成为新增长点"
-    ],
-    "insights": [
-        "政策支持与市场需求双轮驱动增长",
-        "技术进步推动成本下降",
-        "市场竞争格局加速重构"
-    ],
-    "data_gaps": [
-        "部分企业12月数据尚未发布",
-        "细分车型数据不够详细"
-    ],
-    "source_agreement": "各来源数据基本一致",
-    "confidence_level": "high"
-}
+def should_continue(state) -> str:
+    decision = state.get("review_decision")
+
+    # 修订路由
+    if decision == "revise:data":    return "researcher"
+    if decision == "revise:logic":   return "analyst"
+    if decision == "revise:writing": return "writer"
+    if decision == "revise_blueprint": return "strategist"
+    if decision == "finished":       return "end"
+
+    # 蓝图批准 → 进入推演阶段
+    if decision == "approve_blueprint": return "prepare_chapter"
+
+    # 章节批准
+    if decision == "approve":
+        if current_index == 2:
+            if not blueprint_approved:
+                return "strategist"    # 第3章后生成蓝图
+            else:
+                return "prepare_chapter"
+        elif has_more_chapters:
+            return "prepare_chapter"
+        else:
+            return "end"  # → archiver
+
+    return "end"
 ```
 
-**Configuration:**
-```python
-AGENT_CONFIGS["analyst"] = {
-    "temperature": 0.5,  # Balanced for creativity + accuracy
-    "max_tokens": 3072,
-    "system_prompt": "Be analytical, balanced, and focus on deeper understanding..."
-}
+---
+
+### 8. Archiver（归档器）
+
+**文件:** `rag_project/agent/nodes/archiver.py`
+
+**目的:** 最终报告汇编，含执行摘要、引用修复、蓝图附录
+
+**工作流程:**
+```
+context_pool(8章) + strategic_blueprint
+→ 封面 → 执行摘要(LLM生成,1000字) → 目录 → 8章内容
+→ 蓝图附录 → 引用修复(来源文档_X → 真实文件名)
+→ final_report
 ```
 
-**Key Design:**
-- Reads scratchpad["evidence"]
-- Writes scratchpad["analysis"]
-- Cannot see context_pool (unbiased analysis)
-- Adds structured reasoning layer
-
-### 5. Writer Agent
-
-**File:** `rag_project/agent/nodes/writer.py`
-
-**Purpose:** Content generation and synthesis
-
-**Input:**
-- `chapter_title`: Current chapter title
-- `context_summary`: Brief summary of previous chapters
-- `chapter_scratchpad`: Contains evidence and analysis
-
-**Output:**
-- `current_draft`: Markdown-formatted chapter content
-
-**Responsibilities:**
-1. Read evidence and analysis from scratchpad
-2. Reference context_summary for continuity
-3. Structure content logically
-4. Write clear, professional content
-5. Ensure coherence and readability
-
-**Writing Process:**
-```python
-evidence = scratchpad["evidence"]
-analysis = scratchpad["analysis"]
-
-prompt = f"""
-Write chapter: {chapter_title}
-
-Previous chapters summary: {context_summary}
-
-Evidence:
-{format_evidence(evidence)}
-
-Analysis:
-{format_analysis(analysis)}
-
-Requirements:
-1. Structure with clear headings and subheadings
-2. Cite sources from evidence (use [Source: XXX])
-3. Build on analysis insights
-4. Use professional, academic tone
-5. Ensure logical flow
-6. Length: 800-1500 words
-
-Write the chapter in markdown format.
-"""
-
-current_draft = llm.invoke(prompt, temperature=0.7)
-```
-
-**Content Structure:**
+**报告结构:**
 ```markdown
-# 第三章：市场规模与销量现状分析
+# 江西交通投资集团战略规划报告
+**生成时间**: YYYY年MM月DD日  |  **主题**: 用户请求
 
-## 3.1 整体市场规模
-[Content with citations]
+---
 
-### 市场增长态势
-[Content referencing analysis]
-
-## 3.2 细分市场分析
-[Structured breakdown]
-
-### 纯电动车型
-[Detailed analysis]
-
-### 插电混动车型
-[Detailed analysis]
-
-## 3.3 区域市场分布
-[Geographic analysis]
-
-## 3.4 总结
-[Chapter summary connecting to next chapter]
-```
-
-**Configuration:**
-```python
-AGENT_CONFIGS["writer"] = {
-    "temperature": 0.7,  # Higher for creativity and flow
-    "max_tokens": 4096,
-    "system_prompt": "Be creative, clear, and focus on effective communication..."
-}
-```
-
-**Key Design:**
-- Synthesizes evidence + analysis
-- Adds context_summary for continuity
-- Cannot see full context_pool (prevents copying)
-- Generates human-readable output
-
-### 6. Human Review Node
-
-**File:** `rag_project/agent/nodes/human_review.py`
-
-**Purpose:** HITL interface for quality control
-
-**Input:**
-- `current_draft`: Chapter content from Writer
-- `review_decision`: Human's decision (approve, revise:*)
-- `human_feedback`: Structured feedback dict
-
-**Output:**
-- Updated state based on decision
-
-**Responsibilities:**
-1. Receive human decision
-2. Update state accordingly
-3. Route to appropriate next node
-
-**State Update Logic:**
-```python
-if review_decision == "approve":
-    # Add to approved memory
-    full_chapter = f"# {chapter_title}\n\n{current_draft}"
-    context_pool.append(full_chapter)
-
-    # Clear working memory
-    chapter_scratchpad = {}
-
-    # Advance index
-    chapter_index += 1
-
-elif review_decision.startswith("revise"):
-    # Keep state as-is
-    # Don't add to context_pool
-    # Don't clear scratchpad
-    # Don't advance index
-    # Routing handled by should_continue()
-```
-
-**Feedback Structure:**
-```python
-human_feedback = {
-    "instruction": "Main instruction text",
-
-    # For revise:data
-    "query": "Additional search query",
-    "aspect": "market_size",
-
-    # For revise:logic
-    "focus_area": "competitive_analysis",
-    "missing_aspects": ["price_comparison", "technology_gap"],
-
-    # For revise:writing
-    "target_section": "conclusion",
-    "tone": "professional_brief",
-    "length": "shorter"
-}
-```
-
-**Key Design:**
-- Interrupt point in workflow
-- Gatekeeper for context_pool
-- Enables iterative refinement
-- Routes to appropriate revision node
-
-### 7. Archiver Agent
-
-**File:** `rag_project/agent/nodes/archiver.py`
-
-**Purpose:** Final report compilation
-
-**Input:**
-- `context_pool`: All approved chapters
-- `user_input`: Original user request
-
-**Output:**
-- `final_report`: Complete markdown report
-
-**Responsibilities:**
-1. Compile all chapters from context_pool
-2. Add title and metadata
-3. Generate table of contents
-4. Format final report
-5. Save to file
-
-**Report Structure:**
-```markdown
-# 中国新能源汽车行业研究报告 2024
-
-**生成时间:** 2024-03-28
-**报告类型:** 行业分析报告
+# 执行摘要
+[LLM生成的1000字国企公文语态摘要]
 
 ---
 
 ## 目录
-
-1. 行业背景与发展历程
-2. 政策环境与监管框架
-3. 市场规模与销量现状分析
-4. 主要企业竞争格局
-5. 技术创新与智能化发展
-6. 面临的挑战与制约因素
-7. 发展建议与战略展望
+1. 第一章：...
+2. 第二章：...
+...
 
 ---
 
-[Full chapters from context_pool]
+[第一章完整内容]
+---
+[第二章完整内容]
+...
+---
+[第八章完整内容]
 
 ---
 
-**报告结束**
-
-*本报告由AI辅助生成，内容基于公开资料整理。*
+# 附录：战略蓝图详述
+## 核心使命 / SWOT矩阵 / TOWS战略组合 / 战略支柱 / KPIs
 ```
 
-**Configuration:**
+**引用修复机制:**
+
+Archiver 在最终报告中执行二级引用修复：
 ```python
-def archiver_node(state):
-    context_pool = state.get("context_pool", [])
-    user_input = state.get("user_input", "")
-
-    # Generate title
-    title = generate_title(user_input)
-
-    # Generate TOC
-    toc = generate_toc(context_pool)
-
-    # Compile report
-    final_report = f"# {title}\n\n{toc}\n\n"
-    final_report += "\n\n---\n\n".join(context_pool)
-    final_report += "\n\n---\n\n**报告结束**"
-
-    # Save to file
-    output_path = save_report(final_report)
-
-    return {"final_report": final_report, "output_path": output_path}
+# 搜索报告中的 [来源: 来源文档_X] 引用
+# 提取引用附近的文本作为查询
+# 通过 Milvus 检索找到真实来源文件名
+# 替换: [来源: 来源文档_3] → [来源: 江西省交通工作会议纪要]
 ```
 
 ---
 
-## Routing Logic
+## 引用系统设计
 
-### Conditional Edges
+### 三级引用保障机制
 
-**File:** `rag_project/agent/graph.py`
+```
+第一级：Analyst节点（来源标注）
+  ↓ 分析文档时生成格式: "Document X [来源: 真实文件名, 第Y页]"
+  ↓ 使用 fallback chain: source → title → doc_type → "来源文档_X"
 
-```python
-workflow.add_conditional_edges(
-    "human_review",
-    should_continue,
-    {
-        "continue": "prepare_chapter",  # Next chapter
-        "end": "archiver",              # Finalize report
-        "researcher": "researcher",     # Data revision
-        "analyst": "analyst",           # Logic revision
-        "writer": "writer"              # Writing revision
-    }
-)
+第二级：Writer节点（引用后处理）
+  ↓ 从 document_summary 提取 Document→文件名 映射
+  ↓ 正则替换: [来源: Document X] → [来源: 真实文件名]
+  ↓ 过滤掉通用文件名（来源文档_X）不进行替换
+
+第三级：Archiver节点（最终修复）
+  ↓ 搜索残余的 [来源: 来源文档_X] 引用
+  ↓ 使用引用附近文本查询 Milvus 获取真实来源
+  ↓ 正则替换所有残余通用引用
 ```
 
-### Routing Function
+### 引用格式
 
-**File:** `rag_project/agent/nodes/human_review.py`
+最终报告中的引用格式：
+- 有页码: `[来源: 文件名, 第X页]`
+- 无页码: `[来源: 文件名]`
 
-```python
-def should_continue(state) -> str:
-    """
-    Determines next destination based on review decision.
+### 引用质量验证
 
-    Routing Logic:
-    ┌─────────────────────────────────────┐
-    │ review_decision = ?                 │
-    └──────────────────┬──────────────────┘
-                       │
-       ┌───────────────┼───────────────┐
-       │               │               │
-       ▼               ▼               ▼
-  revise:data      revise:logic   revise:writing
-       │               │               │
-       ▼               ▼               ▼
-  researcher       analyst         writer
-       │               │               │
-       └───────────────┴───────────────┘
-                       │
-                       ▼
-            (revision complete, back to human_review)
-                       │
-       ┌───────────────┴───────────────┐
-       │                               │
-       ▼                               ▼
-    approve                        finished
-       │                               │
-       ▼                               │
-  more chapters?                        │
-       │                               │
-   ┌───┴───┐                           │
-   │       │                           │
-  Yes     No                           │
-   │       │                           │
-   │       └───────────────┬───────────┘
-   │                       │
-   ▼                       ▼
-prepare_chapter         archiver
-   │                       │
-   └───────────────────────┘
-           │
-           ▼
-      (workflow continues)
-    """
-    decision = state.get("review_decision")
-
-    # Revision routes
-    if decision == "revise:data":
-        return "researcher"
-    elif decision == "revise:logic":
-        return "analyst"
-    elif decision == "revise:writing":
-        return "writer"
-    elif decision == "finished":
-        return "end"
-
-    # Approve routes
-    if decision == "approve":
-        chapter_index = state.get("chapter_index", 0)
-        chapter_titles = state.get("chapter_titles", [])
-
-        if chapter_index + 1 < len(chapter_titles):
-            return "continue"  # More chapters to process
-        else:
-            return "end"  # All chapters done
-
-    return "end"  # Default fallback
-```
-
-### State Update Rules
-
-**On approve:**
-```python
-# human_review_node
-if decision == "approve":
-    # Add current draft to approved memory
-    context_pool.append(full_chapter)
-
-    # Clear working memory for next chapter
-    chapter_scratchpad = {}
-
-    # Increment index
-    chapter_index += 1
-```
-
-**On revise:**
-```python
-# No state changes
-# Keep same scratchpad
-# Keep same chapter_index
-# Don't add to context_pool
-```
-
-**On archiver:**
-```python
-# Compile final report from context_pool
-# No further state updates
+```bash
+# 运行报告生成后分析引用质量
+python -c "
+import re
+report = open('output/report.md', 'r', encoding='utf-8').read()
+all_citations = re.findall(r'\[来源:\s*[^\]]+\]', report)
+generic = re.findall(r'\[来源:\s*来源文档_\d+[^\]]*\]', report)
+real = len(all_citations) - len(generic)
+print(f'总引用: {len(all_citations)}, 真实文件名: {real}, 通用引用: {len(generic)}')
+print(f'质量率: {100*real/max(len(all_citations),1):.1f}%')
+"
 ```
 
 ---
 
-## Tech Stack
+## 战略分析模型体系
 
-### Core Technologies
-
-| Component | Technology | Version | Purpose |
-|-----------|-----------|---------|---------|
-| **Workflow Engine** | LangGraph | Latest | Multi-agent orchestration |
-| **State Management** | LangGraph StateGraph | Latest | Global state and routing |
-| **LLM Provider** | DeepSeek API | - | Language model |
-| **LLM Client** | OpenAI SDK | 1.x | API interface |
-| **Vector Database** | Milvus | 2.3+ | Semantic search |
-| **Embeddings** | BGE-M3 | - | Vector embeddings |
-| **Configuration** | PyYAML | 6.x | Config management |
-| **Logging** | Python logging | Stdlib | Debug logging |
-| **Environment** | python-dotenv | 1.x | Env variable management |
-
-### Dependencies
-
-**requirements.txt:**
-```txt
-# Core dependencies
-langgraph>=0.0.20
-langchain-core>=0.1.0
-openai>=1.0.0
-pymilvus>=2.3.0
-python-dotenv>=1.0.0
-pyyaml>=6.0
-
-# Project dependencies
-# (from main project)
-sentence-transformers
-pymilvus[binary]
-```
-
-### System Architecture
+### 模型注入流程
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    Application Layer                    │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │              Agent System (Python)              │   │
-│  │  • LangGraph workflow                           │   │
-│  │  • Multi-agent nodes                            │   │
-│  │  • State management                             │   │
-│  └───────���─���───────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────┐
-│                   Service Layer                          │
-│  ┌──────────────────┐  ┌──────────────────────────┐    │
-│  │  LLM Manager     │  │  RAG Retriever           │    │
-│  │  • DeepSeek API  │  │  • Milvus Client         │    │
-│  │  • OpenAI SDK    │  │  • Vector Search         │    │
-│  └──────────────────┘  └──────────────────────────┘    │
-└─────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────┐
-│                   Infrastructure Layer                   │
-│  ┌──────────────────┐  ┌──────────────────────────┐    │
-│  │  DeepSeek API    │  │  Milvus Vector DB        │    │
-│  │  • LLM Service   │  │  • Docker Container      │    │
-│  │  • HTTPS/REST    │  │  • Port 19530            │    │
-│  └──────────────────┘  └──────────────────────────┘    │
-└─────────────────────────────────────────────────────────┘
+Coordinator → global_plan[index]["analysis_model"] = "PEST模型"
+                                    ↓
+Prepare Chapter → 传递给 scratchpad
+                                    ↓
+Analyst → _get_model_instruction("PEST模型") → 生成模型特定的分析指令
+        → LLM按PEST框架返回结构化 key_facts
+                                    ↓
+Writer → _get_model_writing_instruction("PEST模型") → 生成模型特定的写作指令
+       → 章节内容体现PEST四维度结构
 ```
 
-### Data Flow
+### 模型指令示例
+
+**PEST模型（第1章）:**
+- 分析指令: 按Political/Economic/Social/Technological四维度组织
+- 写作指令: 使用小标题明确区分政策环境/经济影响/社会因素/技术发展
+
+**BCG波士顿矩阵（第5章）:**
+- 分析指令: 按现金牛/明星/问题/瘦狗业务分类
+- 写作指令: 识别主业为现金牛业务，强调稳定回报
+
+**麦肯锡7S（第8章）:**
+- 分析指令: 按Strategy/Structure/Systems/Shared Values/Style/Staff/Skills七维度
+- 写作指令: 强调各要素间的协调性，构建组织保障体系
+
+---
+
+## 路由逻辑
+
+### 完整路由图
 
 ```
-User Input
-    │
-    ▼
-GraphState Initialization
-    │
-    ▼
-Coordinator Node → LLM Manager → DeepSeek API
-    │
-    ▼
-Prepare Chapter Node
-    │
-    ▼
-Researcher Node → RAG Retriever → Milvus
-    │
-    ▼
-Analyst Node → LLM Manager → DeepSeek API
-    │
-    ▼
-Writer Node → LLM Manager → DeepSeek API
-    │
-    ▼
-Human Review (INTERRUPT)
-    │
-    ├─ approve → context_pool update → Prepare Chapter
-    ├─ revise:data → Researcher
-    ├─ revise:logic → Analyst
-    └─ revise:writing → Writer
-    │
-    ▼ (all chapters approved)
-Archiver Node → Final Report
+                    human_review
+                         │
+           ┌─────────────┼─────────────┐
+           │             │             │
+      revise:data    revise:logic   revise:writing
+           │             │             │
+           ▼             ▼             ▼
+      researcher     analyst        writer
+           │             │             │
+           └─────────────┴─────────────┘
+                         │
+                    (回到 human_review)
+                         │
+                    approve
+                         │
+              ┌──────────┴──────────┐
+              │                     │
+         index=2               index≠2
+              │                     │
+              ▼                     ▼
+         蓝图未批准?            has_more?
+         ┌───┴───┐           ┌───┴───┐
+        是      否           是      否
+         │       │           │       │
+         ▼       ▼           ▼       ▼
+    strategist  prepare    prepare  archiver
+    (生成蓝图)  _chapter   _chapter  (最终报告)
+              │           │
+              ▼           ▼
+         human_review  human_review
+         (蓝图审核)    (下一章)
+
+    approve_blueprint ──→ prepare_chapter (进入推演)
+    revise_blueprint  ──→ strategist (重新生成)
 ```
 
 ---
 
-## Extension Guide
-
-### Adding New Agents
-
-#### Step 1: Create Agent Node File
-
-Create `rag_project/agent/nodes/new_agent.py`:
-
-```python
-"""
-New Agent Node - Description of purpose
-
-This node handles specific functionality...
-"""
-
-import logging
-from typing import Dict
-
-from rag_project.utils.logger import setup_logger
-
-logger = setup_logger(__name__)
-
-
-def new_agent_node(state: Dict) -> Dict:
-    """
-    Process state and return updates.
-
-    Args:
-        state: Current GraphState
-
-    Returns:
-        Dict with state updates
-    """
-    logger.info("New agent node executing")
-
-    # Your logic here
-    result = process_something(state)
-
-    return {
-        "some_field": result
-    }
-
-
-def process_something(state: Dict) -> str:
-    """Helper function for processing"""
-    # Implementation
-    pass
-```
-
-#### Step 2: Export from __init__.py
-
-Edit `rag_project/agent/nodes/__init__.py`:
-
-```python
-from rag_project.agent.nodes.new_agent import new_agent_node
-
-__all__ = [
-    # ... existing exports
-    "new_agent_node",
-]
-```
-
-#### Step 3: Add to Workflow
-
-Edit `rag_project/agent/graph.py`:
-
-```python
-from rag_project.agent.nodes import new_agent_node
-
-def create_report_graph():
-    workflow = StateGraph(GraphState)
-
-    # Add new node
-    workflow.add_node("new_agent", new_agent_node)
-
-    # Add edges
-    workflow.add_edge("some_node", "new_agent")
-    workflow.add_edge("new_agent", "next_node")
-
-    # Add conditional edges if needed
-    workflow.add_conditional_edges(
-        "human_review",
-        should_continue,
-        {
-            # ... existing routes
-            "revise:new": "new_agent"  # New revision route
-        }
-    )
-
-    return workflow.compile(
-        checkpointer=MemorySaver(),
-        interrupt_before=["human_review"]
-    )
-```
-
-#### Step 4: Update Routing Logic
-
-Edit `rag_project/agent/nodes/human_review.py`:
-
-```python
-def should_continue(state) -> str:
-    decision = state.get("review_decision")
-
-    # Add new route
-    if decision == "revise:new":
-        return "new_agent"
-
-    # ... existing logic
-```
-
-### Customizing Agent Prompts
-
-#### Method 1: Via Config File
-
-Edit `config/agent_config.yaml`:
-
-```yaml
-agents:
-  writer:
-    temperature: 0.7
-    max_tokens: 4096
-    system_prompt: |
-      You are a specialized writer for Chinese policy research.
-
-      Guidelines:
-      - Use formal, academic tone
-      - Cite sources with [Source: XXX]
-      - Structure with clear headings
-      - Include data tables when relevant
-      - Keep paragraphs concise (3-5 sentences)
-
-      Be professional, precise, and authoritative.
-```
-
-#### Method 2: Via Code
-
-Edit `rag_project/agent/llm_manager.py`:
-
-```python
-class LLMManager:
-    AGENT_CONFIGS = {
-        "writer": {
-            "temperature": 0.7,
-            "max_tokens": 4096,
-            "system_prompt": """Custom prompt here..."""
-        }
-    }
-```
-
-### Adding New Feedback Types
-
-#### Step 1: Extend Routing
-
-Edit `rag_project/agent/nodes/human_review.py`:
-
-```python
-def should_continue(state) -> str:
-    decision = state.get("review_decision")
-
-    # Add new feedback type
-    if decision == "revise:format":
-        return "formatter"  # Route to new node
-
-    # ... existing logic
-```
-
-#### Step 2: Create Handler Node
-
-Create `rag_project/agent/nodes/formatter.py`:
-
-```python
-def formatter_node(state: Dict) -> Dict:
-    """
-    Handle formatting revisions.
-
-    Reads human_feedback for formatting instructions
-    and reformats current_draft accordingly.
-    """
-    feedback = state.get("human_feedback", {})
-    current_draft = state.get("current_draft", "")
-
-    # Apply formatting changes
-    new_draft = apply_formatting(current_draft, feedback)
-
-    return {"current_draft": new_draft}
-```
-
-#### Step 3: Add to Workflow
-
-```python
-from rag_project.agent.nodes.formatter import formatter_node
-
-workflow.add_node("formatter", formatter_node)
-workflow.add_edge("formatter", "human_review")
-```
-
-### Customizing State Schema
-
-Edit `rag_project/agent/state.py`:
-
-```python
-from typing import TypedDict, List, Dict, Annotated
-import operator
-
-class GraphState(TypedDict):
-    """Extended state schema"""
-
-    # Existing fields
-    user_input: str
-    global_plan: List[str]
-    current_chapter_index: int
-    context_pool: Annotated[List[str], operator.add]
-    context_summary: str
-    chapter_title: str
-    chapter_scratchpad: Dict
-    current_draft: str
-    human_feedback: Dict
-
-    # New fields
-    metadata: Dict  # Report metadata (author, date, version)
-    revision_count: int  # Track number of revisions
-    quality_score: float  # Quality metric
-    custom_field: str  # Your custom field
-```
-
-### Adding Persistence
-
-#### Save State to Database
-
-```python
-import pickle
-import os
-
-def save_state(state: Dict, thread_id: str):
-    """Save state to file"""
-    state_dir = "states"
-    os.makedirs(state_dir, exist_ok=True)
-
-    state_file = os.path.join(state_dir, f"{thread_id}.pkl")
-    with open(state_file, "wb") as f:
-        pickle.dump(state, f)
-
-def load_state(thread_id: str) -> Dict:
-    """Load state from file"""
-    state_file = os.path.join("states", f"{thread_id}.pkl")
-
-    with open(state_file, "rb") as f:
-        return pickle.load(f)
-```
-
-#### Use in Workflow
-
-```python
-# Save after each chapter
-state = app.invoke(state, config=config)
-save_state(state, config["configurable"]["thread_id"])
-
-# Load later
-state = load_state("report_001")
-state = app.invoke(state, config=config)
-```
-
-### Integrating New LLM Providers
-
-#### Example: Add Azure OpenAI
-
-Edit `rag_project/agent/llm_manager.py`:
-
-```python
-class LLMManager:
-    def __init__(self, agent_type: str = "coordinator", provider: str = "deepseek"):
-        self.provider = provider
-
-        if provider == "azure":
-            self.client = OpenAI(
-                api_key=os.environ["AZURE_API_KEY"],
-                api_version="2023-05-15",
-                azure_endpoint=os.environ["AZURE_ENDPOINT"]
-            )
-        elif provider == "deepseek":
-            self.client = OpenAI(
-                api_key=os.environ["DEEPSEEK_API_KEY"],
-                base_url="https://api.deepseek.com"
-            )
-```
-
-#### Configure Provider
-
-```python
-# Use Azure for writer (better quality)
-llm = LLMManager("writer", provider="azure")
-
-# Use DeepSeek for others (faster, cheaper)
-llm = LLMManager("coordinator", provider="deepseek")
-```
-
-### Adding Evaluation Metrics
-
-#### Create Evaluator
-
-```python
-def evaluate_chapter_quality(state: Dict) -> Dict:
-    """Evaluate chapter quality on multiple dimensions"""
-
-    current_draft = state.get("current_draft", "")
-    evidence = state.get("chapter_scratchpad", {}).get("evidence", [])
-
-    metrics = {
-        "length": len(current_draft.split()),
-        "citation_count": current_draft.count("[Source:"),
-        "evidence_usage": len([e for e in evidence if e["text"] in current_draft]),
-        "readability": calculate_readability(current_draft),
-        "coherence": calculate_coherence(current_draft)
-    }
-
-    return {"quality_metrics": metrics}
-```
-
-#### Integrate into Workflow
-
-```python
-# Add evaluator node
-workflow.add_node("evaluator", evaluate_chapter_quality)
-workflow.add_edge("writer", "evaluator")
-workflow.add_edge("evaluator", "human_review")
-```
-
-### Custom Output Formats
-
-#### Export to PDF
-
-```python
-from weasyprint import HTML
-import markdown
-
-def export_to_pdf(markdown_content: str, output_path: str):
-    """Convert markdown report to PDF"""
-
-    # Convert markdown to HTML
-    html_content = markdown.markdown(markdown_content)
-
-    # Add CSS styling
-    html = f"""
-    <html>
-    <head>
-        <style>
-            body {{ font-family: 'Microsoft YaHei', sans-serif; }}
-            h1 {{ color: #333; }}
-            h2 {{ color: #666; }}
-        </style>
-    </head>
-    <body>
-        {html_content}
-    </body>
-    </html>
-    """
-
-    # Generate PDF
-    HTML(string=html).write_pdf(output_path)
-```
-
-#### Export to DOCX
-
-```python
-from docx import Document
-from docx.shared import Pt, Inches
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-
-def export_to_docx(markdown_content: str, output_path: str):
-    """Convert markdown report to DOCX"""
-
-    doc = Document()
-
-    # Parse markdown and add to document
-    lines = markdown_content.split("\n")
-
-    for line in lines:
-        if line.startswith("# "):
-            doc.add_heading(line[2:], level=1)
-        elif line.startswith("## "):
-            doc.add_heading(line[3:], level=2)
-        elif line.strip():
-            doc.add_paragraph(line)
-
-    doc.save(output_path)
-```
+## 技术栈
+
+| 组件 | 技术 | 版本 | 目的 |
+|------|------|------|------|
+| **工作流引擎** | LangGraph | Latest | 多Agent编排、状态管理、断点控制 |
+| **状态管理** | StateGraph | Latest | 全局状态、条件路由、检查点恢复 |
+| **LLM** | DeepSeek API | - | 语言模型（6种Agent配置） |
+| **LLM客户端** | OpenAI SDK | 1.x | API接口封装 |
+| **向量数据库** | Milvus | 2.3+ | 语义搜索、HNSW索引 |
+| **嵌入模型** | BGE-M3 (SiliconFlow API) | - | 1024维文本向量化 |
+| **配置管理** | PyYAML | 6.x | Agent和Milvus配置 |
+| **日志记录** | Python logging | Stdlib | 结构化调试日志 |
+| **环境变量** | python-dotenv | 1.x | API Key管理 |
 
 ---
 
-## Best Practices
+## 扩展指南
 
-### Agent Design
+### 添加新的战略分析模型
 
-1. **Single Responsibility:** Each agent should do one thing well
-2. **State Isolation:** Agents should only access needed state fields
-3. **Error Handling:** Always handle LLM API failures gracefully
-4. **Logging:** Log key decisions and state changes
-5. **Testing:** Unit test each agent independently
+1. 在 `analyst.py` 的 `_get_model_instruction()` 中添加模型指令
+2. 在 `writer.py` 的 `_get_model_writing_instruction()` 中添加写作指令
+3. 在 `coordinator.py` 的 `global_plan` 中更新对应章节的 `analysis_model`
 
-### Prompt Engineering
+### 添加新的章节
 
-1. **Be Specific:** Clear instructions reduce errors
-2. **Use Examples:** Show desired output format
-3. **Set Constraints:** Specify length, tone, structure
-4. **Validate Output:** Check and parse LLM responses
-5. **Iterate:** Refine prompts based on results
+1. 在 `coordinator.py` 中扩展 `global_plan` 列表
+2. 确保每章的 `phase` 和 `analysis_model` 正确设置
+3. 更新路由逻辑中 Chapter 3 的特殊处理（如需在诊断阶段末尾触发蓝图）
 
-### Workflow Design
+### 修改报告结构
 
-1. **Linear Flow:** Main flow should be simple and linear
-2. **Conditional Routes:** Use conditional edges for branching
-3. **Interrupt Points:** Clear points where human input is needed
-4. **State Updates:** Batch state updates per node
-5. **Checkpointing:** Save state for resumption
-
-### Performance Optimization
-
-1. **Caching:** Cache LLM responses when possible
-2. **Parallel Processing:** Run independent queries in parallel
-3. **Batch Operations:** Process multiple items together
-4. **Token Management:** Use appropriate max_tokens per agent
-5. **Async I/O:** Use async for API calls
+1. 封面/目录: 修改 `archiver.py` 的 `_create_cover()` / `_create_table_of_contents()`
+2. 执行摘要: 修改 `_generate_executive_summary()` 的提示词
+3. 蓝图附录: 修改 `_create_blueprint_appendix()` 的格式
 
 ---
 
-## Troubleshooting
+## 版本历史
 
-### Common Issues
+- **v3.0** (2026-04-04): 战略分析模型体系 + 引用系统
+  - Analyst节点支持8种战略分析模型注入（PEST/SWOT/BCG/波特五力/BSC/安索夫/7S/ESG）
+  - Writer节点实现引用后处理（Document X → 真实文件名）
+  - Archiver节点实现二级引用修复（Milvus查询补全）
+  - Coordinator改为固定8章结构，不再使用LLM生成大纲
+  - 引用质量达100%（测试验证80/80引用均为真实文件名）
 
-**Issue:** State not updating between nodes
-- **Cause:** Forgetting to return dict from node
-- **Fix:** Ensure all nodes return state update dict
+- **v2.0** (2026-03-31): 两阶段战略架构
+  - 添加战略规划师Agent用于蓝图生成
+  - 添加 strategic_blueprint 到状态
+  - 添加 current_phase 跟踪
+  - 增强协调器以支持阶段元数据
+  - 增强准备章节以支持蓝图注入
+  - 增强归档器以支持执行摘要
+  - 更新路由逻辑以支持蓝图审核
 
-**Issue:** Routing not working
-- **Cause:** Missing edge or incorrect route name
-- **Fix:** Check all edges in workflow definition
-
-**Issue:** LLM timeout
-- **Cause:** API slow or overloaded
-- **Fix:** Increase timeout in config, add retry logic
-
-**Issue:** Memory leaks
-- **Cause:** State growing too large
-- **Fix:** Clear scratchpad after each chapter, compress context_pool
-
----
-
-## References
-
-- [LangGraph Documentation](https://langchain-ai.github.io/langgraph/)
-- [LangChain Documentation](https://python.langchain.com/)
-- [Milvus Documentation](https://milvus.io/docs)
-- [DeepSeek API Documentation](https://platform.deepseek.com/docs)
-
----
-
-## Version History
-
-- **v1.0** (2024-03-28): Initial agent system architecture
-  - Multi-agent workflow with LangGraph
-  - HITL support
-  - Three-tier memory architecture
-  - 7 specialized agents
+- **v1.0** (2026-03-28): 初始Agent系统
+  - 基于LangGraph的多Agent工作流
+  - HITL支持
+  - 三层记忆架构
+  - 7个专业化Agent

@@ -1,6 +1,6 @@
 import uuid
 import re
-from typing import Dict
+from typing import Dict, Any
 from langchain_core.documents import Document
 from rag_project.utils.logger import logger
 
@@ -12,7 +12,7 @@ class MetadataExtractor:
         doc: Document,
         doc_type: str,
         source: str
-    ) -> Dict[str, any]:
+    ) -> Dict[str, Any]:
         """
         Extract core metadata from document
 
@@ -42,7 +42,7 @@ class MetadataExtractor:
         return MetadataExtractor.remove_none_values(metadata)
 
     @staticmethod
-    def extract_from_filename(filename: str) -> Dict[str, any]:
+    def extract_from_filename(filename: str) -> Dict[str, Any]:
         """
         Extract metadata from filename
 
@@ -87,7 +87,7 @@ class MetadataExtractor:
         return doc
 
     @staticmethod
-    def remove_none_values(metadata: Dict[str, any]) -> Dict[str, any]:
+    def remove_none_values(metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
         Remove None values from metadata dictionary
 
@@ -100,6 +100,6 @@ class MetadataExtractor:
         return {k: v for k, v in metadata.items() if v is not None}
 
 # Convenience functions for backward compatibility
-def extract_core_metadata(doc: Document, doc_type: str, source: str) -> Dict[str, any]:
+def extract_core_metadata(doc: Document, doc_type: str, source: str) -> Dict[str, Any]:
     """Convenience function for extracting core metadata"""
     return MetadataExtractor.extract_core_metadata(doc, doc_type, source)

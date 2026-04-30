@@ -1,0 +1,91 @@
+{
+  "total_chunks": 383,
+  "document_id": "中国交通运输2021",
+  "sample_chunks": [
+    {
+      "chunk_number": 1,
+      "metadata": {
+        "source": "知识库/知识库/相关研报/中国交通运输2021.txt",
+        "page_number": 1,
+        "chunk_id": "中国交通运输2021_chunk_1",
+        "document_id": "中国交通运输2021",
+        "file_name": "中国交通运输2021.txt",
+        "section_title": null,
+        "chunk_index": 1,
+        "created_at": "2021",
+        "tags": [
+          "相关研报"
+        ]
+      },
+      "content_preview": "2021\n记录中国交通运输发展足迹\n展现中国交通运输发展水平和贡献\n让世界了解中国交通运输\n中国交通运输\n2021\n中国公路学会\nTRANSPORTATION OF\nCHINA"
+    },
+    {
+      "chunk_number": 2,
+      "metadata": {
+        "source": "知识库/知识库/相关研报/中国交通运输2021.txt",
+        "page_number": 2,
+        "chunk_id": "中国交通运输2021_chunk_2",
+        "document_id": "中国交通运输2021",
+        "file_name": "中国交通运输2021.txt",
+        "section_title": null,
+        "chunk_index": 2,
+        "created_at": "2021",
+        "tags": [
+          "相关研报"
+        ]
+      },
+      "content_preview": "中国交通运输　2021\n2"
+    },
+    {
+      "chunk_number": 3,
+      "metadata": {
+        "source": "知识库/知识库/相关研报/中国交通运输2021.txt",
+        "page_number": 3,
+        "chunk_id": "中国交通运输2021_chunk_3",
+        "document_id": "中国交通运输2021",
+        "file_name": "中国交通运输2021.txt",
+        "section_title": null,
+        "chunk_index": 3,
+        "created_at": "2021",
+        "tags": [
+          "相关研报"
+        ]
+      },
+      "content_preview": "中国交通运输\n2021\n中国公路学会\nTRANSPORTATION OF\nCHINA"
+    },
+    {
+      "chunk_number": 4,
+      "metadata": {
+        "source": "知识库/知识库/相关研报/中国交通运输2021.txt",
+        "page_number": 4,
+        "chunk_id": "中国交通运输2021_chunk_4",
+        "document_id": "中国交通运输2021",
+        "file_name": "中国交通运输2021.txt",
+        "section_title": null,
+        "chunk_index": 4,
+        "created_at": "2021",
+        "tags": [
+          "相关研报"
+        ]
+      },
+      "content_preview": "中国交通运输　2021\n4\n主编单位\n中国公路学会\n技术合作单位\n清华大学\n中国物流与采购联合会\n中国铁道科学研究院\n交通运输部科学研究院\n交通运输部水运科学研究院\n中国民航科学技术研究院\n交通运输部"
+    },
+    {
+      "chunk_number": 5,
+      "metadata": {
+        "source": "知识库/知识库/相关研报/中国交通运输2021.txt",
+        "page_number": 5,
+        "chunk_id": "中国交通运输2021_chunk_5",
+        "document_id": "中国交通运输2021",
+        "file_name": "中国交通运输2021.txt",
+        "section_title": null,
+        "chunk_index": 5,
+        "created_at": "2021",
+        "tags": [
+          "相关研报"
+        ]
+      },
+      "content_preview": "《中国交通运输 2021》\n主编\n孙虎成\n副主编\n付振茹\n编委会（按单位排序）\n付振茹　孟晓阳　孙　静　张晓璇　刘　飞　毕　鑫　苗挺节\n孙虎成　张永波　王天实　柏卓彤　刘若阳　周志成　杨达卿\n王雅群　"
+    }
+  ]
+}

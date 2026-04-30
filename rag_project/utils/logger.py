@@ -48,6 +48,9 @@ def setup_logger(
     file_handler.setFormatter(formatter)
     console_handler.setFormatter(formatter)
 
+    # Prevent propagation to root logger (avoids duplicate log lines)
+    logger.propagate = False
+
     # Add handlers
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)

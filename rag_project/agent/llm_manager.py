@@ -3,13 +3,28 @@ LLM Manager for handling DeepSeek API integration with agent-specific configurat
 """
 
 import os
+import time
 from typing import Optional
 from openai import OpenAI
+from openai import APITimeoutError, APIConnectionError, RateLimitError
 
 from rag_project.utils.config_loader import load_config
 from rag_project.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
+
+# Global token registry: tracks all LLMManager instances by agent_type
+_global_token_registry = {}
+
+
+def get_global_token_stats() -> dict:
+    """Return aggregated token stats from all LLMManager instances."""
+    return dict(_global_token_registry)
+
+
+def reset_global_token_stats():
+    """Reset the global token registry."""
+    _global_token_registry.clear()
 
 
 class LLMManager:
@@ -72,6 +87,30 @@ Your role is to:
 - Adapt tone to the context
 
 Be creative, clear, and focus on effective communication."""
+        },
+        "strategist": {
+            "temperature": 0.5,
+            "max_tokens": 4096,
+            "system_prompt": """You are the Strategist Agent for strategic planning and blueprint generation.
+Your role is to:
+- Analyze SWOT analysis from diagnostic chapters
+- Apply TOWS matrix analysis to generate strategic options
+- Formulate mission statements and strategic pillars
+- Define SMART KPIs across balanced scorecard dimensions
+
+Be strategic, analytical, and focus on creating actionable strategic blueprints."""
+        },
+        "archiver": {
+            "temperature": 0.5,
+            "max_tokens": 3072,
+            "system_prompt": """You are the Archiver Agent for report compilation and summarization.
+Your role is to:
+- Synthesize completed chapters into a coherent final report
+- Generate executive summaries that highlight key insights
+- Ensure proper formatting and structure
+- Compile appendices and reference materials
+
+Be systematic, clear, and focus on producing polished final deliverables."""
         }
     }
 
@@ -98,17 +137,17 @@ Be creative, clear, and focus on effective communication."""
 
         # Load LLM configuration
         try:
-            config = load_config("agent_config.yaml")
+            config = load_config("config/agent_config.yaml")
             llm_config = config.get("llm", {})
             self.model = llm_config.get("model", "deepseek-chat")
             self.base_url = llm_config.get("base_url", "https://api.deepseek.com")
-            self.timeout = llm_config.get("timeout", 30)
+            self.timeout = llm_config.get("timeout", 180)
             api_key_env = llm_config.get("api_key_env", "DEEPSEEK_API_KEY")
         except Exception as e:
             logger.warning(f"Failed to load agent config: {e}. Using defaults.")
             self.model = "deepseek-chat"
             self.base_url = "https://api.deepseek.com"
-            self.timeout = 30
+            self.timeout = 180
             api_key_env = "DEEPSEEK_API_KEY"
 
         # Get API key from environment
@@ -125,54 +164,103 @@ Be creative, clear, and focus on effective communication."""
             timeout=self.timeout
         )
 
+        # Token tracking
+        self.total_prompt_tokens = 0
+        self.total_completion_tokens = 0
+        self.total_tokens = 0
+        self.call_count = 0
+
         logger.info(f"Initialized LLM Manager for {agent_type} agent "
                    f"(model={self.model}, temp={self.temperature})")
+
+    def get_token_stats(self) -> dict:
+        """Return token usage statistics."""
+        return {
+            "agent_type": self.agent_type,
+            "call_count": self.call_count,
+            "prompt_tokens": self.total_prompt_tokens,
+            "completion_tokens": self.total_completion_tokens,
+            "total_tokens": self.total_tokens,
+        }
+
+    def reset_token_stats(self):
+        """Reset token counters."""
+        self.total_prompt_tokens = 0
+        self.total_completion_tokens = 0
+        self.total_tokens = 0
+        self.call_count = 0
 
     def invoke(
         self,
         prompt: str,
         temperature: Optional[float] = None,
         max_tokens: Optional[int] = None,
+        max_retries: int = 3,
         **kwargs
     ) -> str:
         """
-        Invoke the LLM with the given prompt.
+        Invoke the LLM with the given prompt, with retry on transient errors.
 
         Args:
             prompt: User prompt/question
             temperature: Override default temperature
             max_tokens: Override default max_tokens
+            max_retries: Maximum number of retry attempts (default 3)
             **kwargs: Additional parameters to pass to the API
 
         Returns:
             str: LLM response
 
         Raises:
-            Exception: If API call fails
+            Exception: If API call fails after all retries
         """
-        try:
-            # Use provided parameters or defaults from agent config
-            temp = temperature if temperature is not None else self.temperature
-            max_tok = max_tokens if max_tokens is not None else self.max_tokens
+        temp = temperature if temperature is not None else self.temperature
+        max_tok = max_tokens if max_tokens is not None else self.max_tokens
 
-            logger.debug(f"Invoking {self.agent_type} agent with prompt: {prompt[:100]}...")
+        for attempt in range(max_retries):
+            try:
+                logger.debug(f"Invoking {self.agent_type} agent (attempt {attempt+1}/{max_retries}) with prompt: {prompt[:100]}...")
 
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=[
-                    {"role": "system", "content": self.system_prompt},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=temp,
-                max_tokens=max_tok,
-                **kwargs
-            )
+                response = self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[
+                        {"role": "system", "content": self.system_prompt},
+                        {"role": "user", "content": prompt}
+                    ],
+                    temperature=temp,
+                    max_tokens=max_tok,
+                    **kwargs
+                )
 
-            result = response.choices[0].message.content
-            logger.debug(f"Received response: {result[:100]}...")
+                result = response.choices[0].message.content
 
-            return result
+                # Track token usage
+                if response.usage:
+                    self.total_prompt_tokens += response.usage.prompt_tokens or 0
+                    self.total_completion_tokens += response.usage.completion_tokens or 0
+                    self.total_tokens += response.usage.total_tokens or 0
+                    self.call_count += 1
+                    # Update global registry
+                    _global_token_registry[self.agent_type] = {
+                        "agent_type": self.agent_type,
+                        "call_count": self.call_count,
+                        "prompt_tokens": self.total_prompt_tokens,
+                        "completion_tokens": self.total_completion_tokens,
+                        "total_tokens": self.total_tokens,
+                    }
 
-        except Exception as e:
-            logger.error(f"Error invoking LLM: {e}")
-            raise
+                logger.debug(f"Received response: {result[:100]}...")
+
+                return result
+
+            except (APITimeoutError, RateLimitError, APIConnectionError) as e:
+                if attempt < max_retries - 1:
+                    wait = 2 ** attempt
+                    logger.warning(f"LLM API error (attempt {attempt+1}/{max_retries}): {e}. Retrying in {wait}s...")
+                    time.sleep(wait)
+                else:
+                    logger.error(f"LLM API failed after {max_retries} attempts: {e}")
+                    raise
+            except Exception as e:
+                logger.error(f"Error invoking LLM: {e}")
+                raise

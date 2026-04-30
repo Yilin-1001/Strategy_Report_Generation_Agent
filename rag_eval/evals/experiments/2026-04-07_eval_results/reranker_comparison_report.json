@@ -1,0 +1,64 @@
+{
+  "timestamp": "2026-04-06T15:11:00.981872",
+  "experiments": {
+    "baseline": {
+      "total_questions": 51,
+      "avg_top1_score": 0.7395011747584623,
+      "avg_latency": 0.16512679586223528,
+      "total_latency": 8.421466588973999,
+      "score_distribution": {
+        "high_gte_0.8": 9,
+        "mid_0.6_0.8": 41,
+        "low_lt_0.6": 1
+      }
+    },
+    "bge_reranker": {
+      "total_questions": 51,
+      "avg_top1_score": 0.9590669671694437,
+      "avg_latency": 0.835225736393648,
+      "total_latency": 42.59651255607605,
+      "score_distribution": {
+        "high_gte_0.8": 49,
+        "mid_0.6_0.8": 1,
+        "low_lt_0.6": 1
+      }
+    },
+    "qwen3_reranker": {
+      "total_questions": 51,
+      "avg_top1_score": 0.9990471952101764,
+      "avg_latency": 0.4736993686825621,
+      "total_latency": 24.15866780281067,
+      "score_distribution": {
+        "high_gte_0.8": 51,
+        "mid_0.6_0.8": 0,
+        "low_lt_0.6": 0
+      }
+    }
+  },
+  "summary_table": [
+    {
+      "experiment": "baseline",
+      "avg_top1_score": 0.7395,
+      "avg_latency": 0.17,
+      "high_score_pct": 17.6,
+      "mid_score_pct": 80.4,
+      "low_score_pct": 2.0
+    },
+    {
+      "experiment": "bge_reranker",
+      "avg_top1_score": 0.9591,
+      "avg_latency": 0.84,
+      "high_score_pct": 96.1,
+      "mid_score_pct": 2.0,
+      "low_score_pct": 2.0
+    },
+    {
+      "experiment": "qwen3_reranker",
+      "avg_top1_score": 0.999,
+      "avg_latency": 0.47,
+      "high_score_pct": 100.0,
+      "mid_score_pct": 0.0,
+      "low_score_pct": 0.0
+    }
+  ]
+}
