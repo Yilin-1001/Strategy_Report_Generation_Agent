@@ -42,11 +42,16 @@ worktrees/
 milvus_data/
 volumes/
 
-# Model Cache
+# Model Cache & Data
 models/*.bin
 models/*.pt
 models/*.pth
 models/*/
+data/models/
+
+# Output
+output/
+outputs/
 
 # Logs
 *.log
@@ -59,3 +64,72 @@ Thumbs.db
 # Environment variables
 .env
 .env.local
+
+# Claude Code skills & temp files
+.claude/skills/
+.claude/scheduled_tasks.lock
+
+# Temporary test/diagnostic scripts
+quick_*.py
+test_*.py
+diagnose_*.py
+check_*.py
+fix_*.py
+add_indexes_to_milvus.py
+analyze_citation_format.py
+cleanup_project.py
+create_source_mapping.py
+create_test_5q.py
+generate_jiangxi_report.py
+langflow_milvus_test.py
+preload_milvus_for_langflow.py
+show_*.py
+simple_agent_test.py
+Milvus_Test_19530.py
+
+# Temporary files
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+head
+nul
+python
+reranking
+Approve
+_test_output.txt
+chunking_log.txt
+chunking_with_tags_log.txt
+generation_log.txt
+milvus_status.txt
+
+# Temp reports & docs at root
+*_REPORT.md
+*_SUMMARY.md
+*_GUIDE.md
+*_UPDATE.md
+*_PROGRESS.md
+*_COMPARISON.md
+*_STRUCTURE.md
+*_TREE.md
+*_ANALYSIS.md
+*_SOLUTION.md
+PIPELINE_FINAL_REPORT.txt
+
+# Ablation experiment results
+ablation_experiment/results/
+
+# Eval experiment artifacts
+rag_eval/evals/experiments/
+
+# Archived tests
+tests_root_archive/
+
+# Knowledge base data
+知识库/

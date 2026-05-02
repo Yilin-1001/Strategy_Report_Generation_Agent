@@ -1,0 +1,1986 @@
+{
+  "group": "group0",
+  "run": 1,
+  "total_chapters": 3,
+  "total_facts": 136,
+  "total_analytical": 59,
+  "factscore": 0.7132352941176471,
+  "hallucination_rate": 0.2867647058823529,
+  "verdicts": [
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "我国正处在全面建设社会主义现代化国家的关键时期",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "宏观政策环境正经历深刻变革",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "时代发展要求日益提升",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "交通是国民经济的基础性产业",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "交通是国民经济的先导性产业",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "交通是国民经济的战略性产业",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "交通发展态势与国家战略导向紧密相连",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "交通发展态势与经济周期紧密相连",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_parametric",
+      "detail": "Supported by LLM parametric knowledge (commonsense)"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "本章运用PEST模型分析外部环境",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "本章重点聚焦政策（Political）与经济（Economic）维度",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "本章旨在精准把握战略机遇，有效应对风险挑战，为集团高质量发展提供根本遵循",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "宏观政策环境为集团发展提供了根本指引与刚性约束",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_parametric",
+      "detail": "Supported by LLM parametric knowledge (commonsense)"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "\"交通强国\"战略深入推进",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "\"交通强国\"战略要求深化投融资体制机制创新",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "\"交通强国\"战略鼓励和支持社会资本参与交通基础设施建设运营",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "\"交通强国\"战略要求探索交通基础设施不动产信托基金（REITs）等创新工具",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "交通投资正从政府单一主导转向政府与市场协同发力",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_parametric",
+      "detail": "Supported by LLM parametric knowledge (commonsense)"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "政策明确要求界定投资范围和主体",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "contradicted",
+      "detail": "Contradicted by cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "政策要求建立分级财政资金保障机制",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "政策面临《收费公路条例》修订等重大法规调整",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "政策旨在化解债务风险",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "政策旨在实现可持续发展",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "江西省委省政府提出\"走在前、勇争先、善作为\"的目标要求",
+      "fact_type": "FACT",
+      "citation": "省铁航集团一行到省交通投资集团座谈交流",
+      "category": "A(no_match)",
+      "result": "supported_by_parametric",
+      "detail": "Supported by LLM parametric knowledge (commonsense)"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团被赋予服务全省经济社会高质量发展的重要使命",
+      "fact_type": "FACT",
+      "citation": "省铁航集团一行到省交通投资集团座谈交流",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省铁航集团一行到省交通投资集团座谈交流.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团被赋予发挥国有经济战略支撑作用的重要使命",
+      "fact_type": "FACT",
+      "citation": "省铁航集团一行到省交通投资集团座谈交流",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "全面从严治党向纵深发展",
+      "fact_type": "FACT",
+      "citation": "省交通投资集团党委动员部署第七轮巡察工作",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "全面从严治党营造风清气正的政治生态",
+      "fact_type": "FACT",
+      "citation": "省交通投资集团党委动员部署第七轮巡察工作",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "全面从严治党为集团打造一流国有资本投资运营公司提供了坚强保障",
+      "fact_type": "FACT",
+      "citation": "省交通投资集团党委动员部署第七轮巡察工作",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省交通投资集团党委动员部署第七轮巡察工作.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "政策环境呈现出\"战略引领、改革深化、责任压实\"的鲜明特征",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_parametric",
+      "detail": "Supported by LLM parametric knowledge (commonsense)"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团必须在合规框架内，主动适应投融资政策变革，精准把握政府与市场边界",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "经济维度揭示了交通基础设施与区域经济增长的内在联动关系",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "当前投资结构面临现实挑战",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "交通基础设施投资是拉动经济增长的关键引擎",
+      "fact_type": "FACT",
+      "citation": "交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "交通基础设施投资的作用机制包括直接创造投资需求",
+      "fact_type": "FACT",
+      "citation": "交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "交通基础设施投资的作用机制包括通过产业关联产生乘数效应",
+      "fact_type": "FACT",
+      "citation": "交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "交通基础设施投资的作用机制包括促进空间集聚经济",
+      "fact_type": "FACT",
+      "citation": "交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "交通基础设施投资的作用机制包括降低社会物流成本",
+      "fact_type": "FACT",
+      "citation": "交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "在经济承压时期，交通基建常被作为逆周期调节的重要工具",
+      "fact_type": "FACT",
+      "citation": "交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 交通基础设施、交通运输业与...省域数据的空间面板模型研究_叶昌友_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "当前综合交通体系内部投资结构不均衡问题凸显",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "铁路、民航、普通公路等领域因事权划分问题面临地方配套资金压力大、投资动力不足等挑战",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "contradicted",
+      "detail": "Contradicted by cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "铁路、民航、普通公路等领域因委托运营机制问题面临地方配套资金压力大、投资动力不足等挑战",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "铁路、民航、普通公路等领域因项目收益性问题面临地方配套资金压力大、投资动力不足等挑战",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团以高速公路投资建设运营为主业",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "当前形势对集团而言是巩固主业优势的窗口",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "当前形势对集团提出了通过多元化投融资手段服务全省综合交通体系建设的更高要求",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "江西省交通固定资产投资保持活跃",
+      "fact_type": "FACT",
+      "citation": "省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "江西省交通统计工作取得新突破",
+      "fact_type": "FACT",
+      "citation": "省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "江西省交通招商引资取得新突破",
+      "fact_type": "FACT",
+      "citation": "省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "江西省交通固定资产投资保持活跃为集团发展提供了有利的省内经济生态",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "unsupported",
+      "detail": "LLM judges as implausible"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "社会发展变迁对交通运输服务提出了多元化的新需求",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "社会发展变迁对交通运输服务提出了高品质的新需求",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "人口老龄化进程加速",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "提升适老化无障碍交通出行服务已成为行业明确的政策导向",
+      "fact_type": "FACT",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 2025年全省道路运输工作部署会召开_2025-02-25 16_13.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "提升适老化无障碍交通出行服务已成为民生关切",
+      "fact_type": "FACT",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 2025年全省道路运输工作部署会召开_2025-02-25 16_13.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "公众对出行体验的要求日益提高",
+      "fact_type": "FACT",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "A(no_match)",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "公众期望获得更加高效的综合运输服务",
+      "fact_type": "FACT",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "公众期望获得更加便捷的综合运输服务",
+      "fact_type": "FACT",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "公众期望获得更加安全的综合运输服务",
+      "fact_type": "FACT",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "公众对出行体验的要求日益提高推动行业持续深化\"放管服\"改革",
+      "fact_type": "FACT",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "行业推进道路运输高频事项\"跨省通办\"",
+      "fact_type": "FACT",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "城乡协调发展要求深入推进农村客货邮融合",
+      "fact_type": "FACT",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 2025年全省道路运输工作部署会召开_2025-02-25 16_13.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "城乡协调发展要求提升城乡客运均等化水平",
+      "fact_type": "FACT",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 2025年全省道路运输工作部署会召开_2025-02-25 16_13.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团的业务布局与服务供给必须坚持以人民为中心的发展思想",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团必须从单纯的基础设施建设者向优质出行服务综合提供者转型",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团必须不断增强人民群众的获得感、幸福感、安全感",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "科技创新正以前所未有的深度重塑交通产业格局",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "科技创新正以前所未有的广度重塑交通产业格局",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "科技创新是培育新质生产力的核心驱动力",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "国家层面强调要强化企业科技创新主体地位",
+      "fact_type": "FACT",
+      "citation": "厅领导到省交投集团项目公司专题调研科技创新工作",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "省级层面强调要强化企业科技创新主体地位",
+      "fact_type": "FACT",
+      "citation": "厅领导到省交投集团项目公司专题调研科技创新工作",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 厅领导到省交投集团项目公司专题调研科技创新工作.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "国家层面强调通过科技赋能交通高质量发展",
+      "fact_type": "FACT",
+      "citation": "厅领导到省交投集团项目公司专题调研科技创新工作",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "省级层面强调通过科技赋能交通高质量发展",
+      "fact_type": "FACT",
+      "citation": "厅领导到省交投集团项目公司专题调研科技创新工作",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 厅领导到省交投集团项目公司专题调研科技创新工作.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "科技创新具体路径包括强化关键核心技术攻关",
+      "fact_type": "FACT",
+      "citation": "厅领导到省交投集团项目公司专题调研科技创新工作",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "科技创新具体路径包括推动创新链、产业链、价值链\"三链融合\"",
+      "fact_type": "FACT",
+      "citation": "厅领导到省交投集团项目公司专题调研科技创新工作",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "科技创新具体路径包括加速科技成果转化应用",
+      "fact_type": "FACT",
+      "citation": "厅领导到省交投集团项目公司专题调研科技创新工作",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "智慧交通是主要方向",
+      "fact_type": "FACT",
+      "citation": "省智慧交通中心召开2025年工作会议_2025-02-18 11_45",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省智慧交通中心召开2025年工作会议_2025-02-18 11_45.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "智慧交通要求加快推进5G与交通深度融合",
+      "fact_type": "FACT",
+      "citation": "省智慧交通中心召开2025年工作会议_2025-02-18 11_45",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "智慧交通要求加快推进北斗与交通深度融合",
+      "fact_type": "FACT",
+      "citation": "省智慧交通中心召开2025年工作会议_2025-02-18 11_45",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "智慧交通要求加快推进人工智能与交通深度融合",
+      "fact_type": "FACT",
+      "citation": "省智慧交通中心召开2025年工作会议_2025-02-18 11_45",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "智慧交通要求筑牢网络安全防线",
+      "fact_type": "FACT",
+      "citation": "省智慧交通中心召开2025年工作会议_2025-02-18 11_45",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省智慧交通中心召开2025年工作会议_2025-02-18 11_45.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "智慧交通要求筑牢数据安全防线",
+      "fact_type": "FACT",
+      "citation": "省智慧交通中心召开2025年工作会议_2025-02-18 11_45",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省智慧交通中心召开2025年工作会议_2025-02-18 11_45.txt"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "国内同行已启动大规模创新平台建设",
+      "fact_type": "FACT",
+      "citation": "创新赋能美好出行 浙江交通集团计划投入100亿元打造重大创新平台",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "国内同行加速向创新驱动发展模式转变",
+      "fact_type": "FACT",
+      "citation": "创新赋能美好出行 浙江交通集团计划投入100亿元打造重大创新平台",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团必须将科技创新置于战略核心",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团必须加大研发投入与人才引育力度",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团必须以数字化、智能化引领传统产业升级和新兴业务孵化",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团必须牢牢把握政策与科技双重驱动的主线",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团必须在经济与社会需求升级中找准定位",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团必须坚定不移地向国有资本投资运营公司转型",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 0,
+      "chapter_title": "# 第一章：宏观政策环境与时代要求",
+      "fact_text": "集团必须在服务国家与江西发展大局中实现自身跨越式发展",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "本章旨在剖析省级宏观战略导向，并明确江西交通投资集团在区域发展格局中的战略定位",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "江西省正深入贯彻“交通强省”建设要求",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "江西省推动交通基础设施从单一的网络建设向与产业体系深度融合转变",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团需精准承接省级政策意图，在服务全省现代化产业体系构建与区域协同发展中找准自身占位，实现从传统建设主体向一流国有资本投资运营公司的转型跨越",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "省级战略规划为集团发展提供了清晰的顶层指引",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "省长叶建春在专题调研中明确指出要坚持以路为媒",
+      "fact_type": "FACT",
+      "citation": "省长叶建春专题调研国资国企改革发展工作：提高省属国有企业创新能力和价值创造能力",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省长叶建春专题调研国资国企改革发展工作：提高省属国有企业创新能力和价值创造能力.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "省长叶建春在专题调研中明确指出要围绕构建现代化产业体系优化路网布局",
+      "fact_type": "FACT",
+      "citation": "省长叶建春专题调研国资国企改革发展工作：提高省属国有企业创新能力和价值创造能力",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省长叶建春专题调研国资国企改革发展工作：提高省属国有企业创新能力和价值创造能力.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "省长叶建春在专题调研中明确指出要有效盘活沿线各类产业要素",
+      "fact_type": "FACT",
+      "citation": "省长叶建春专题调研国资国企改革发展工作：提高省属国有企业创新能力和价值创造能力",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "省级交通战略已从注重通行能力的“交通先行”升级为强调价值创造的“交通融合”",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_parametric",
+      "detail": "Supported by LLM parametric knowledge (commonsense)"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "交通网络是连接空间的通道",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "交通网络成为优化产业布局的关键纽带",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "交通网络成为激活区域经济的关键纽带",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团扩大高速公路有效投资、优化路网布局的核心任务必须紧密围绕全省构建现代化产业体系的需求展开，通过路网优化引导产业集聚，盘活沿线资源",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "省级政策强调运用市场手段撬动社会资本",
+      "fact_type": "FACT",
+      "citation": "省长叶建春专题调研国资国企改革发展工作：提高省属国有企业创新能力和价值创造能力",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "这为集团转型提供了方法论",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团需超越传统的政府投融资平台角色，积极向国有资本投资运营公司转型",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团需打造一流的投融资平台",
+      "fact_type": "FACT",
+      "citation": "省铁航集团一行到省交通投资集团座谈交流",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省铁航集团一行到省交通投资集团座谈交流.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团需打造一流的产业孵化平台",
+      "fact_type": "FACT",
+      "citation": "省铁航集团一行到省交通投资集团座谈交流",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省铁航集团一行到省交通投资集团座谈交流.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团需通过设立或参与现代产业引导基金，以市场化方式吸引和撬动社会资本，服务于传统产业升级、战略性新兴产业培育及未来产业布局，将交通投资的经济社会效益最大化",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "在“交通强省”的立体化建设格局中，省属交通企业呈现差异化协同发展的态势",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_parametric",
+      "detail": "Supported by LLM parametric knowledge (commonsense)"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团需明确自身在其中的核心占位，实现错位发展、优势互补",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团的核心占位在于“公路网主导的投融资与产业运营平台”",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团是全省高速公路投资建设运营的主力军",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "unsupported",
+      "detail": "LLM judges as implausible"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团的主责主业是构建高效、智能、绿色的现代化公路网络",
+      "fact_type": "FACT",
+      "citation": "省铁航集团一行到省交通投资集团座谈交流",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团需在此基础上大力培育和发展新质生产力",
+      "fact_type": "FACT",
+      "citation": "省铁航集团一行到省交通投资集团座谈交流",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省铁航集团一行到省交通投资集团座谈交流.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "南昌北二绕城高速公路的建设是完善路网的举措",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "南昌北二绕城高速公路的建设是为构建南昌都市圈奠定基础的关键举措",
+      "fact_type": "FACT",
+      "citation": "南昌北二绕城高速公路新建工程工可报告行业预审会召开",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 南昌北二绕城高速公路新建工程工可报告行业预审会召开.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "南昌北二绕城高速公路的建设是助力南昌打造成为具有全国重要影响力的综合交通枢纽城市的关键举措",
+      "fact_type": "FACT",
+      "citation": "南昌北二绕城高速公路新建工程工可报告行业预审会召开",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 南昌北二绕城高速公路新建工程工可报告行业预审会召开.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "这体现了集团在支撑核心区域发展战略中的关键作用",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团需构建开放协同的“生态化占位”",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团与省铁航集团在铁路、航空领域的优势形成互补",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团与省铁航集团业务契合度高",
+      "fact_type": "FACT",
+      "citation": "省铁航集团一行到省交通投资集团座谈交流",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省铁航集团一行到省交通投资集团座谈交流.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团与省铁航集团优势互补性强",
+      "fact_type": "FACT",
+      "citation": "省铁航集团一行到省交通投资集团座谈交流",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省铁航集团一行到省交通投资集团座谈交流.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团与省铁航集团可在路衍经济领域深化合作",
+      "fact_type": "FACT",
+      "citation": "省铁航集团一行到省交通投资集团座谈交流",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省铁航集团一行到省交通投资集团座谈交流.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团与省铁航集团可在智慧交通领域深化合作",
+      "fact_type": "FACT",
+      "citation": "省铁航集团一行到省交通投资集团座谈交流",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省铁航集团一行到省交通投资集团座谈交流.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团与省铁航集团共同拓展交通价值链",
+      "fact_type": "FACT",
+      "citation": "省铁航集团一行到省交通投资集团座谈交流",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省铁航集团一行到省交通投资集团座谈交流.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团需积极响应全省多式联运发展要求",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "全省政策导向是推动大宗物资“公转水”",
+      "fact_type": "FACT",
+      "citation": "2025年全省水路交通运输工作会在昌召开_2025-02-13 14_40",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 2025年全省水路交通运输工作会在昌召开_2025-02-13 14_40.txt"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "全省政策导向是提升水路运输质量",
+      "fact_type": "FACT",
+      "citation": "2025年全省水路交通运输工作会在昌召开_2025-02-13 14_40",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团需通过业务协同优化全省综合运输结构",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团应深度融合省智慧交通中心的数字化能力",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团应与省智慧交通中心共同推进交通基础设施数字化转型",
+      "fact_type": "FACT",
+      "citation": "省智慧交通中心召开2025年工作会议_2025-02-18 11_45",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团应与省智慧交通中心共同推进交通基础设施智慧化应用",
+      "fact_type": "FACT",
+      "citation": "省智慧交通中心召开2025年工作会议_2025-02-18 11_45",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团需以科技创新赋能主业升级",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团在区域战略中的占位是以公路主网为核心基石",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "unverifiable",
+      "detail": "Cannot verify, LLM uncertain"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团在区域战略中的占位是以资本运营和产业孵化为两翼",
+      "fact_type": "FACT",
+      "citation": "",
+      "category": "B",
+      "result": "unsupported",
+      "detail": "LLM judges as implausible"
+    },
+    {
+      "chapter": 1,
+      "chapter_title": "# 第二章：区域战略与“交通强省”建设剖析",
+      "fact_text": "集团需通过内部创新与外部协同，全面支撑“交通强省”建设，服务江西特色现代化产业体系构建，最终在区域高质量发展中扮演不可替代的战略支撑角色",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "本章旨在运用波特五力模型与SWOT分析框架，系统审视江西交通投资集团所处行业的结构性力量与竞争态势，并基于此对集团内部能力进行诊断",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "分析表明，集团在内部治理与战略执行上具备坚实基础，但在数字化转型与精细化管理方面面临挑战；外部环境既提供了“交通+”融合与市场化融资的重大机遇，也带来了资金可持续性与技术迭代的双重压力",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团建立健全43项规章制度",
+      "fact_type": "FACT",
+      "citation": "省综合交通运输发展研究中心工作会议召开",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省综合交通运输发展研究中心工作会议召开.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团优化内设机构",
+      "fact_type": "FACT",
+      "citation": "省综合交通运输发展研究中心工作会议召开",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省综合交通运输发展研究中心工作会议召开.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团强化干部监督考核",
+      "fact_type": "FACT",
+      "citation": "省综合交通运输发展研究中心工作会议召开",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省综合交通运输发展研究中心工作会议召开.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团形成了规范高效的运行机制",
+      "fact_type": "ANALYSIS",
+      "citation": "省综合交通运输发展研究中心工作会议召开",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团在战略执行层面表现卓越",
+      "fact_type": "ANALYSIS",
+      "citation": "省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团于省厅年度目标管理考核中排名厅直单位第二",
+      "fact_type": "FACT",
+      "citation": "省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团获评“2024年度全省交通运输工作表现突出单位”",
+      "fact_type": "FACT",
+      "citation": "省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54",
+      "category": "A",
+      "result": "contradicted",
+      "detail": "Contradicted by cited source: 省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团在创新融资渠道上取得突破",
+      "fact_type": "ANALYSIS",
+      "citation": "省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团成功完成弋阳至南丰高速项目投资人招标",
+      "fact_type": "FACT",
+      "citation": "省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团展现了强大的资源整合与招商引资能力",
+      "fact_type": "ANALYSIS",
+      "citation": "省综合交通运输发展研究中心2025年工作会议召开_2025-02-26 10_54",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团党建引领与品牌建设成果显著",
+      "fact_type": "ANALYSIS",
+      "citation": "省交通投资集团党委动员部署第七轮巡察工作",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团党建引领与品牌建设为发展提供了坚强政治保障",
+      "fact_type": "ANALYSIS",
+      "citation": "省交通投资集团党委动员部署第七轮巡察工作",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团在数字化转型方面存在明显短板",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "交通基础设施全要素、全周期数字化能力不足",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "重要节点感知能力薄弱",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "交通基础设施数字化能力与行业高质量发展要求存在差距",
+      "fact_type": "ANALYSIS",
+      "citation": "中国交通运输2021_merged",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "信息化投资结构不够优化",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "对数字化基础设施的投资比重偏低",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "普遍存在“重建设、轻管理”的现象",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "信息化“重建设、轻管理”导致运维压力巨大",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "交通建设项目社会经济影响的评价指标体系尚不完善",
+      "fact_type": "FACT",
+      "citation": "中国交通工程学术研究综述·2016_马建_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通工程学术研究综述·2016_马建_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "指标选取的客观性与全面性难以保证",
+      "fact_type": "FACT",
+      "citation": "中国交通工程学术研究综述·2016_马建_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通工程学术研究综述·2016_马建_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "难以有效平衡多元化投资主体的不同关注重点",
+      "fact_type": "FACT",
+      "citation": "中国交通工程学术研究综述·2016_马建_merged",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "评价指标问题增加了项目协调与后评价的复杂性",
+      "fact_type": "FACT",
+      "citation": "中国交通工程学术研究综述·2016_马建_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通工程学术研究综述·2016_马建_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "宏观政策为集团发展创造了有利环境",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "国家大力推动“交通+”产业融合发展",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "国家促进沿线资源综合开发",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "“交通+”融合为交通市场扩容和产业升级开辟了新路径",
+      "fact_type": "ANALYSIS",
+      "citation": "中国交通运输2021_merged",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "省内推进多式联运“一单制”“一箱制”试点",
+      "fact_type": "FACT",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 2025年全省道路运输工作部署会召开_2025-02-25 16_13.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "省内深化农村客货邮融合发展",
+      "fact_type": "FACT",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 2025年全省道路运输工作部署会召开_2025-02-25 16_13.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "省内部署为集团业务创新与服务延伸提供了明确方向",
+      "fact_type": "ANALYSIS",
+      "citation": "2025年全省道路运输工作部署会召开_2025-02-25 16_13",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "政策鼓励拓展市场化资金来源",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "政策鼓励吸引社会资本进入交通领域",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "融资政策为实现投资主体多元化、盘活存量资产提供了机遇",
+      "fact_type": "ANALYSIS",
+      "citation": "中国交通运输2021_merged",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "行业对智慧、绿色转型有迫切需求",
+      "fact_type": "FACT",
+      "citation": "2025年全省水路交通运输工作会在昌召开_2025-02-13 14_40",
+      "category": "A(no_match)",
+      "result": "supported_by_kb",
+      "detail": "Supported by KB search results"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "行业转型需求为技术升级带来市场空间",
+      "fact_type": "ANALYSIS",
+      "citation": "2025年全省水路交通运输工作会在昌召开_2025-02-13 14_40",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团未来发展面临持续性挑战",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "无收费来源的交通基础设施维护资金已存在缺口",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "随着路网规模进一步扩大，未来资金压力将更加严峻",
+      "fact_type": "ANALYSIS",
+      "citation": "中国交通运输2021_merged",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "整个交通运输行业的数字化水平仍处于起步阶段",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "基于大数据的分析决策与智慧管理能力普遍不足",
+      "fact_type": "FACT",
+      "citation": "中国交通运输2021_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通运输2021_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "集团若不能快速补强，将在未来智慧交通竞争中处于不利地位",
+      "fact_type": "ANALYSIS",
+      "citation": "中国交通运输2021_merged",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "投融资主体日益多元化",
+      "fact_type": "FACT",
+      "citation": "中国交通工程学术研究综述·2016_马建_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通工程学术研究综述·2016_马建_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "各主体对项目评价指标的关注点不一致",
+      "fact_type": "FACT",
+      "citation": "中国交通工程学术研究综述·2016_马建_merged",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 中国交通工程学术研究综述·2016_马建_merged.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "投资主体多元化加大了项目前期协调与全周期管理的难度",
+      "fact_type": "FACT",
+      "citation": "中国交通工程学术研究综述·2016_马建_merged",
+      "category": "A",
+      "result": "unsupported",
+      "detail": "Cited source exists but does not support claim"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "浙江交通集团计划投入100亿元打造重大创新平台",
+      "fact_type": "FACT",
+      "citation": "创新赋能美好出行 浙江交通集团计划投入100亿元打造重大创新平台",
+      "category": "A",
+      "result": "supported_by_source",
+      "detail": "Verified against cited source: 创新赋能美好出行 浙江交通集团计划投入100亿元打造重大创新平台.txt"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "省外同行业集团的百亿级投入预示着未来产业竞争将更加侧重于科技创新能力",
+      "fact_type": "ANALYSIS",
+      "citation": "创新赋能美好出行 浙江交通集团计划投入100亿元打造重大创新平台",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "内部治理与考核机制完善",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "战略执行与资源整合能力突出",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "党建引领与品牌建设有力",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "数字化与智慧化建设滞后",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "项目评价体系不完善",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "利用卓越的执行力与融资能力，主导省内“交通+”资源综合开发，抢占新兴市场，打造产业生态",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "把握政策东风，加大数字化专项投资，优化投资结构，同步构建智慧运维体系与管理标准",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "凭借强大的政府关系与资本运作能力，创新“盘活存量+吸引增量”的融资模式，保障资金链安全",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    },
+    {
+      "chapter": 2,
+      "chapter_title": "# 第三章：行业演进趋势与当前内部诊断",
+      "fact_text": "聚焦核心路网资产，强化精益运营与成本控制；建立标准化项目评价与沟通机制，降低内部管理风险",
+      "fact_type": "ANALYSIS",
+      "citation": "",
+      "category": "C",
+      "result": "analytical",
+      "detail": "Analytical claim, excluded from hallucination metrics"
+    }
+  ],
+  "chapter_metrics": [
+    {
+      "chapter": 0,
+      "total_facts": 74,
+      "supported": 49,
+      "hallucinated": 25,
+      "factscore": 0.6621621621621622
+    },
+    {
+      "chapter": 1,
+      "total_facts": 32,
+      "supported": 23,
+      "hallucinated": 9,
+      "factscore": 0.71875
+    },
+    {
+      "chapter": 2,
+      "total_facts": 30,
+      "supported": 25,
+      "hallucinated": 5,
+      "factscore": 0.8333333333333334
+    }
+  ],
+  "eval_scope": "diagnosis",
+  "source": "extracted from full-report raw: group0_run1.json"
+}

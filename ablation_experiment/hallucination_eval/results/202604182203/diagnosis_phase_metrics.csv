@@ -1,0 +1,17 @@
+group,architecture,phase,chapter,total_facts,supported,hallucinated,factscore,hallucination_rate,supported_by_source,supported_by_kb,supported_by_parametric,unsupported,contradicted,citation_hallucination,unverifiable
+group0,Baseline RAG,diagnosis,Ch1_PEST,74,49,25,0.6622,0.3378,25,19,5,23,2,0,0
+group0,Baseline RAG,diagnosis,Ch2_Strategy,32,23,9,0.7188,0.2812,13,8,2,8,0,0,1
+group0,Baseline RAG,diagnosis,Ch3_SWOT_5Forces,30,25,5,0.8333,0.1667,24,1,0,4,1,0,0
+group0,Baseline RAG,diagnosis_weighted_avg,ALL_DIAG,136,97,39,0.7132,0.2868,62,28,7,35,3,0,1
+group1,Single Agent + Memory,diagnosis,Ch1_PEST,62,59,3,0.9516,0.0484,15,35,9,3,0,0,0
+group1,Single Agent + Memory,diagnosis,Ch2_Strategy,38,29,9,0.7632,0.2368,11,11,7,8,0,0,1
+group1,Single Agent + Memory,diagnosis,Ch3_SWOT_5Forces,62,47,15,0.7581,0.2419,15,24,8,13,0,0,2
+group1,Single Agent + Memory,diagnosis_weighted_avg,ALL_DIAG,162,135,27,0.8333,0.1667,41,70,24,24,0,0,3
+group2,Multi-Agent (No Memory),diagnosis,Ch1_PEST,60,47,13,0.7833,0.2167,38,8,1,13,0,0,0
+group2,Multi-Agent (No Memory),diagnosis,Ch2_Strategy,46,37,9,0.8043,0.1957,18,4,15,7,1,0,1
+group2,Multi-Agent (No Memory),diagnosis,Ch3_SWOT_5Forces,67,49,18,0.7313,0.2687,26,17,6,17,0,0,1
+group2,Multi-Agent (No Memory),diagnosis_weighted_avg,ALL_DIAG,173,133,40,0.7688,0.2312,82,29,22,37,1,0,2
+group3,Full System,diagnosis,Ch1_PEST,59,55,4,0.9322,0.0678,35,16,4,4,0,0,0
+group3,Full System,diagnosis,Ch2_Strategy,47,35,12,0.7447,0.2553,20,9,6,12,0,0,0
+group3,Full System,diagnosis,Ch3_SWOT_5Forces,134,95,39,0.7090,0.2910,31,44,20,23,0,12,4
+group3,Full System,diagnosis_weighted_avg,ALL_DIAG,240,185,55,0.7708,0.2292,86,69,30,39,0,12,4

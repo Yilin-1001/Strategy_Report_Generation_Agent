@@ -1,0 +1,9 @@
+﻿group,run,total_facts,total_analytical,supported_by_source,supported_by_kb,supported_by_parametric,contradicted,citation_hallucination,unsupported,unverifiable,total_citations,invalid_citations,factscore,strict_factscore,hallucination_rate,uncertainty_rate,citation_error_rate,kb_support_rate,parametric_rate
+group0,2,181,35,73,39,21,1,0,45,2,114,0,0.7348,0.6188,0.2652,0.011,0.0,0.6188,0.116
+group0,3,140,41,61,30,8,2,0,38,1,98,0,0.7071,0.65,0.2929,0.0071,0.0,0.65,0.0571
+group1,2,175,53,72,36,19,2,0,43,3,112,0,0.7257,0.6171,0.2743,0.0171,0.0,0.6171,0.1086
+group1,3,198,56,79,43,33,0,0,38,5,114,0,0.7828,0.6162,0.2172,0.0253,0.0,0.6162,0.1667
+group2,2,152,75,88,18,6,1,0,35,4,123,0,0.7368,0.6974,0.2632,0.0263,0.0,0.6974,0.0395
+group2,3,172,45,64,45,14,1,0,46,2,108,0,0.7151,0.6337,0.2849,0.0116,0.0,0.6337,0.0814
+group3,2,247,91,96,56,41,2,0,47,5,141,0,0.7814,0.6154,0.2186,0.0202,0.0,0.6154,0.166
+group3,3,215,46,84,53,36,1,0,41,0,122,0,0.8047,0.6372,0.1953,0.0,0.0,0.6372,0.1674
