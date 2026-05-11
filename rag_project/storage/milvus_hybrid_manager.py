@@ -115,12 +115,16 @@ class MilvusHybridManager:
     def _get_or_create_collection(self) -> Collection:
         if utility.has_collection(self.collection_name):
             logger.info(f"Using existing hybrid collection: {self.collection_name}")
-            return Collection(self.collection_name)
+            collection = Collection(self.collection_name)
+        else:
+            logger.info(f"Creating new hybrid collection: {self.collection_name}")
+            schema = self._create_hybrid_schema()
+            collection = Collection(name=self.collection_name, schema=schema)
+            self._create_indexes(collection)
 
-        logger.info(f"Creating new hybrid collection: {self.collection_name}")
-        schema = self._create_hybrid_schema()
-        collection = Collection(name=self.collection_name, schema=schema)
-        self._create_indexes(collection)
+        # Load collection into memory for search
+        collection.load()
+        logger.info(f"Loaded collection: {self.collection_name}")
         return collection
 
     def _create_indexes(self, collection: Collection):

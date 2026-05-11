@@ -2,6 +2,8 @@
 RAG Project - Main Entry Point
 主入口文件
 """
+from dotenv import load_dotenv
+load_dotenv()
 
 import argparse
 from pathlib import Path

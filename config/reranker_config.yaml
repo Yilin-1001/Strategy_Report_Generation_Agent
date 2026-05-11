@@ -7,7 +7,8 @@ reranker:
 
   # SiliconFlow API (reuse same key as embedding)
   api_base_url: "https://api.siliconflow.cn/v1"
-  api_key: "sk-galtgnlesfoydjzetapqerkapxzqbtdnlnyulgibiqymvqik"
+  # API key - 通过环境变量 SILICONFLOW_API_KEY 设置，不要在此硬编码
+  # api_key: ""
 
   # Retrieval expansion: Milvus retrieves top_k * expansion_factor, then rerank down to top_k
   expansion_factor: 3

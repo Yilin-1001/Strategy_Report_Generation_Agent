@@ -192,9 +192,8 @@ class MilvusManager:
         Returns:
             List of search results with text, score, and metadata
         """
-        # Note: Collection loading is managed automatically by Milvus in Docker environments
-        # Explicit load() call can be very slow for large collections, so we skip it
-        # self.collection.load()  # Commented out to avoid slow loading
+        # Note: Collection must be loaded before search
+        self.collection.load()
 
         # Search parameters
         search_config = self.milvus_config.get('search', {})

@@ -6,6 +6,9 @@ Enhanced with LLM + Human combined review (LLM reviews first, human decides fina
 Uses an independent reviewer model to avoid self-evaluation hallucination.
 """
 
+from dotenv import load_dotenv
+load_dotenv()
+
 import json
 import os
 from typing import Optional, Dict, Any

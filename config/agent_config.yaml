@@ -77,7 +77,7 @@ default_agent: "coordinator"
 
 # Retrieval strategy configuration
 retrieval:
-  strategy: "hybrid"     # "dense" (pure vector) | "hybrid" (Dense + BM25)
+  strategy: "dense"      # "dense" (pure vector) | "hybrid" (Dense + BM25)
   hybrid_ranker: "rrf"   # "rrf" | "weighted"
   dense_weight: 0.7      # Only effective when hybrid_ranker is "weighted"
   sparse_weight: 0.3     # Only effective when hybrid_ranker is "weighted"

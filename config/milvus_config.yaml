@@ -48,9 +48,8 @@ embedding:
   # API model name
   api_model: "BAAI/bge-m3"  # 硅基流动支持的模型
 
-  # API key (or set SILICONFLOW_API_KEY environment variable)
-  # 在这里设置你的API密钥，或者通过环境变量 SILICONFLOW_API_KEY 设置
-  api_key: "sk-galtgnlesfoydjzetapqerkapxzqbtdnlnyulgibiqymvqik"  # ← 在这里填入你的硅基流动API密钥
+  # API key - 通过环境变量 SILICONFLOW_API_KEY 设置，不要在此硬编码
+  # api_key: ""
 
   # Request timeout in seconds
   api_timeout: 30

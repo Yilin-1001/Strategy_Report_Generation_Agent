@@ -1,4 +1,7 @@
 """Gradio frontend: Executive Intelligence Dashboard for report generation."""
+from dotenv import load_dotenv
+load_dotenv()
+
 import uuid
 from pathlib import Path
 import gradio as gr

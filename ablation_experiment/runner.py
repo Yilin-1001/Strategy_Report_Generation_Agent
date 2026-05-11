@@ -11,6 +11,9 @@ Usage:
     python -m ablation_experiment.runner --eval-only     # Only evaluate existing reports
 """
 
+from dotenv import load_dotenv
+load_dotenv()
+
 import sys
 import argparse
 import time
