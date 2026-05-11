@@ -2,6 +2,42 @@
 
 基于检索增强生成(RAG)的多智能体战略报告生成系统，集成 LangGraph 工作流和 Gradio 前端。
 
+## 知识库文档
+
+将知识库文档放置在 `知识库/知识库/` 目录下：
+
+```
+知识库/
+└── 知识库/
+    ├── 政府文件/      # 按来源分类
+    │   ├── 政策文件1.txt
+    │   ├── 政策文件2.txt
+    ├── XX集团有限责任公司/
+    │   ├── 年报2024.txt
+    │   ├── 战略规划.txt
+    ├── 相关研报/
+    │   ├── 行业分析报告.txt
+    └── 相关论文/
+        └── 学术研究.txt
+```
+
+**支持的文档格式：**
+- `.txt` — 纯文本文件（主要格式，推荐）
+- `.pdf` — PDF 文档（需先转换为 TXT）
+- `.docx` — Word 文档（需先转换为 TXT）
+
+**PDF 转换：**
+
+```bash
+# 批量转换 PDF 到 TXT
+python scripts/pypdf_batch_converter.py --input "知识库/知识库/xxx.pdf"
+
+# 清理转换后的文本
+python scripts/clean_converted_pdf.py --input "知识库/知识库"
+```
+
+---
+
 ## 快速开始
 
 ### 1. 环境要求
@@ -9,6 +45,17 @@
 - Python 3.10+
 - Docker Desktop (用于 Milvus 向量数据库)
 - NVIDIA GPU (推荐，用于本地嵌入模型加速)
+
+**Docker Desktop 安装：**
+
+- Windows/Mac: 下载 [Docker Desktop](https://www.docker.com/products/docker-desktop/) 并安装
+- Linux: 参考 [Docker 官方文档](https://docs.docker.com/engine/install/)
+
+安装后启动 Docker Desktop，确认运行正常：
+```bash
+docker --version
+docker ps
+```
 
 ### 2. 安装依赖
 
