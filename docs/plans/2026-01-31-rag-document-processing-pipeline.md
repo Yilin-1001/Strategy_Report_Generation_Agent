@@ -2411,7 +2411,7 @@ RAG Pipeline (pipeline.py)
 **Step 4: Commit**
 
 ```bash
-git add README.md USAGE.md docs/ARCHITECTURE.md
+git add Project_Description.md USAGE.md docs/ARCHITECTURE.md
 git commit -m "docs: add comprehensive documentation"
 ```
 

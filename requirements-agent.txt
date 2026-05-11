@@ -1,13 +1,21 @@
-# LangGraph & LangChain
+# Agent Module Dependencies
+# Install on top of requirements.txt
+
+# LLM API
+openai>=1.30.0
+
+# LangGraph Workflow
 langgraph>=0.2.0
-langchain>=0.3.0
-langchain-core>=0.3.0
-langchain-community>=0.3.0
+langgraph-checkpoint>=1.0.0
 
-# DeepSeek API
-openai>=1.0.0  # DeepSeek API compatible with OpenAI SDK
+# LangChain LLM Integration
+langchain-openai>=0.1.0
 
-# Existing dependencies
-pymilvus>=2.4.0
-sentence-transformers>=3.0.0
-PyYAML>=6.0
+# Frontend
+gradio>=4.0.0
+
+# RAG Evaluation
+ragas>=0.1.0
+datasets>=2.18.0
+pandas>=2.0.0
+scikit-learn>=1.4.0

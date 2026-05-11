@@ -33,7 +33,18 @@
       "Bash(find \"E:/02 Final Year Project/RAG Project/rag_project\" -name \"*.py\" -exec grep -l \"EVAL\\\\|评估\\\\|评分\\\\|review\" {} \\\\;)",
       "Bash(find \"E:/02 Final Year Project/RAG Project\" -name \"*.py\" -exec grep -l \"evaluate_report\\\\|evaluate.*report\\\\|scoring.*report\" {} \\\\;)",
       "Bash(cp \"E:/02 Final Year Project/RAG Project/ablation_experiment/results/evaluation_report.csv\" \"E:/02 Final Year Project/RAG Project/ablation_experiment/results/evaluation_report_backup.csv\")",
-      "Bash(cp \"E:/02 Final Year Project/RAG Project/ablation_experiment/results/evaluation_summary.txt\" \"E:/02 Final Year Project/RAG Project/ablation_experiment/results/evaluation_summary_backup.txt\")"
+      "Bash(cp \"E:/02 Final Year Project/RAG Project/ablation_experiment/results/evaluation_summary.txt\" \"E:/02 Final Year Project/RAG Project/ablation_experiment/results/evaluation_summary_backup.txt\")",
+      "PowerShell(Get-ChildItem -Path \"E:\\\\02 Final Year Project\\\\RAG Project\" -Recurse -Depth 3 | Where-Object { $_.PSIsContainer -and \\($_.FullName -notmatch \"node_modules|\\\\.git|__pycache__|\\\\.pytest_cache|venv|\\\\.venv\"\\) } | Select-Object FullName, PSIsContainer | Sort-Object FullName)",
+      "Bash(Get-ChildItem -Path \"E:\\\\02 Final Year Project\\\\RAG Project\\\\知识库\" -Recurse -File)",
+      "Bash(Measure-Object)",
+      "Bash(Select-Object -ExpandProperty Count)",
+      "Bash(grep -v '~$')",
+      "Bash(grep -v '\\\\.json$')",
+      "Bash(grep -v '/nul$')",
+      "Bash(grep -v '~\\\\$')",
+      "Bash(sed 's/_merged\\\\.\\\\\\(txt\\\\\\)$//')",
+      "Bash(awk -F'/' '{print $1\"/\"$2}')",
+      "Bash(xargs grep -l \"config\\\\|Config\")"
     ]
   }
 }

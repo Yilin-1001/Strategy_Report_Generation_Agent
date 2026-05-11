@@ -1,25 +1,36 @@
-# Core RAG framework
-langchain>=0.1.0
-langchain-community>=0.0.10
+# RAG Core Dependencies
+# Python 3.10+ required
 
-# Embedding model
-sentence-transformers>=2.3.0
+# Vector Database
+pymilvus>=2.6.0
 
-# Vector database
-pymilvus>=2.3.0
+# Embedding
+sentence-transformers>=3.0.0
 
-# Document loaders
-unstructured[all-docs]>=0.11.0
-pypdf>=3.1
-python-docx>=1.1.0
-pdfplumber>=0.10.0
+# LangChain
+langchain-core>=0.3.0
+langchain-community>=0.3.0
+langchain-text-splitters>=0.3.0
 
-# Configuration
-pyyaml>=6.0
+# Document Processing
+PyMuPDF>=1.24.0
+pdfplumber>=0.11.0
+python-docx>=1.0.0
+unstructured>=0.15.0
+beautifulsoup4>=4.12.0
 
-# Chinese text processing
-jieba>=0.42.1
+# Chinese Text Processing
+jieba>=0.42.0
 
-# Utilities
-numpy>=1.24.0
-pandas>=2.0.0
+# Configuration & Utilities
+PyYAML>=6.0
+numpy>=1.26.0
+python-dotenv>=1.0.0
+tqdm>=4.65.0
+
+# Embedding Server (bge_m3_server.py)
+fastapi>=0.110.0
+uvicorn>=0.29.0
+
+# Deep Learning (for local embedding model)
+torch>=2.0.0
