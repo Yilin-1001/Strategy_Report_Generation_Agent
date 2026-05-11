@@ -131,5 +131,5 @@ rag_eval/evals/experiments/
 # Archived tests
 tests_root_archive/
 
-# Knowledge base data
-知识库/
+# Knowledge base data (tracked via Git LFS)
+# 知识库/
