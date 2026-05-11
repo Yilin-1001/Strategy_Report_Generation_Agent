@@ -2,6 +2,59 @@
 
 基于检索增强生成(RAG)的多智能体战略报告生成系统，集成 LangGraph 工作流和 Gradio 前端。
 
+## 项目简介
+
+本项目是一个面向企业战略规划的全自动报告生成系统。系统采用"诊断-推演"两阶段架构，通过 LangGraph 编排多个专职 Agent（Coordinator、Researcher、Analyst、Writer、Strategist 等），结合 RAG 知识库检索与混合重排序，自动完成从大纲规划、信息检索、结构化分析到章节撰写的完整报告生成流程。
+
+**核心特性：**
+- **多智能体协同**：基于 LangGraph 的 8 节点工作流，每个 Agent 各司其职
+- **混合检索策略**：稠密向量 (BGE-M3) + BM25 稀疏检索 + Reranker 重排序
+- **两阶段推演**：先完成诊断分析（PEST/SWOT/波特五力），再推导战略蓝图，最后在蓝图约束下完成战略推演
+- **LLM + 人工协同审核**：独立评审模型预审 + 人工最终决策，确保输出质量
+- **三层记忆架构**：外部知识库 / 全局状态 / 章节工作区，有效管理长文档上下文
+
+## 前端展示
+
+### 报告生成主界面
+
+**开始页 - 输入报告需求**
+
+<img src="docs/screenshots/开始页.png" width="720"/>
+
+**准备阶段 - 章节状态初始化**
+
+<img src="docs/screenshots/准备阶段.png" width="720"/>
+
+### 多智能体工作流程
+
+**信息检索 - 多查询 RAG 检索**
+
+<img src="docs/screenshots/信息检索.png" width="720"/>
+
+**分析过程 - 战略模型驱动分析**
+
+<img src="docs/screenshots/分析过程.png" width="720"/>
+
+**内容撰写 - 章节正文生成**
+
+<img src="docs/screenshots/内容撰写.png" width="720"/>
+
+**AI 评审详情 - 六维质量评估**
+
+<img src="docs/screenshots/AI评审详情.png" width="720"/>
+
+### 战略蓝图与最终报告
+
+**战略蓝图 - SWOT/TOWS/KPI**
+
+<img src="docs/screenshots/战略蓝图1.png" width="720"/>
+
+**报告整体 - 多章节完整输出**
+
+<img src="docs/screenshots/报告整体.png" width="720"/>
+
+---
+
 ## 知识库文档
 
 将知识库文档放置在 `知识库/知识库/` 目录下：
