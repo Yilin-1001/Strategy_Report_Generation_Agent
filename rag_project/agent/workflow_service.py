@@ -50,15 +50,16 @@ class WorkflowService:
                 if node_name == "human_review":
                     continue  # Skip, we'll handle after loop
                 # Extract useful info from node output
-                chapter_idx = node_output.get("current_chapter_index", 0) if isinstance(node_output, dict) else 0
-                phase = node_output.get("current_phase", "diagnosis") if isinstance(node_output, dict) else "diagnosis"
-                yield {
+                progress = {
                     "type": "progress",
                     "node": node_name,
-                    "chapter_index": chapter_idx,
-                    "phase": phase,
                     "node_output": node_output if isinstance(node_output, dict) else {},
                 }
+                if isinstance(node_output, dict) and "current_chapter_index" in node_output:
+                    progress["chapter_index"] = node_output["current_chapter_index"]
+                if isinstance(node_output, dict) and "current_phase" in node_output:
+                    progress["phase"] = node_output["current_phase"]
+                yield progress
 
         snapshot = self.graph.get_state(config)
         self._sessions[thread_id] = {
@@ -96,15 +97,16 @@ class WorkflowService:
             for node_name, node_output in event.items():
                 if node_name == "human_review":
                     continue
-                chapter_idx = node_output.get("current_chapter_index", 0) if isinstance(node_output, dict) else 0
-                phase = node_output.get("current_phase", "diagnosis") if isinstance(node_output, dict) else "diagnosis"
-                yield {
+                progress = {
                     "type": "progress",
                     "node": node_name,
-                    "chapter_index": chapter_idx,
-                    "phase": phase,
                     "node_output": node_output if isinstance(node_output, dict) else {},
                 }
+                if isinstance(node_output, dict) and "current_chapter_index" in node_output:
+                    progress["chapter_index"] = node_output["current_chapter_index"]
+                if isinstance(node_output, dict) and "current_phase" in node_output:
+                    progress["phase"] = node_output["current_phase"]
+                yield progress
 
         snapshot = self.graph.get_state(config)
         session["snapshot"] = snapshot
@@ -164,6 +166,7 @@ class WorkflowService:
             "strategic_blueprint": state.get("strategic_blueprint"),
             "is_blueprint_phase": self._is_blueprint_phase(snapshot),
             "final_report": state.get("final_report"),
+            "report_evaluation": state.get("report_evaluation"),
             "review_decision": state.get("review_decision", ""),
             "human_feedback": state.get("human_feedback", {}),
             "llm_review_result": state.get("llm_review_result"),

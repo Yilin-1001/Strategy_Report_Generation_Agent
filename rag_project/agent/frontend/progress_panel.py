@@ -85,17 +85,6 @@ def render_progress_panel(
     </div>
     """
 
-    # Draft library
-    draft_items = ""
-    for i in range(min(len(context_pool), len(CHAPTER_META))):
-        title = CHAPTER_META[i]["title"][:15]
-        draft_items += f"""
-        <div class="draft-item">
-            <span style="color:#e8c9a0;">&#9656; {title}...</span>
-            <span style="color:#4ade80;">&#10003;</span>
-        </div>
-        """
-
     return f"""
     <div class="progress-panel">
         <div class="panel-header">
@@ -112,9 +101,6 @@ def render_progress_panel(
         {initiatives_nodes}
 
         {progress_bar}
-
-        <div class="phase-label">&mdash;&mdash; 报告草稿库 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</div>
-        {draft_items if draft_items else '<div class="text-muted">暂无已完成章节</div>'}
     </div>
     """
 

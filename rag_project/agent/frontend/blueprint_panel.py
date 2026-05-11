@@ -73,7 +73,7 @@ def render_blueprint_review(blueprint: Dict) -> str:
 
     mission_html = f"""
     <div class="blueprint-section">
-        <h3>&#127919; 企业使命</h3>
+        <div class="mission-title">&#127919; 企业使命</div>
         <div class="mission-statement">{mission}</div>
     </div>
     """

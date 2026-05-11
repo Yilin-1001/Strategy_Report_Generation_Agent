@@ -19,6 +19,8 @@ from rag_project.agent.nodes import (
     researcher_node,
     analyst_node,
     writer_node,
+    reviewer_node,
+    report_evaluator_node,
     human_review_node,
     archiver_node,
     should_continue
@@ -37,15 +39,16 @@ def create_report_graph():
     3. researcher - Retrieves relevant context from knowledge base
     4. analyst - Analyzes content using specified strategic models (PEST, SWOT, BCG, etc.)
     5. writer - Drafts chapter with strategic model constraints
-    6. human_review - Awaits human feedback (interrupts execution)
+    6. reviewer - LLM-based quality evaluation (6-dimensional scoring)
+    7. human_review - Awaits human feedback (interrupts execution)
 
     Branching after Chapter 3 (index=2):
-    7a. strategist - Generates strategic blueprint from SWOT (TOWS matrix, mission, KPIs)
-    8a. human_review - Strategic blueprint approval checkpoint
+    8a. strategist - Generates strategic blueprint from SWOT (TOWS matrix, mission, KPIs)
+    9a. human_review - Strategic blueprint approval checkpoint
     7b-8b. [If approved] Continue to Chapter 4 (initiatives phase)
 
     Final stage:
-    9. archiver - Generates executive summary and assembles final report with blueprint appendix
+    10. archiver - Generates executive summary and assembles final report with blueprint appendix
 
     Returns:
         Compiled StateGraph with MemorySaver checkpointer
@@ -72,9 +75,11 @@ def create_report_graph():
     workflow.add_node("researcher", lambda state: researcher_node(state, retriever, researcher_llm))
     workflow.add_node("analyst", lambda state: analyst_node(state, analyst_llm))
     workflow.add_node("writer", lambda state: writer_node(state, writer_llm))
+    workflow.add_node("reviewer", reviewer_node)  # LLM-based quality evaluation
     workflow.add_node("strategist", lambda state: strategist_node(state, strategist_llm))  # NEW
     workflow.add_node("human_review", human_review_node)
     workflow.add_node("archiver", lambda state: archiver_node(state, archiver_llm))  # UPDATED
+    workflow.add_node("report_evaluator", report_evaluator_node)  # 全文5维度评审
 
     # Set the entry point
     workflow.set_entry_point("coordinator")
@@ -84,7 +89,8 @@ def create_report_graph():
     workflow.add_edge("prepare_chapter", "researcher")
     workflow.add_edge("researcher", "analyst")
     workflow.add_edge("analyst", "writer")
-    workflow.add_edge("writer", "human_review")
+    workflow.add_edge("writer", "reviewer")
+    workflow.add_edge("reviewer", "human_review")
 
     # NEW: Add edge from strategist back to human_review for blueprint approval
     workflow.add_edge("strategist", "human_review")
@@ -108,8 +114,9 @@ def create_report_graph():
         }
     )
 
-    # Add edge from archiver to END
-    workflow.add_edge("archiver", END)
+    # Add edge from archiver to report_evaluator, then to END
+    workflow.add_edge("archiver", "report_evaluator")
+    workflow.add_edge("report_evaluator", END)
 
     # Compile the graph with MemorySaver checkpointer
     # This enables persistence and resumption of workflow execution

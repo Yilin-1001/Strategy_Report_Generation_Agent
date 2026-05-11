@@ -502,10 +502,9 @@
   box-shadow: none !important;
 }
 
-/* Hide any remaining label in feedback area */
-.review-feedback-row label,
-.review-feedback-row .gr-input-label,
-.review-feedback-row [class*="label"] {
+/* Hide label text in feedback area */
+.review-feedback-row > label,
+.review-feedback-row > .gr-input-label {
   display: none !important;
 }
 
@@ -649,24 +648,22 @@
   text-align: right;
 }
 
-/* === Draft Library === */
+/* === Draft Library — flat items, no nested cards === */
 .draft-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 12px;
-  background: var(--bg-secondary);
   border-radius: var(--radius-sm);
   margin-bottom: var(--element-gap);
   font-size: 0.8rem;
-  color: var(--accent-gold-light);
-  border: 1px solid var(--border);
+  color: var(--text-secondary);
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .draft-item:hover {
-  border-color: var(--accent-gold-dim);
+  color: var(--accent-gold-light);
   background: var(--bg-card-hover);
 }
 
@@ -886,6 +883,17 @@
   color: var(--text-primary);
 }
 
+.dim-analysis {
+  margin: -4px 0 12px 0;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
 .issues-section h4 {
   font-size: 0.9rem;
   color: var(--warning);
@@ -896,35 +904,38 @@
   background: var(--bg-secondary);
   border: 1px solid rgba(239, 68, 68, 0.3);
   border-radius: var(--radius-sm);
-  padding: 14px;
+  padding: 16px;
   margin-bottom: 12px;
+  border-left: 4px solid var(--danger);
 }
 
 .issue-header {
   font-weight: 600;
   color: var(--danger);
-  font-size: 0.875rem;
-  margin-bottom: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
 }
 
 .issue-location {
   font-size: 0.75rem;
   color: var(--text-muted);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .issue-desc {
   font-size: 0.85rem;
   color: var(--text-secondary);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 
 .issue-suggestion {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--status-done);
-  padding: 8px 12px;
+  padding: 10px 14px;
   background: rgba(74, 222, 128, 0.1);
   border-radius: var(--radius-sm);
+  line-height: 1.5;
 }
 
 /* === Legacy Buttons (Used in completion/history pages) === */
@@ -1009,15 +1020,26 @@
   border-bottom: 1px solid var(--border);
 }
 
+.mission-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #9a7040;  /* 深棕金色，浅色背景下清晰可见 */
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+
 .mission-statement {
   font-size: 1.1rem;
   color: var(--accent-gold-light);
   font-style: italic;
-  padding: 20px;
+  padding: 24px;
   background: var(--bg-card);
   border-radius: var(--radius-md);
   border: 1px solid var(--accent-gold-dim);
   text-align: center;
+  line-height: 1.8;
 }
 
 /* SWOT Grid */
@@ -1155,6 +1177,7 @@
 }
 
 .toc-item {
+  display: block;
   padding: 10px 12px;
   font-size: 0.85rem;
   color: var(--text-secondary);
@@ -1162,11 +1185,19 @@
   cursor: pointer;
   transition: all 0.2s ease;
   margin-bottom: 4px;
+  text-decoration: none;
 }
 
-.toc-item:hover {
+a.toc-item:hover {
   background: var(--bg-card);
-  color: var(--text-primary);
+  color: var(--accent-gold-light);
+  text-decoration: none;
+}
+
+.toc-item:focus {
+  outline: none;
+  background: var(--bg-card);
+  color: var(--accent-gold);
 }
 
 .report-content {
@@ -1175,6 +1206,7 @@
   border-radius: var(--radius-md);
   padding: 32px;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .report-card {
@@ -1241,6 +1273,93 @@
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   font-style: italic;
   color: var(--text-muted);
+}
+
+/* Report-specific markdown: warm off-white text on dark card background */
+.markdown-report {
+  color: #d4cec4;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+.markdown-report h1,
+.markdown-report h2,
+.markdown-report h3 {
+  color: #f0e6d6;
+}
+
+.markdown-report h1 {
+  font-size: 1.6rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.markdown-report h2 {
+  font-size: 1.3rem;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 4px;
+}
+
+.markdown-report h3 {
+  font-size: 1.1rem;
+  color: var(--accent-gold);
+}
+
+.markdown-report p {
+  color: #d4cec4;
+}
+
+.markdown-report strong {
+  color: #f0e6d6;
+  font-weight: 600;
+}
+
+.markdown-report ul,
+.markdown-report ol {
+  color: #d4cec4;
+}
+
+.markdown-report li {
+  color: #d4cec4;
+}
+
+.markdown-report blockquote {
+  color: #b0a89c;
+  border-left-color: var(--accent-gold-dim);
+}
+
+/* Report evaluation panel */
+.report-eval-panel {
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent-gold-dim);
+  border-radius: var(--radius-md);
+}
+
+.eval-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.eval-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+}
+
+.eval-suggestions {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  border-left: 3px solid var(--accent-gold-dim);
 }
 
 /* Light variant for draft content: white background, black text */
@@ -1321,16 +1440,137 @@
 }
 
 .history-entry {
-  padding: 16px;
+  padding: 18px;
   background: var(--bg-secondary);
-  border-radius: var(--radius-sm);
-  margin-bottom: 12px;
+  border-radius: var(--radius-md);
+  margin-bottom: 14px;
   border-left: 3px solid var(--border);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.history-entry:hover {
+  background: var(--bg-card-hover);
+  border-left-color: var(--accent-gold-dim);
 }
 
 .history-current {
   border-left-color: var(--accent-gold);
   background: rgba(212, 165, 116, 0.08);
+}
+
+.history-current:hover {
+  background: rgba(212, 165, 116, 0.12);
+}
+
+.history-header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.history-version-badge {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.history-action-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.history-score-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.history-current-marker {
+  display: inline-flex;
+  padding: 3px 8px;
+  background: linear-gradient(135deg, rgba(212,165,116,0.3), rgba(212,165,116,0.15));
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  letter-spacing: 0.04em;
+}
+
+.history-meta-row {
+  font-size: 0.8rem;
+  color: #b0bcc8;
+  margin-bottom: 12px;
+}
+
+.history-issues {
+  margin-bottom: 10px;
+}
+
+.history-issue {
+  font-size: 0.82rem;
+  color: #d4a0a0;
+  padding: 6px 10px;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 4px;
+  margin-bottom: 4px;
+  border-left: 2px solid rgba(239, 68, 68, 0.4);
+  line-height: 1.5;
+}
+
+.history-comment {
+  font-size: 0.82rem;
+  color: var(--accent-gold-light);
+  padding: 8px 12px;
+  background: rgba(212, 165, 116, 0.1);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  border-left: 2px solid var(--accent-gold-dim);
+  line-height: 1.5;
+}
+
+.history-draft-preview {
+  font-size: 0.85rem;
+  color: #b8c4d0;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  line-height: 1.7;
+  border: 1px solid var(--border);
+}
+
+.history-draft-expand-hint {
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-align: center;
+  padding: 4px 0;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.history-entry:hover .history-draft-expand-hint {
+  opacity: 1;
+}
+
+.history-draft-full {
+  display: none;
+  margin-top: 14px;
+  padding: 18px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.history-draft-full.expanded {
+  display: block;
+  animation: fadeIn 0.25s ease-out;
 }
 
 .history-header {
@@ -1437,7 +1677,8 @@
 .review-panel,
 .blueprint-review,
 .report-viewer,
-.completion-page {
+.completion-page,
+.history-timeline {
   animation: fadeIn 0.4s ease-out;
 }
 
@@ -1849,4 +2090,142 @@ label, .gr-input-label, .gr-textarea-label {
   .review-actions-secondary {
     flex-direction: column;
   }
+}
+
+/* === Visually Hidden (keeps element in DOM for JS interaction) === */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* === Draft Dropdown in Sidebar — Single flat layer === */
+.sidebar-left .draft-dropdown {
+  margin-top: var(--section-gap);
+  padding: var(--section-gap) var(--panel-inner) 0;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Label — prominent */
+.sidebar-left .draft-dropdown label,
+.sidebar-left .draft-dropdown .gr-dropdown-label {
+  display: block;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  color: var(--accent-gold) !important;
+  letter-spacing: 0.06em !important;
+  margin-bottom: 10px !important;
+}
+
+/* Dropdown input box — the single dark layer */
+.sidebar-left .draft-dropdown input,
+.sidebar-left .draft-dropdown select,
+.sidebar-left .draft-dropdown .gr-dropdown-input,
+.sidebar-left .draft-dropdown .wrap,
+.sidebar-left .draft-dropdown .container {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--accent-gold-light) !important;
+  border-radius: var(--radius-md) !important;
+  font-size: 0.875rem !important;
+  padding: 10px 14px !important;
+  min-height: 42px !important;
+  transition: all 0.2s ease !important;
+}
+
+.sidebar-left .draft-dropdown input:focus,
+.sidebar-left .draft-dropdown select:focus,
+.sidebar-left .draft-dropdown .gr-dropdown-input:focus {
+  border-color: var(--accent-gold-dim) !important;
+  outline: none !important;
+}
+
+/* Placeholder text */
+.sidebar-left .draft-dropdown input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Dropdown arrow icon */
+.sidebar-left .draft-dropdown .gr-dropdown-arrow,
+.sidebar-left .draft-dropdown [class*="arrow"] {
+  color: var(--accent-gold-dim) !important;
+}
+
+/* Dropdown options popup container */
+.sidebar-left .draft-dropdown [class*="dropdown"] [class*="menu"],
+.sidebar-left .draft-dropdown [class*="options"],
+.sidebar-left .draft-dropdown ul[class*="list"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 8px 32px var(--shadow) !important;
+  margin-top: 4px !important;
+  overflow: hidden !important;
+}
+
+/* Individual dropdown option items */
+.sidebar-left .draft-dropdown [class*="dropdown"] [class*="item"],
+.sidebar-left .draft-dropdown [class*="options"] [class*="option"],
+.sidebar-left .draft-dropdown li[class*="item"],
+.sidebar-left .draft-dropdown li[role="option"] {
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  font-size: 0.85rem !important;
+  padding: 10px 14px !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.sidebar-left .draft-dropdown [class*="dropdown"] [class*="item"]:last-child,
+.sidebar-left .draft-dropdown [class*="options"] [class*="option"]:last-child,
+.sidebar-left .draft-dropdown li[class*="item"]:last-child,
+.sidebar-left .draft-dropdown li[role="option"]:last-child {
+  border-bottom: none !important;
+}
+
+/* Hover state */
+.sidebar-left .draft-dropdown [class*="dropdown"] [class*="item"]:hover,
+.sidebar-left .draft-dropdown [class*="options"] [class*="option"]:hover,
+.sidebar-left .draft-dropdown li[class*="item"]:hover,
+.sidebar-left .draft-dropdown li[role="option"]:hover {
+  background: var(--bg-card-hover) !important;
+  color: var(--accent-gold-light) !important;
+}
+
+/* Selected item */
+.sidebar-left .draft-dropdown [class*="dropdown"] [class*="item"][data-selected],
+.sidebar-left .draft-dropdown [class*="dropdown"] [class*="item"].selected,
+.sidebar-left .draft-dropdown li[aria-selected="true"] {
+  background: rgba(212, 165, 116, 0.08) !important;
+  color: var(--accent-gold) !important;
+}
+
+/* === Return to Current Chapter Button === */
+.sidebar-left .btn-return-current {
+  width: calc(100% - 2 * var(--panel-inner)) !important;
+  margin-left: var(--panel-inner) !important;
+  margin-right: var(--panel-inner) !important;
+  margin-top: var(--element-gap) !important;
+  padding: 10px 14px !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  background: var(--accent-gold) !important;
+  color: var(--bg-primary) !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  transition: all 0.25s ease !important;
+  letter-spacing: 0.02em;
+}
+
+.sidebar-left .btn-return-current:hover {
+  background: var(--accent-gold-light) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 16px rgba(212, 165, 116, 0.35) !important;
 }

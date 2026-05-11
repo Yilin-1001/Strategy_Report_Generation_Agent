@@ -4,7 +4,7 @@ from pathlib import Path
 import gradio as gr
 
 from rag_project.agent.workflow_service import WorkflowService, NODE_LABELS, PIPELINE_NODES
-from rag_project.agent.frontend.progress_panel import render_progress_panel
+from rag_project.agent.frontend.progress_panel import render_progress_panel, CHAPTER_META
 from rag_project.agent.frontend.workspace_tabs import (
     render_draft_tab, render_docs_tab, render_analysis_tab,
     render_review_tab, render_history_tab,
@@ -97,6 +97,14 @@ def _make_loading_right(current_node: str) -> str:
     '''
 
 
+def _get_draft_choices(context_pool):
+    """Generate dropdown choices from completed chapters."""
+    choices = []
+    for i in range(min(len(context_pool), len(CHAPTER_META))):
+        choices.append(f"Ch{i+1}: {CHAPTER_META[i]['title']}")
+    return choices
+
+
 def create_app():
     service = WorkflowService()
 
@@ -164,6 +172,17 @@ def create_app():
                 # Left: Progress Sidebar
                 with gr.Column(scale=1, min_width=380, elem_classes=["sidebar-left"]):
                     progress_html = gr.HTML()
+                    draft_dropdown = gr.Dropdown(
+                        label="报告草稿库",
+                        choices=[],
+                        interactive=True,
+                        elem_classes=["draft-dropdown"],
+                    )
+                    btn_return_current = gr.Button(
+                        "返回当前章节",
+                        visible=False,
+                        elem_classes=["btn-return-current"],
+                    )
                 # Middle: Main Content
                 with gr.Column(scale=3, elem_classes=["content-main"]):
                     chapter_header = gr.HTML()
@@ -194,7 +213,7 @@ def create_app():
                             btn_revise_writing = gr.Button("↻ 重写内容", elem_classes=["btn-revise"])
                         gr.HTML("""<div class="review-section-label">反馈说明</div>""")
                         with gr.Row(elem_classes=["review-feedback-row"]):
-                            feedback_input = gr.Textbox(show_label=False, placeholder="输入补充说明或修改建议...", lines=3, elem_classes=["feedback-input"])
+                            feedback_input = gr.Textbox(show_label=False, placeholder="输入补充说明或修改建议...", lines=3, interactive=True, elem_classes=["feedback-input"])
                         gr.HTML("""<div class="review-divider-thin"></div>""")
                         with gr.Row(elem_classes=["review-actions-danger"]):
                             btn_stop = gr.Button("☠ 终止报告", elem_classes=["btn-danger"])
@@ -215,8 +234,8 @@ def create_app():
             history_list_html = gr.HTML()
             btn_back_from_history = gr.Button("<< 返回")
 
-        # === Shared outputs (20) ===
-        _N_OUTPUTS = 20
+        # === Shared outputs (22) ===
+        _N_OUTPUTS = 22
         _all_outputs = [
             welcome_page,          # 0
             workbench,             # 1
@@ -238,13 +257,15 @@ def create_app():
             ui_state,              # 17
             btn_revise_blueprint,  # 18
             main_tabs,             # 19
+            draft_dropdown,        # 20
+            btn_return_current,    # 21
         ]
 
         # === Event Handlers ===
 
-        def _make_tuple(items_20):
-            assert len(items_20) == _N_OUTPUTS, f"Expected {_N_OUTPUTS}, got {len(items_20)}"
-            return tuple(items_20)
+        def _make_tuple(items_21):
+            assert len(items_21) == _N_OUTPUTS, f"Expected {_N_OUTPUTS}, got {len(items_21)}"
+            return tuple(items_21)
 
         def _progress_tuple(current_node: str, chapter_index: int,
                             node_output: dict = None,
@@ -318,6 +339,8 @@ def create_app():
                 gr.update(),                                                 # 17 ui_state
                 gr.update(visible=False),                                    # 18 btn_revise_blueprint
                 gr.update(selected=selected_tab),                            # 19 main_tabs
+                gr.update(choices=_get_draft_choices(context_pool), value=None),  # 20 draft_dropdown
+                gr.update(visible=True),                                         # 21 btn_return_current
             ])
 
         def start_generation(topic, tid_val):
@@ -436,13 +459,70 @@ def create_app():
         def view_report(current_state, tid_val):
             report = service.get_report(tid_val) or ""
             chapters = current_state.get("context_pool", [])
-            viewer = render_report_viewer(report, chapters)
+            report_eval = current_state.get("report_evaluation")
+            viewer = render_report_viewer(report, chapters, report_eval)
             return _nav_to_report(viewer)
 
         btn_view_report.click(fn=view_report, inputs=[ui_state, tid], outputs=_all_outputs)
         btn_new_report.click(fn=lambda: _nav_to_welcome(), outputs=_all_outputs)
         btn_back.click(fn=lambda s: _show_completion(s), inputs=[ui_state], outputs=_all_outputs)
         btn_back_from_history.click(fn=lambda: _nav_to_welcome(), outputs=_all_outputs)
+
+        # === Draft library selection handler ===
+        def _on_draft_click(selected, current_state):
+            """Handle draft library selection: show the selected chapter's draft.
+
+            When viewing a historical chapter (not the current one being reviewed),
+            shows the 'return to current' button in the sidebar.
+            """
+            if not selected:
+                return _make_tuple([gr.update() for _ in range(_N_OUTPUTS)])
+
+            try:
+                idx = int(selected.split(":")[0].replace("Ch", "")) - 1
+            except (ValueError, IndexError):
+                return _make_tuple([gr.update() for _ in range(_N_OUTPUTS)])
+
+            context_pool = current_state.get("context_pool", [])
+            if idx < 0 or idx >= len(context_pool):
+                return _make_tuple([gr.update() for _ in range(_N_OUTPUTS)])
+
+            chapter_content = context_pool[idx]
+            draft_display = render_draft_tab(chapter_content)
+
+            # Check if this is the current chapter being reviewed
+            current_idx = current_state.get("current_chapter_index", 0)
+            is_current_chapter = (idx == current_idx)
+
+            # Show return button only when viewing a different chapter
+            show_return = not is_current_chapter
+
+            items = [gr.update() for _ in range(_N_OUTPUTS)]
+            items[1] = gr.update(visible=True)                          # workbench
+            items[9] = gr.update(value=draft_display)                   # draft content
+            items[19] = gr.update(selected="tab_draft")                 # switch to draft tab
+            items[21] = gr.update(visible=show_return)                  # btn_return_current
+            return _make_tuple(items)
+
+        draft_dropdown.change(
+            fn=_on_draft_click,
+            inputs=[draft_dropdown, ui_state],
+            outputs=_all_outputs,
+        )
+
+        # === Return to current chapter handler ===
+        def _return_to_current_chapter(current_state):
+            """Return to viewing the current chapter being reviewed.
+
+            Restores the full workbench state with current draft, review, history, etc.
+            """
+            return _render_workbench(current_state)
+
+        btn_return_current.click(
+            fn=_return_to_current_chapter,
+            inputs=[ui_state],
+            outputs=_all_outputs,
+        )
 
     return app
 
@@ -471,6 +551,8 @@ def _render_workbench(state: dict) -> tuple:
             gr.update(), gr.update(), gr.update(),
             gr.update(value=state), gr.update(visible=False),
             gr.update(),  # main_tabs
+            gr.update(),  # draft_dropdown
+            gr.update(),  # btn_return_current
         ]
         return tuple(items)
 
@@ -522,9 +604,7 @@ def _render_workbench(state: dict) -> tuple:
     draft = render_draft_tab(state.get("current_draft", ""))
     review = render_review_tab(state.get("llm_review_result"))
     history_data = scratchpad.get("revision_history", [])
-    if not history_data and scratchpad.get("revision_feedback"):
-        history_data = [scratchpad.get("revision_feedback")]
-    history = render_history_tab(history_data)
+    history = render_history_tab(history_data, current_draft=state.get("current_draft", ""))
 
     # Default to draft tab when workflow finishes (human review)
     selected_tab = "tab_draft"
@@ -577,6 +657,8 @@ def _render_workbench(state: dict) -> tuple:
         gr.update(value=state),          # 17 ui_state
         gr.update(visible=bp_btn_visible),  # 18 btn_revise_blueprint
         gr.update(selected=selected_tab),   # 19 main_tabs
+        gr.update(choices=_get_draft_choices(state.get("context_pool", [])), value=None),  # 20 draft_dropdown
+        gr.update(visible=True),                                              # 21 btn_return_current
     ]
     return tuple(items)
 
@@ -584,8 +666,26 @@ def _render_workbench(state: dict) -> tuple:
 def _show_completion(state: dict) -> tuple:
     report = state.get("final_report", "")
     context_pool = state.get("context_pool", [])
+    report_eval = state.get("report_evaluation")
     word_count = len(report) if report else 0
     chapter_count = len(context_pool)
+
+    # Build evaluation display if available
+    eval_display = ""
+    if report_eval and report_eval.get("total_score", 0) > 0:
+        eval_total = report_eval.get("total_score", 0)
+        eval_color = "#4ade80" if eval_total >= 75 else "#d4a574" if eval_total >= 60 else "#ef4444"
+        eval_display = f"""
+        <div style="margin-top:24px; padding:20px; background:var(--bg-card); border-radius:12px; border:1px solid var(--border);">
+            <div style="font-family:var(--font-display); font-size:1.1rem; color:var(--accent-gold); margin-bottom:12px;">全文质量评估</div>
+            <div style="display:flex; align-items:center; gap:16px;">
+                <span style="font-family:var(--font-display); font-size:2.5rem; font-weight:700; color:{eval_color};">{eval_total}</span>
+                <span style="color:var(--text-muted); font-size:1rem;">/100</span>
+                <span style="color:var(--text-secondary); font-size:0.85rem;">方法论·战略一致·逻辑闭环·创新前瞻·组织治理</span>
+            </div>
+        </div>
+        """
+
     content = f"""
     <div class="completion-page">
         <div class="completion-icon">&#10003;</div>
@@ -594,6 +694,7 @@ def _show_completion(state: dict) -> tuple:
             共完成 {chapter_count}/8 个章节<br>
             总字数: {word_count:,}
         </div>
+        {eval_display}
     </div>
     """
     items = [
@@ -604,6 +705,8 @@ def _show_completion(state: dict) -> tuple:
         gr.update(value=content), gr.update(), gr.update(),
         gr.update(value=state), gr.update(visible=False),
         gr.update(),  # main_tabs
+        gr.update(),  # draft_dropdown
+        gr.update(),  # btn_return_current
     ]
     return tuple(items)
 
@@ -617,6 +720,8 @@ def _nav_to_report(viewer_html: str) -> tuple:
         gr.update(), gr.update(value=viewer_html), gr.update(),
         gr.update(), gr.update(),
         gr.update(),  # main_tabs
+        gr.update(),  # draft_dropdown
+        gr.update(),  # btn_return_current
     ]
     return tuple(items)
 
@@ -630,5 +735,7 @@ def _nav_to_welcome() -> tuple:
         gr.update(), gr.update(), gr.update(),
         gr.update(), gr.update(),
         gr.update(),  # main_tabs
+        gr.update(),  # draft_dropdown
+        gr.update(),  # btn_return_current
     ]
     return tuple(items)

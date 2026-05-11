@@ -11,10 +11,10 @@ llm:
 # Uses a different model to avoid self-evaluation hallucination
 reviewer:
   provider: "siliconflow"
-  model: "Qwen/Qwen3.5-122B-A10B"  # Qwen3.5 122B大模型，评审更精准
+  model: "Pro/moonshotai/Kimi-K2.5"  # 与消融实验相同的Kimi模型
   api_key_env: "SILICONFLOW_API_KEY"
   base_url: "https://api.siliconflow.cn/v1"
-  max_tokens: 2048  # thinking模式需要更大token空间
+  max_tokens: 8192  # 5维度详细评语需要更大token空间
   timeout: 120
   max_retries: 1
 

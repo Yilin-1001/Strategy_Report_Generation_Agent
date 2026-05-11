@@ -3,10 +3,12 @@ import re
 from typing import Dict, Any, List, Optional
 
 
-def _markdown_to_html(text: str) -> str:
+def _markdown_to_html(text: str, add_anchor_ids: bool = False) -> str:
     """Convert basic Markdown to HTML without external dependencies.
 
     Handles: headers (#, ##, ###), bold (**), italic (*), lists (-, *), paragraphs.
+
+    When add_anchor_ids=True, <h1> headers get id="chapter-{index}" for TOC navigation.
     """
     if not text:
         return ""
@@ -15,6 +17,7 @@ def _markdown_to_html(text: str) -> str:
     html_parts = []
     in_list = False
     list_items = []
+    h1_counter = 0  # Track h1 index for anchor IDs
 
     for line in lines:
         stripped = line.strip()
@@ -37,7 +40,13 @@ def _markdown_to_html(text: str) -> str:
                 html_parts.append("<ul>" + "".join(list_items) + "</ul>")
                 list_items = []
                 in_list = False
-            html_parts.append(f'<h1>{stripped[2:]}</h1>')
+            header_text = stripped[2:]
+            if add_anchor_ids:
+                anchor_id = f"chapter-{h1_counter}"
+                h1_counter += 1
+                html_parts.append(f'<h1 id="{anchor_id}">{header_text}</h1>')
+            else:
+                html_parts.append(f'<h1>{header_text}</h1>')
         # List items
         elif stripped.startswith("- ") or stripped.startswith("* "):
             in_list = True
@@ -195,7 +204,12 @@ def render_analysis_tab(scratchpad: Dict) -> str:
 
 
 def render_review_tab(review: Dict) -> str:
-    """Render LLM review with dimension scores and issues."""
+    """Render LLM chapter review with 5-dimension scores.
+
+    Supports both old dimension keys (for backward compatibility) and new chapter-level keys:
+    - Old: methodology, strategic_alignment, logical_coherence, innovation_insight, organizational_governance
+    - New: model_application, data_support, internal_logic, content_depth, writing_quality
+    """
     if not review:
         return '<div class="text-muted">LLM评审尚未完成，请等待审核节点</div>'
 
@@ -203,42 +217,65 @@ def render_review_tab(review: Dict) -> str:
     dimension_scores = review.get("dimension_scores", {})
     issues = review.get("issues", [])
 
-    # Map English dimension keys to Chinese labels
-    dim_labels = {
-        "topic_relevance": "主题契合度",
-        "analysis_depth": "分析深度",
-        "writing_quality": "写作专业度",
-        "citation_sufficiency": "引用充分性",
-        "groundedness": "内容真实性",
-        "context_coherence": "上下文连贯性",
-    }
+    # Check which dimension keys are present (new chapter-level or old full-report)
+    has_new_dims = "model_application" in dimension_scores
+
+    if has_new_dims:
+        # Chapter-level evaluation (new keys)
+        dim_config = {
+            "model_application": ("模型运用与框架完整性", 20),
+            "data_support": ("数据支撑与证据质量", 20),
+            "internal_logic": ("内部逻辑与结构清晰度", 20),
+            "content_depth": ("内容深度与专业水准", 20),
+            "writing_quality": ("写作质量与规范表达", 20),
+        }
+    else:
+        # Full-report evaluation (old keys, backward compatibility)
+        dim_config = {
+            "methodology": ("方法论运用与分析框架严谨度", 20),
+            "strategic_alignment": ("战略一致性与外部环境契合度", 20),
+            "logical_coherence": ("逻辑连贯性与战略闭环思维", 20),
+            "innovation_insight": ("创新性与前瞻洞察力", 20),
+            "organizational_governance": ("隐性约束洞察与组织治理深度", 20),
+        }
 
     dim_html = ""
-    for dim_name, score in dimension_scores.items():
-        label = dim_labels.get(dim_name, dim_name)
-        # Normalize score to percentage for bar width
-        # Each dimension has different max (15 or 20), calculate percentage
-        max_scores = {
-            "topic_relevance": 15, "analysis_depth": 20,
-            "writing_quality": 15, "citation_sufficiency": 15,
-            "groundedness": 20, "context_coherence": 15,
-        }
-        max_score = max_scores.get(dim_name, 20)
-        bar_pct = int((score / max_score) * 100) if max_score else score
+    for dim_key, (label, max_score) in dim_config.items():
+        dim_data = dimension_scores.get(dim_key, {})
+        # Handle both old format (int) and new format (dict with score/analysis)
+        if isinstance(dim_data, dict):
+            score = dim_data.get("score", 0)
+            analysis = dim_data.get("analysis", "")
+            display_label = dim_data.get("label", label)
+        else:
+            score = dim_data
+            analysis = ""
+            display_label = label
+
+        try:
+            score = float(score)
+        except (ValueError, TypeError):
+            score = 0
+
+        bar_pct = int((score / max_score) * 100) if max_score else 0
         warning = " &#9888;" if score < max_score * 0.7 else ""
+        analysis_html = ""
+        if analysis:
+            analysis_html = f'<div class="dim-analysis">{analysis}</div>'
+
         dim_html += f"""
         <div class="score-row">
-            <span class="dim-name">{label}</span>
+            <span class="dim-name">{display_label}</span>
             <div class="score-bar">
                 <div class="score-bar-fill" style="width:{bar_pct}%; background:{_score_color(bar_pct)};"></div>
             </div>
             <span class="dim-score">{score}/{max_score}{warning}</span>
         </div>
+        {analysis_html}
         """
 
     issues_html = ""
     for i, issue in enumerate(issues):
-        # Issues can be strings or dicts
         if isinstance(issue, dict):
             title = issue.get("title", "")
             location = issue.get("location", "")
@@ -260,7 +297,6 @@ def render_review_tab(review: Dict) -> str:
             </div>
             """
 
-    # Show suggestion if available
     suggestion = review.get("suggestion", "")
     suggestion_html = ""
     if suggestion:
@@ -296,29 +332,120 @@ def render_review_tab(review: Dict) -> str:
     """
 
 
-def render_history_tab(history: List[Dict]) -> str:
-    """Render version history timeline."""
-    if not history:
-        return '<div class="text-muted">本章尚未发生修改</div>'
+def render_history_tab(history: List[Dict], current_draft: str = "") -> str:
+    """Render version history timeline with expandable draft previews.
 
-    entries = ""
+    Shows each revision as a timeline entry with:
+    - Version number, timestamp, action type, review score
+    - Top issues from the review
+    - Expandable draft content preview
+    - Current draft highlighted as latest version
+    """
+    # Build entries: combine revision_history with current draft
+    entries_html = ""
+    total_versions = len(history)
+
+    # Render past revision entries
     for i, entry in enumerate(history):
-        is_current = entry.get("is_current", False)
-        version_class = "history-current" if is_current else "history-past"
-        marker = "&#9679;" if is_current else f"版本 #{i + 1}"
+        version = entry.get("version", i + 1)
+        timestamp = entry.get("timestamp", "N/A")
+        action = entry.get("action", entry.get("decision", "N/A"))
+        score = entry.get("score", 0)
+        issues = entry.get("issues", [])
+        draft_preview = entry.get("draft_preview", "")
+        draft_full = entry.get("draft_full", "")
+        comments = entry.get("comments", "")
+        decision = entry.get("decision", "")
 
-        entries += f"""
-        <div class="history-entry {version_class}">
-            <div class="history-header">{marker} &middot; {entry.get('label', '')}</div>
-            <div class="history-meta">
-                时间: {entry.get('timestamp', 'N/A')}<br>
-                操作: {entry.get('action', 'N/A')}<br>
-                评审: {entry.get('score', 'N/A')}分
+        # Score color
+        score_color = "#4ade80" if score >= 85 else "#d4a574" if score >= 70 else "#ef4444"
+
+        # Action badge color
+        action_colors = {
+            "revise:data": "#60a5fa",
+            "revise:logic": "#fbbf24",
+            "revise:writing": "#c084fc",
+        }
+        badge_color = action_colors.get(decision, "#6b7280")
+
+        # Issues summary (show top 2)
+        issues_html = ""
+        if issues:
+            top_issues = issues[:2]
+            issue_items = "".join(
+                f'<div class="history-issue">&#8226; {issue if len(str(issue)) < 80 else str(issue)[:80] + "..."}</div>'
+                for issue in top_issues
+            )
+            issues_html = f'<div class="history-issues">{issue_items}</div>'
+
+        # Comments
+        comments_html = ""
+        if comments:
+            display_comment = comments if len(comments) < 100 else comments[:100] + "..."
+            comments_html = f'<div class="history-comment">反馈: {display_comment}</div>'
+
+        # Draft preview (truncated)
+        preview_html = ""
+        if draft_preview:
+            preview_text = draft_preview[:200] + ("..." if len(draft_preview) > 200 else "")
+            preview_html = f'<div class="history-draft-preview">{preview_text}</div>'
+
+        # Full draft (hidden by default, shown on click)
+        full_draft_html = ""
+        if draft_full:
+            full_draft_html = _markdown_to_html(draft_full)
+
+        entries_html += f"""
+        <div class="history-entry history-past" onclick="this.querySelector('.history-draft-full').classList.toggle('expanded')">
+            <div class="history-header-row">
+                <span class="history-version-badge" style="background:{badge_color}20; color:{badge_color}; border: 1px solid {badge_color}40;">
+                    V{version}
+                </span>
+                <span class="history-action-label">{action}</span>
+                <span class="history-score-badge" style="color:{score_color}">{score}分</span>
+            </div>
+            <div class="history-meta-row">
+                <span>{timestamp}</span>
+            </div>
+            {issues_html}
+            {comments_html}
+            {preview_html}
+            <div class="history-draft-expand-hint">点击展开完整草稿</div>
+            <div class="history-draft-full">
+                <div class="markdown-body markdown-light">{full_draft_html}</div>
             </div>
         </div>
         """
 
-    return f'<div class="history-timeline">{entries}</div>'
+    # Render current version entry (if there's a current draft)
+    if current_draft:
+        current_preview = current_draft[:200] + ("..." if len(current_draft) > 200 else "")
+        current_full_html = _markdown_to_html(current_draft)
+
+        entries_html += f"""
+        <div class="history-entry history-current" onclick="this.querySelector('.history-draft-full').classList.toggle('expanded')">
+            <div class="history-header-row">
+                <span class="history-version-badge" style="background:rgba(212,165,116,0.2); color:#d4a574; border: 1px solid rgba(212,165,116,0.4);">
+                    V{total_versions + 1}
+                </span>
+                <span class="history-action-label" style="color:#d4a574;">当前版本</span>
+                <span class="history-current-marker">最新</span>
+            </div>
+            <div class="history-meta-row">
+                <span>当前待审草稿</span>
+            </div>
+            <div class="history-draft-preview">{current_preview}</div>
+            <div class="history-draft-expand-hint">点击展开完整草稿</div>
+            <div class="history-draft-full">
+                <div class="markdown-body markdown-light">{current_full_html}</div>
+            </div>
+        </div>
+        """
+
+    if not entries_html:
+        return '<div class="text-muted">本章尚未发生修改</div>'
+
+    return f'<div class="history-timeline">{entries_html}</div>'
 
 
 def _score_color(score: int) -> str:

@@ -42,3 +42,4 @@ class GraphState(TypedDict):
 
     # --- 输出层 ---
     final_report: str  # Archiver生成的最终完整报告
+    report_evaluation: Optional[Dict]  # 全文评审结果（5维度评分，由report_evaluator节点生成）

@@ -8,6 +8,7 @@ This module handles:
 """
 
 import logging
+from datetime import datetime
 from typing import Dict, Any
 
 from rag_project.utils.logger import setup_logger
@@ -275,7 +276,8 @@ def human_review_node(state: Dict[str, Any]) -> Dict[str, Any]:
     # Build revision feedback from human_feedback and LLM review
     chapter_scratchpad = state.get("chapter_scratchpad", {})
     human_feedback = state.get("human_feedback", {})
-    llm_review = human_feedback.get("llm_review", {})
+    # llm_review_result is at top-level state (set by reviewer node), not nested in human_feedback
+    llm_review = state.get("llm_review_result") or {}
 
     # Start with LLM improvement_hints (may have been edited by user via _edit_review_fields)
     improvement_hints = dict(llm_review.get("improvement_hints", {}))
@@ -297,6 +299,25 @@ def human_review_node(state: Dict[str, Any]) -> Dict[str, Any]:
             improvement_hints[target_role] = f"{existing}{separator}[用户指令] {user_comments}"
             logger.info(f"Merged user comments into {target_role} hint")
 
+    # Build revision history: save the current draft as a historical version
+    # This enables the frontend "修改历史" tab to show previous drafts
+    revision_history = chapter_scratchpad.get("revision_history", [])
+    current_draft = state.get("current_draft", "")
+
+    # Create a new history entry for this revision
+    history_entry = {
+        "version": len(revision_history) + 1,
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "action": _get_action_label(decision),
+        "score": llm_review.get("score", 0),
+        "issues": llm_review.get("issues", [])[:3],  # Keep top 3 issues for summary
+        "draft_preview": current_draft[:600] if current_draft else "",
+        "draft_full": current_draft,  # Store full draft for expandable view
+        "decision": decision,
+        "comments": user_comments,
+    }
+    revision_history.append(history_entry)
+
     chapter_scratchpad["revision_feedback"] = {
         "decision": decision,
         "comments": human_feedback.get("comments", ""),
@@ -306,11 +327,25 @@ def human_review_node(state: Dict[str, Any]) -> Dict[str, Any]:
         "improvement_hints": improvement_hints,
         "previous_draft_summary": state.get("current_draft", "")[:800]
     }
+    chapter_scratchpad["revision_history"] = revision_history
 
     logger.info(f"Revision requested (decision={decision}), auto_revision_count: {current_count} -> {current_count + 1}")
     logger.info(f"Injected revision feedback: {chapter_scratchpad['revision_feedback']['issues'] or chapter_scratchpad['revision_feedback']['comments'][:100]}")
+    logger.info(f"Revision history now has {len(revision_history)} entries")
 
     return {
         "auto_revision_count": current_count + 1,
         "chapter_scratchpad": chapter_scratchpad
     }
+
+
+def _get_action_label(decision: str) -> str:
+    """Convert decision code to human-readable action label."""
+    action_map = {
+        "revise:data": "补充数据",
+        "revise:logic": "重新分析",
+        "revise:writing": "重写内容",
+        "approve": "批准通过",
+        "finished": "终止报告",
+    }
+    return action_map.get(decision, decision)
