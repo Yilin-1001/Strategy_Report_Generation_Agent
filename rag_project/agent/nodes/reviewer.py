@@ -122,6 +122,9 @@ def _build_system_prompt(phase: str, analysis_model: str) -> str:
         "你是一位拥有20年经验的国际顶尖战略咨询合伙人，专门评估战略规划报告。\n\n"
         "你必须严格按JSON格式输出评分，不要输出任何其他文字、分析或解释。"
         "不要使用markdown代码块。直接输出纯JSON。\n\n"
+        "【重要约束】你必须为每个维度都输出详细的analysis评语（100-200字），"
+        "绝对不允许任何维度的analysis为空字符串或省略。"
+        "如果某个analysis缺失，你的输出将被视为无效。\n\n"
     )
 
     if phase == "diagnosis":
@@ -159,6 +162,74 @@ def _init_reviewer():
     except Exception as e:
         logger.warning(f"Failed to init independent reviewer: {e}. Using fallback.")
         _fallback_llm = LLMManager("coordinator")
+
+
+def _validate_review_completeness(result: Dict) -> bool:
+    """校验评审结果是否所有维度都有非空评语。
+
+    Returns:
+        True if all 5 dimensions have non-empty analysis, False otherwise.
+    """
+    dimension_scores = result.get("dimension_scores", {})
+    required_dims = ["model_application", "data_support", "internal_logic",
+                     "content_depth", "writing_quality"]
+    for dim_key in required_dims:
+        dim_data = dimension_scores.get(dim_key, {})
+        analysis = dim_data.get("analysis", "") if isinstance(dim_data, dict) else ""
+        if not analysis or not analysis.strip():
+            logger.warning(f"Review incomplete: dimension '{dim_key}' has empty analysis")
+            return False
+    return True
+
+
+def _build_supplement_prompt(missing_dims: Dict[str, str], phase: str,
+                             chapter_title: str, eval_text: str) -> str:
+    """构建补充评语的提示词，只针对缺失的维度。
+
+    Args:
+        missing_dims: {eng_name: cn_label} 缺失评语的维度
+        phase: 当前阶段
+        chapter_title: 章节标题
+        eval_text: 章节内容（截断后）
+    """
+    dim_descriptions = "\n".join(
+        f"- {label}: 给出0-20分和100-200字的详细评语（包含具体表现、优点、不足、改进方向）"
+        for eng_name, label in missing_dims.items()
+    )
+
+    dim_keys = ", ".join(f'"{_eng_to_dim_key(eng)}_score": 0, "{_eng_to_dim_key(eng)}_analysis": "详细评语"'
+                         for eng in missing_dims)
+
+    phase_label = "诊断阶段" if phase == "diagnosis" else "推演阶段"
+
+    return f"""之前评审的部分维度评语缺失，请补充这些维度的评分和评语。
+
+## 章节信息
+标题: {chapter_title}
+阶段: {phase_label}
+
+## 章节内容
+{eval_text}
+
+需要补充的维度:
+{dim_descriptions}
+
+请直接输出JSON，格式如下:
+{{{dim_keys}}}
+
+每个analysis字段必须包含100-200字的详细评语，不可为空。"""
+
+
+def _eng_to_dim_key(eng_name: str) -> str:
+    """将英文维度名转换为d*键名。"""
+    mapping = {
+        "model_application": "d1",
+        "data_support": "d2",
+        "internal_logic": "d3",
+        "content_depth": "d4",
+        "writing_quality": "d5",
+    }
+    return mapping.get(eng_name, "d1")
 
 
 def reviewer_node(state: Dict[str, Any]) -> Dict[str, Any]:
@@ -209,10 +280,79 @@ def reviewer_node(state: Dict[str, Any]) -> Dict[str, Any]:
         chapter_index=current_index
     )
 
+    # 截断草稿文本（用于补充评语时复用）
+    if len(draft) > 2000:
+        eval_text = draft[:1500] + "\n\n...[内容省略]...\n" + draft[-500:]
+    else:
+        eval_text = draft
+
     try:
         response_text = _call_reviewer_llm(system_prompt, user_prompt)
         result = _parse_review_response(response_text, phase)
         logger.info(f"LLM Review [{phase}]: score={result['score']}, issues={len(result['issues'])}")
+
+        # 校验所有维度评语完整性，如有缺失则重试补充
+        max_supplement_attempts = 2
+        for attempt in range(max_supplement_attempts):
+            if _validate_review_completeness(result):
+                break
+
+            # 找出缺失评语的维度
+            dim_cn_mapping = {
+                "model_application": "模型运用与框架完整性",
+                "data_support": "数据支撑与证据质量",
+                "internal_logic": "内部逻辑与结构清晰度",
+                "content_depth": "内容深度与专业水准",
+                "writing_quality": "写作质量与规范表达",
+            }
+            missing_dims = {}
+            for dim_key, cn_label in dim_cn_mapping.items():
+                dim_data = result.get("dimension_scores", {}).get(dim_key, {})
+                analysis = dim_data.get("analysis", "") if isinstance(dim_data, dict) else ""
+                if not analysis or not analysis.strip():
+                    missing_dims[dim_key] = cn_label
+
+            if not missing_dims:
+                break
+
+            logger.warning(f"Review incomplete (attempt {attempt + 1}/{max_supplement_attempts}), "
+                          f"missing dimensions: {list(missing_dims.keys())}")
+
+            # 调用LLM补充缺失评语
+            try:
+                supplement_prompt = _build_supplement_prompt(
+                    missing_dims, phase, chapter_title, eval_text
+                )
+                supplement_system = (
+                    "你是一位拥有20年经验的国际顶尖战略咨询合伙人。"
+                    "你必须严格按JSON格式输出，不要输出任何其他文字。"
+                    "不要使用markdown代码块。直接输出纯JSON。\n"
+                    "所有analysis字段必须包含100-200字的详细评语，不可为空。"
+                )
+                supplement_text = _call_reviewer_llm(supplement_system, supplement_prompt)
+                supplement_result = _parse_review_response(supplement_text, phase)
+
+                # 将补充结果合并到原始结果中
+                for dim_key in missing_dims:
+                    sup_data = supplement_result.get("dimension_scores", {}).get(dim_key, {})
+                    if isinstance(sup_data, dict) and sup_data.get("analysis", "").strip():
+                        result["dimension_scores"][dim_key] = sup_data
+                        logger.info(f"Supplemented analysis for dimension '{dim_key}'")
+
+                # 重新计算总分
+                result["score"] = int(sum(
+                    v["score"] for v in result["dimension_scores"].values()
+                ))
+            except Exception as e:
+                logger.warning(f"Supplement attempt {attempt + 1} failed: {e}")
+
+        # 最终日志：报告补全结果
+        complete = _validate_review_completeness(result)
+        if not complete:
+            logger.error(f"Review still incomplete after {max_supplement_attempts} supplement attempts")
+        else:
+            logger.info("Review complete: all dimensions have analysis")
+
         return {"llm_review_result": result}
     except Exception as e:
         logger.warning(f"LLM review failed: {e}. Returning default result.")
@@ -315,13 +455,13 @@ def _build_review_prompt(
 
 ---
 
-输出格式（严格遵守）:
-{{"d1_score":0,"d1_analysis":"详细评语","d2_score":0,"d2_analysis":"详细评语","d3_score":0,"d3_analysis":"详细评语","d4_score":0,"d4_analysis":"详细评语","d5_score":0,"d5_analysis":"详细评语","total_score":0,"issues":["具体问题描述1","具体问题描述2"],"suggestions":"详细改进建议"}}
+输出格式（严格遵守，所有字段必须完整填写，不可省略任何analysis字段）:
+{{"d1_score":0,"d1_analysis":"此处必须写100-200字的详细评语，不可为空","d2_score":0,"d2_analysis":"此处必须写100-200字的详细评语，不可为空","d3_score":0,"d3_analysis":"此处必须写100-200字的详细评语，不可为空","d4_score":0,"d4_analysis":"此处必须写100-200字的详细评语，不可为空","d5_score":0,"d5_analysis":"此处必须写100-200字的详细评语，不可为空","total_score":0,"issues":["具体问题描述1","具体问题描述2"],"suggestions":"详细改进建议"}}
 
 说明:
 - d1=模型运用, d2=数据支撑, d3=内部逻辑, d4=内容深度, d5=写作质量
 - 每项0-20分，total=五项之和
-- 每个维度的analysis必须写100-200字的详细评语，包含：(1)该维度的具体表现 (2)做得好的地方 (3)存在的不足 (4)具体的改进方向
+- 【强制要求】d1_analysis到d5_analysis这5个字段每一个都必须包含100-200字的详细评语，绝对不能为空字符串、null或省略。评语内容包含：(1)该维度的具体表现 (2)做得好的地方 (3)存在的不足 (4)具体的改进方向
 - issues必须列出3-5个具体问题，每个问题描述要包含问题所在位置和具体内容（如"第三节中关于XX的分析缺乏数据支撑"）
 - suggestions给出200字左右的总体改进建议，包含优先级排序"""
 
@@ -387,10 +527,20 @@ def _normalize_review(raw: Dict, phase: str = "diagnosis") -> Dict:
         score = raw.get(f"{key}_score", 0)
         analysis = raw.get(f"{key}_analysis", "")
 
+        # Ensure analysis is always a valid string
+        if analysis is None:
+            analysis = ""
+        elif not isinstance(analysis, str):
+            analysis = str(analysis)
+
         try:
             score = max(0, min(20, float(score)))
         except (ValueError, TypeError):
             score = 0
+
+        # Log warning if dimension has score but no analysis (indicates parsing issue)
+        if score > 0 and not analysis.strip():
+            logger.warning(f"Dimension '{eng_name}' has score {score} but no analysis (raw keys: {list(raw.keys())[:5]}...)")
 
         dimension_scores[eng_name] = {
             "score": score,
@@ -447,7 +597,10 @@ def _normalize_review(raw: Dict, phase: str = "diagnosis") -> Dict:
 
 
 def _regex_extract_review(text: str, phase: str = "diagnosis") -> Dict:
-    """正则提取兜底方案，使用阶段感知阈值。"""
+    """正则提取兜底方案，使用阶段感知阈值。
+
+    使用 re.DOTALL 确保 . 能匹配换行符，处理LLM输出中多行评语的情况。
+    """
 
     dim_keys = ["d1", "d2", "d3", "d4", "d5"]
     dim_mapping = {
@@ -462,9 +615,27 @@ def _regex_extract_review(text: str, phase: str = "diagnosis") -> Dict:
     for key in dim_keys:
         eng_name, cn_name = dim_mapping[key]
         score_match = re.search(rf'"{key}_score"\s*:\s*([\d.]+)', text)
-        analysis_match = re.search(rf'"{key}_analysis"\s*:\s*"([^"]*)"', text)
+        analysis = ""
+
+        # 策略1: 处理转义引号和特殊字符的正则（使用 re.DOTALL 匹配多行）
+        analysis_match = re.search(
+            rf'"{key}_analysis"\s*:\s*"((?:[^"\\]|\\.)*)"',
+            text, re.DOTALL
+        )
+        if analysis_match:
+            analysis = analysis_match.group(1).replace('\\"', '"').replace('\\\\', '\\').replace('\\n', '\n')
+        else:
+            # 策略2: 简单正则，不处理转义
+            simple_match = re.search(rf'"{key}_analysis"\s*:\s*"([^"]*)"', text)
+            if simple_match:
+                analysis = simple_match.group(1)
+            else:
+                # 策略3: 尝试匹配单引号包裹的值
+                single_match = re.search(rf'"{key}_analysis"\s*:\s*\'([^\']*)\'', text)
+                if single_match:
+                    analysis = single_match.group(1)
+
         score = float(score_match.group(1)) if score_match else 0
-        analysis = analysis_match.group(1) if analysis_match else ""
         dimension_scores[eng_name] = {
             "score": max(0, min(20, score)),
             "label": cn_name,
@@ -475,11 +646,11 @@ def _regex_extract_review(text: str, phase: str = "diagnosis") -> Dict:
     total_score = float(total_match.group(1)) if total_match else sum(v["score"] for v in dimension_scores.values())
 
     issues = []
-    issues_match = re.search(r'"issues"\s*:\s*\[([^\]]*)\]', text)
+    issues_match = re.search(r'"issues"\s*:\s*\[([^\]]*)\]', text, re.DOTALL)
     if issues_match:
         issues = [s.strip().strip('"').strip("'") for s in issues_match.group(1).split(',') if s.strip().strip('"')]
 
-    suggestions_match = re.search(r'"suggestions"\s*:\s*"([^"]*)"', text)
+    suggestions_match = re.search(r'"suggestions"\s*:\s*"([^"]*)"', text, re.DOTALL)
     suggestions = suggestions_match.group(1) if suggestions_match else ""
 
     # 阶段感知阈值

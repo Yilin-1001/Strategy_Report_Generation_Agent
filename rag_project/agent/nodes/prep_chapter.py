@@ -2,14 +2,15 @@
 Prepare Chapter Node - Initializes chapter state and enforces state isolation
 
 This helper node is called at the beginning of each chapter iteration to:
-1. Compress previous chapter knowledge into rolling context_summary
+1. Recompute global context_summary from all completed chapters (context_pool)
 2. Set the current chapter title from the global plan
 3. Clear the chapter scratchpad (enforcing state isolation between chapters)
 4. Clear the current draft (ensuring fresh start)
 5. Log progress with chapter number (X of Y)
 
-This is critical for maintaining the "阅后即焚" (burn after reading) principle
-where chapter_scratchpad serves as a temporary workspace that is reset for each chapter.
+Memory architecture:
+- context_pool: accumulates approved chapter texts (operator.add, append-only)
+- context_summary: recomputed from context_pool each time, budget scales with chapters
 """
 
 import logging
@@ -20,78 +21,93 @@ from rag_project.utils.logger import setup_logger
 logger = setup_logger(__name__)
 
 
-def _compress_chapter_knowledge(
-    chapter_title: str,
-    key_facts,
-    insights: list,
-    existing_summary: str,
-    llm_manager
-) -> str:
+def _calc_summary_budget(completed_chapters: int) -> tuple:
     """
-    将上一章的知识压缩并合并到滚动摘要中。
+    按已完成章节数比例计算摘要预算（阶段感知分级策略）。
+
+    诊断阶段 (ch1-3): 温和增长 400 → 700 → 1000
+    推演阶段 (ch4-8): 加速增长，携带诊断摘要 + 蓝图 + 前序推演
 
     Args:
-        chapter_title: 上一章标题
-        key_facts: 上一章的关键事实（list 或 dict）
-        insights: 上一章的洞察
-        existing_summary: 现有的滚动摘要
-        llm_manager: LLM 实例（可选，为 None 时使用简单拼接）
+        completed_chapters: 已完成的章节数（context_pool长度）
 
     Returns:
-        更新后的滚动摘要（约 300-500 字）
+        (target_chars, max_tokens) 元组
     """
-    if not key_facts and not insights:
-        return existing_summary
+    if completed_chapters <= 0:
+        return 0, 0
 
-    # 构建新知识文本
-    new_knowledge = f"\n【{chapter_title}】\n"
+    diagnosis_end = 3
 
-    if isinstance(key_facts, dict):
-        # 结构化 facts（如 SWOT/PEST 模型输出）
-        for category, facts in key_facts.items():
-            if isinstance(facts, list):
-                new_knowledge += f"  {category}: {'; '.join(str(f) for f in facts[:5])}\n"
-            else:
-                new_knowledge += f"  {category}: {facts}\n"
-    elif isinstance(key_facts, list):
-        new_knowledge += "  关键事实: " + "; ".join(str(f) for f in key_facts[:8]) + "\n"
+    if completed_chapters <= diagnosis_end:
+        target_chars = 300 + completed_chapters * 350
+    else:
+        base_from_diagnosis = 1350
+        initiatives_count = completed_chapters - diagnosis_end
+        target_chars = base_from_diagnosis + initiatives_count * 450
 
-    if insights:
-        new_knowledge += "  核心洞察: " + "; ".join(str(i) for i in insights[:5]) + "\n"
+    target_chars = min(target_chars, 3500)
+    max_tokens = int(target_chars * 0.65)
+    return target_chars, max_tokens
 
-    # 如果没有 LLM，使用简单拼接（带长度控制）
-    if llm_manager is None:
-        combined = existing_summary + "\n" + new_knowledge if existing_summary else new_knowledge
-        # 简单截断保底
-        return combined[-3000:] if len(combined) > 3000 else combined
 
-    # 使用 LLM 滚动压缩
-    prompt = f"""请将以下新旧知识合并为一份紧凑的滚动摘要。
+def _full_recompute_summary(context_pool: list, llm_manager,
+                            current_chapter_index: int) -> str:
+    """
+    从所有已完成章节原文（context_pool）重新计算全局摘要。
+
+    每次都从原始章节文本出发，避免滚动压缩的级联信息损失。
+    摘要预算按已完成章节数比例增长。
+
+    Args:
+        context_pool: 已审核通过的章节原文列表
+        llm_manager: LLM 实例
+        current_chapter_index: 当前章节索引（用于日志）
+
+    Returns:
+        重算后的全局摘要
+    """
+    completed = len(context_pool)
+    if completed == 0:
+        return ""
+
+    target_chars, max_tokens = _calc_summary_budget(completed)
+    logger.info(f"Recomputing summary from {completed} completed chapters "
+                f"(budget: {target_chars} chars / {max_tokens} tokens)")
+
+    # 拼接所有已完成章节原文
+    all_chapters = "\n\n".join(
+        f"【第{i+1}章】\n{chapter}"
+        for i, chapter in enumerate(context_pool)
+    )
+
+    prompt = f"""基于以下{completed}个已完成章节的完整原文，生成一份全局摘要。
 
 要求:
-1. 保留所有具体数字（金额、比例、增长率等）
-2. 保留政策名称和战略定位
-3. 保留关键结论和核心洞察
-4. 删除冗余和重复
-5. 控制在1000字以内
-6. 使用中文
+1. 按章节顺序组织，标注每个结论的来源章节（如"第二章指出..."）
+2. 保留所有具体数字（金额、比例、增长率、投资额等）
+3. 保留政策名称、法规文件名和战略定位表述
+4. 保留关键论证结论和核心洞察
+5. 删除冗余和重复，确保信息密度
+6. 控制在{target_chars}字以内
+7. 使用中文
 
-已有摘要:
-{existing_summary if existing_summary else '（无）'}
+已完成章节:
+{all_chapters}
 
-新增知识:
-{new_knowledge}
-
-请输出合并后的摘要:"""
+输出摘要:"""
 
     try:
-        response = llm_manager.invoke(prompt, temperature=0.3, max_tokens=512)
-        return response.strip()
+        response = llm_manager.invoke(prompt, temperature=0.3, max_tokens=max_tokens)
+        summary = response.strip()
+        logger.info(f"Recomputed summary: {len(summary)} chars "
+                    f"from {completed} chapters (target: {target_chars})")
+        return summary
     except Exception as e:
-        # LLM 失败时回退到简单拼接
-        logger.warning(f"LLM compression failed, using simple concat: {e}")
-        combined = existing_summary + "\n" + new_knowledge if existing_summary else new_knowledge
-        return combined[-3000:] if len(combined) > 3000 else combined
+        logger.error(f"Full recompute failed: {e}")
+        # 回退：截断拼接
+        fallback = "\n".join(chapter[:200] for chapter in context_pool)
+        return fallback[:target_chars]
 
 
 def _detect_knowledge_gaps(
@@ -102,12 +118,9 @@ def _detect_knowledge_gaps(
     """
     检测前序章节是否存在下一章需要的知识缺口。
 
-    使用 LLM 判断前序章节摘要是否已覆盖下一章所需的关键信息，
-    如果存在缺口，返回补充检索方向的提示文本。
-
     Args:
         next_chapter_title: 下一章标题
-        context_summary: 前序章节的压缩摘要
+        context_summary: 前序章节的摘要
         llm_manager: LLM 实例
 
     Returns:
@@ -139,54 +152,43 @@ def prepare_chapter_node(state: Dict, llm_manager=None) -> Dict:
     """
     为当前章节准备状态，设置标题并清空工作区。
 
-    新增滚动摘要压缩: 在清空 scratchpad 之前，将上一章的知识压缩到 context_summary 中，
-    确保后续章节能看到前序章节的关键信息。
+    摘要策略: 从 context_pool（所有已完成章节原文）全量重算 context_summary，
+    避免滚动压缩的级联信息损失。预算按已完成章节数比例增长。
 
     推演阶段特殊处理 (initiatives phase):
     - 如果当前章节 phase == "initiatives" (第4-8章)
     - 且 strategic_blueprint 存在并已批准
     - 将自动注入战略蓝图上下文到 chapter_scratchpad
-    - 确保后续生成的战略举措不偏离总目标
 
     Args:
-        state: Current GraphState containing:
-            - global_plan: List of chapter metadata
-            - current_chapter_index: Index of current chapter (0-based)
-            - strategic_blueprint: Strategic blueprint (optional)
-            - current_phase: Current phase
-            - user_input: Original user request
-            - chapter_scratchpad: Previous chapter's scratchpad (to be compressed then cleared)
-            - context_summary: Rolling summary from previous chapters
-        llm_manager: LLM instance for chapter knowledge compression
+        state: Current GraphState
+        llm_manager: LLM instance for summary recomputation
 
     Returns:
         Dict with updates:
-            - chapter_title: Title from global_plan[current_chapter_index]
-            - chapter_question: Research question for this chapter
+            - chapter_title: Title from global_plan
+            - chapter_question: Research question
             - chapter_context: Context for this chapter
             - chapter_scratchpad: Empty dict OR with strategic_blueprint
-            - current_draft: Empty string "" (fresh start)
-            - context_summary: Updated rolling summary (if previous chapter had data)
+            - current_draft: Empty string (fresh start)
+            - context_summary: Recomputed from all completed chapters
     """
-    # === Step 1: 读取上一章的知识（由 human_review 保存）===
-    pending_knowledge = state.get("_pending_chapter_knowledge", {})
-    current_summary = state.get("context_summary", "")
-
-    # === Step 2: 滚动压缩（使用上一章数据）===
+    # === Step 1: 从 context_pool 全量重算摘要 ===
+    context_pool = state.get("context_pool", [])
+    current_index = state.get("current_chapter_index", 0)
     context_summary_update = {}
-    if pending_knowledge and pending_knowledge.get("key_facts"):
-        compressed = _compress_chapter_knowledge(
-            chapter_title=pending_knowledge.get("title", ""),
-            key_facts=pending_knowledge["key_facts"],
-            insights=pending_knowledge.get("insights", []),
-            existing_summary=current_summary,
-            llm_manager=llm_manager
+
+    if context_pool and llm_manager:
+        compressed = _full_recompute_summary(
+            context_pool=context_pool,
+            llm_manager=llm_manager,
+            current_chapter_index=current_index
         )
         context_summary_update = {"context_summary": compressed}
-        logger.info(f"Updated context_summary ({len(compressed)} chars) "
-                    f"after compressing '{pending_knowledge.get('title', '')}'")
+        logger.info(f"Recomputed context_summary ({len(compressed)} chars) "
+                    f"from {len(context_pool)} completed chapters")
 
-    # === Step 3: 设置新章节状态 ===
+    # === Step 2: 设置新章节状态 ===
     global_plan = state.get("global_plan", [])
     current_index = state.get("current_chapter_index", 0)
     total_chapters = len(global_plan)

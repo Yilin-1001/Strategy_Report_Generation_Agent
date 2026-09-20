@@ -260,8 +260,10 @@ def render_review_tab(review: Dict) -> str:
         bar_pct = int((score / max_score) * 100) if max_score else 0
         warning = " &#9888;" if score < max_score * 0.7 else ""
         analysis_html = ""
-        if analysis:
+        if analysis and analysis.strip():
             analysis_html = f'<div class="dim-analysis">{analysis}</div>'
+        else:
+            analysis_html = f'<div class="dim-analysis" style="opacity:0.5;font-style:italic;color:#888;">该维度详细评语未生成</div>'
 
         dim_html += f"""
         <div class="score-row">

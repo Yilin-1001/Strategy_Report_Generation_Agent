@@ -43,7 +43,7 @@ def should_continue(state: Dict[str, Any]) -> str:
         - revise:logic → "analyst"
         - revise:writing → "writer"
 
-        战略蓝图路由 (新增):
+        战略蓝图路由:
         - approve_blueprint → "prepare_chapter" (进入推演阶段)
         - revise_blueprint → "strategist" (重新生成蓝图)
 
@@ -223,18 +223,6 @@ def human_review_node(state: Dict[str, Any]) -> Dict[str, Any]:
             updated_state = {}
             updated_state["context_pool"] = [full_chapter]
             updated_state["chapter_scratchpad"] = {}
-
-            # Save scratchpad knowledge for rolling context_summary compression
-            # (prepare_chapter will read this before clearing)
-            scratchpad = state.get("chapter_scratchpad", {})
-            if scratchpad.get("key_facts"):
-                updated_state["_pending_chapter_knowledge"] = {
-                    "title": state.get("chapter_title", ""),
-                    "key_facts": scratchpad.get("key_facts", []),
-                    "insights": scratchpad.get("insights", [])
-                }
-            else:
-                updated_state["_pending_chapter_knowledge"] = {}
 
             # Special handling: Don't increment after Chapter 2 (index=2) - wait for blueprint approval
             if current_chapter_index == 2:

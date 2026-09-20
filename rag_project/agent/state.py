@@ -32,7 +32,6 @@ class GraphState(TypedDict):
     chapter_context: str  # 当前章节的上下文信息
     chapter_scratchpad: Dict  # 本章的结构化草稿本
     current_draft: str  # Writer生成的当前草稿文本
-    _pending_chapter_knowledge: Dict  # human_review保存的上一章知识（供prep_chapter压缩用）
 
     # --- 控制层 ---
     human_feedback: Dict  # 人类结构化反馈指令
